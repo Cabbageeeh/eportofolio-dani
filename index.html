@@ -1,0 +1,992 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Portofolio Mahasiswa</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="ornaments.css" />
+    <link rel="stylesheet" href="ornaments-fix.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- ====== ORNAMEN LATAR ====== -->
+    <div class="bg-texture"></div>
+    <div class="ornament ornament-tl"></div>
+    <div class="ornament ornament-br"></div>
+
+    <!-- ====== SIDEBAR NAVIGASI ====== -->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-emblem">
+          <span class="logo-icon"><i class="fas fa-book-open"></i></span>
+        </div>
+        <p class="logo-sub">E-Portofolio</p>
+      </div>
+
+      <ul class="nav-links">
+        <li>
+          <a href="#profil" class="nav-item active" data-section="profil">
+            <span class="nav-icon"><i class="fas fa-user-circle"></i></span>
+            <span class="nav-label">Profil Mahasiswa</span>
+          </a>
+        </li>
+        <li>
+          <a href="#pendidikan" class="nav-item" data-section="pendidikan">
+            <span class="nav-icon"><i class="fas fa-graduation-cap"></i></span>
+            <span class="nav-label">Pendidikan & Pengalaman</span>
+          </a>
+        </li>
+        <li>
+          <a href="#analisis" class="nav-item" data-section="analisis">
+            <span class="nav-icon"><i class="fas fa-microscope"></i></span>
+            <span class="nav-label">Analisis Artefak</span>
+          </a>
+        </li>
+        <li>
+          <a href="#lampiran" class="nav-item" data-section="lampiran">
+            <span class="nav-icon"><i class="fas fa-paperclip"></i></span>
+            <span class="nav-label">Lampiran & Penilaian</span>
+          </a>
+        </li>
+        <li>
+          <a href="#misi" class="nav-item" data-section="misi">
+            <span class="nav-icon"><i class="fas fa-compass"></i></span>
+            <span class="nav-label">Misi & Kompetensi</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-divider"></div>
+        <p class="sidebar-year">2025 &mdash; 2026</p>
+      </div>
+    </nav>
+
+    <!-- ====== HAMBURGER BUTTON (MOBILE) ====== -->
+    <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- ====== OVERLAY (MOBILE) ====== -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- ====== MAIN CONTENT ====== -->
+    <main class="main-content">
+      <!-- ===== SECTION 1: PROFIL MAHASISWA ===== -->
+      <section class="section active" id="profil">
+        <div class="particle-field" aria-hidden="true"></div>
+        <div class="compass-ornament" aria-hidden="true">
+          ║ ║
+          <svg viewBox="0 0 200 200" ║ ║ xmlns="http://www.w3.org/2000/svg">
+            ║ ║
+            <circle
+              cx="100"
+              cy="100"
+              r="94"
+              ║
+              ║
+              stroke="currentColor"
+              stroke-width="1.5"
+              ║
+              ║
+              fill="none"
+            />
+            ║ ║
+            <circle
+              cx="100"
+              cy="100"
+              r="78"
+              ║
+              ║
+              stroke="currentColor"
+              stroke-width="0.6"
+              ║
+              ║
+              fill="none"
+              stroke-dasharray="5 7"
+            />
+            ║ ║
+            <circle
+              cx="100"
+              cy="100"
+              r="58"
+              ║
+              ║
+              stroke="currentColor"
+              stroke-width="1"
+              ║
+              ║
+              fill="none"
+            />
+            ║ ║
+            <line
+              x1="100"
+              y1="6"
+              x2="100"
+              y2="194"
+              ║
+              ║
+              stroke="currentColor"
+              stroke-width="0.8"
+            />
+            ║ ║
+            <line
+              x1="6"
+              y1="100"
+              x2="194"
+              y2="100"
+              ║
+              ║
+              stroke="currentColor"
+              stroke-width="0.8"
+            />
+            ║ ║
+            <line
+              x1="30"
+              y1="30"
+              x2="170"
+              y2="170"
+              ║
+              ║
+              stroke="currentColor"
+              stroke-width="0.4"
+            />
+            ║ ║
+            <line
+              x1="170"
+              y1="30"
+              x2="30"
+              y2="170"
+              ║
+              ║
+              stroke="currentColor"
+              stroke-width="0.4"
+            />
+            ║ ║
+            <polygon
+              ║
+              ║
+              points="100,12 105,88 100,78 95,88"
+              ║
+              ║
+              fill="currentColor"
+            />
+            ║ ║
+            <polygon
+              ║
+              ║
+              points="100,188 105,112 100,122 95,112"
+              ║
+              ║
+              fill="currentColor"
+              opacity="0.4"
+            />
+            ║ ║
+            <circle cx="100" cy="100" r="6" ║ ║ fill="currentColor" />
+            ║ ║
+            <text
+              x="100"
+              y="24"
+              text-anchor="middle"
+              ║
+              ║
+              font-size="11"
+              fill="currentColor"
+              ║
+              ║
+              font-family="serif"
+              font-weight="bold"
+            >
+              N
+            </text>
+            ║ ║
+            <text
+              x="100"
+              y="186"
+              text-anchor="middle"
+              ║
+              ║
+              font-size="9"
+              fill="currentColor"
+              ║
+              ║
+              font-family="serif"
+            >
+              S
+            </text>
+            ║ ║
+          </svg>
+          ║ ║
+        </div>
+        <div class="section-header">
+          <div class="section-badge">01</div>
+          <h1 class="section-title">Profil Mahasiswa</h1>
+          <div class="title-line"></div>
+        </div>
+
+        <div class="profil-grid">
+          <!-- Foto & Identitas -->
+          <div class="profil-card card-identity">
+            <div class="avatar-frame">
+              <div class="avatar-placeholder">
+                <i class="fas fa-user"></i>
+                <p>Foto Anda</p>
+              </div>
+              <div class="avatar-deco"></div>
+              <div class="avatar-ring-2"></div>
+            </div>
+            <div class="identity-info">
+              <h2 class="student-name">Muhammad Abduramadani</h2>
+              <p class="student-nim">NIM: 2500103916225027</p>
+              <div class="identity-tags">
+                <span class="tag"
+                  ><i class="fas fa-map-marker-alt"></i> Malang</span
+                >
+                <span class="tag"
+                  ><i class="fas fa-university"></i> Informatika</span
+                >
+                <span class="tag"
+                  ><i class="fas fa-calendar"></i> Angkatan 2026</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Asal & Keunikan Daerah -->
+          <div class="profil-card card-asal">
+            <div class="card-icon-header">
+              <i class="fas fa-mountain"></i>
+              <h3>Asal & Keunikan Daerah</h3>
+            </div>
+            <p class="card-body">
+              Saya berasal dari <strong>Kabupaten Malang</strong>, sebuah daerah
+              yang kaya akan warisan budaya dan tradisi leluhur. Daerah saya
+              dikenal dengan <strong>Pusat Wisata Alam & Budaya</strong> yang
+              menjadi identitas tersendiri bagi masyarakatnya.
+            </p>
+            <p class="card-body">
+              Kabupaten Malang merupakan pusat wisata komplit yang memadukan
+              kemegahan lanskap pegunungan dengan kekayaan sejarah kerajaan masa
+              lalu. Di bagian timur, terdapat ikon wisata dunia yaitu Gunung
+              Bromo yang menawarkan panorama matahari terbit spektakuler dan
+              budaya unik masyarakat Tengger. Beralih ke selatan, Pantai
+              Balekambang tampil memukau dengan Pura Amertha Jati yang berdiri
+              di atas Pulau Ismoyo, menciptakan pemandangan yang menyerupai
+              Tanah Lot di Bali.
+            </p>
+            <div class="region-highlights">
+              <div class="highlight-item">
+                <i class="fas fa-landmark"></i>
+                <span>Tari Topeng Malangan</span>
+              </div>
+              <div class="highlight-item">
+                <i class="fas fa-leaf"></i>
+                <span>Gunung Bromo & Semeru</span>
+              </div>
+              <div class="highlight-item">
+                <i class="fas fa-users"></i>
+                <span>Bahasa Walikan & Arema</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Inspirasi Menjadi Guru -->
+          <div class="profil-card card-inspirasi">
+            <div class="card-icon-header">
+              <i class="fas fa-fire"></i>
+              <h3>Inspirasi & Tujuan Menjadi Guru Profesional</h3>
+            </div>
+            <p class="card-body">
+              Perjalanan saya menuju profesi guru diawali dari
+              <strong>kisah Ki Hajar Dewantara</strong>. Sosok guru yang paling
+              menginspirasi saya adalah
+              <strong>Bapak dan Ibu Guru saya di sekolah dulu</strong>
+              yang mengajarkan bahwa mendidik bukan sekadar menyampaikan ilmu,
+              melainkan membentuk karakter.
+            </p>
+            <p class="card-body">
+              Tujuan saya menjadi guru profesional adalah untuk
+              <strong
+                >mendedikasikan diri dalam mencerdaskan kehidupan bangsa dan
+                menjadi jembatan bagi generasi muda untuk meraih cita-cita
+                mereka melalui pendidikan</strong
+              >. Saya percaya bahwa setiap anak berhak mendapatkan pendidikan
+              berkualitas yang mampu mengembangkan potensi mereka secara
+              maksimal.
+            </p>
+            <div class="timeline-mini">
+              <div class="timeline-dot active"></div>
+              <div class="timeline-line"></div>
+              <div class="timeline-dot"></div>
+              <div class="timeline-line"></div>
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-labels">
+              <span>Terinspirasi</span>
+              <span>Berjuang</span>
+              <span>Profesional</span>
+            </div>
+          </div>
+
+          <!-- Kutipan -->
+          <div class="profil-card card-quote">
+            <div class="quote-ornament">&ldquo;</div>
+            <blockquote class="main-quote">
+              "Ing ngarsa sung tulada, ing madya mangun karsa, tut wuri
+              handayani."
+            </blockquote>
+            <div class="quote-author">
+              <div class="author-line"></div>
+              <span>— Ki Hajar Dewantara</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SECTION 2: PENDIDIKAN & PENGALAMAN ===== -->
+      <section class="section" id="pendidikan">
+        <div class="section-header">
+          <div class="section-badge">02</div>
+          <h1 class="section-title">Pendidikan & Pengalaman</h1>
+          <div class="title-line"></div>
+        </div>
+
+        <div class="pendidikan-grid">
+          <!-- Riwayat Pendidikan -->
+          <div class="pend-card">
+            <h3 class="pend-card-title">
+              <i class="fas fa-graduation-cap"></i> Riwayat Pendidikan
+            </h3>
+            <div class="edu-timeline">
+              <div class="edu-item">
+                <div class="edu-year">2026</div>
+                <div class="edu-content">
+                  <h4>Universitas Negeri Surabaya</h4>
+                  <p>Pendidikan Profesi Guru &mdash; Informatika</p>
+                  <span class="edu-badge">Profesi</span>
+                </div>
+              </div>
+              <div class="edu-item">
+                <div class="edu-year">2021</div>
+                <div class="edu-content">
+                  <h4>Universitas PGRI Kanjuruhan Malang</h4>
+                  <p>Teknik Informatika &mdash; Kota Malang</p>
+                  <span class="edu-badge">Sarjana (S1)</span>
+                </div>
+              </div>
+              <div class="edu-item">
+                <div class="edu-year">2016</div>
+                <div class="edu-content">
+                  <h4>MAN 1 Malang</h4>
+                  <p>IPA &mdash; Kabupaten Malang</p>
+                  <span class="edu-badge">MAN</span>
+                </div>
+              </div>
+              <div class="edu-item">
+                <div class="edu-year">2014</div>
+                <div class="edu-content">
+                  <h4>MTsN 6 Malang</h4>
+                  <p>Kabupaten Malang</p>
+                  <span class="edu-badge">MTs</span>
+                </div>
+              </div>
+              <div class="edu-item">
+                <div class="edu-year">2008</div>
+                <div class="edu-content">
+                  <h4>MI Hasanuddin</h4>
+                  <p>Kabupaten Malang</p>
+                  <span class="edu-badge">SD/MI</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pengalaman Organisasi -->
+          <div class="pend-card">
+            <h3 class="pend-card-title">
+              <i class="fas fa-handshake"></i> Pengalaman Organisasi
+            </h3>
+            <div class="org-list">
+              <div class="org-item">
+                <div class="org-icon"><i class="fas fa-users"></i></div>
+                <div class="org-detail">
+                  <h4>[ Nama Organisasi ]</h4>
+                  <p>[ Jabatan ] &mdash; [ Periode ]</p>
+                </div>
+              </div>
+              <div class="org-item">
+                <div class="org-icon">
+                  <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <div class="org-detail">
+                  <h4>[ Nama Organisasi ]</h4>
+                  <p>[ Jabatan ] &mdash; [ Periode ]</p>
+                </div>
+              </div>
+              <div class="org-item">
+                <div class="org-icon"><i class="fas fa-star"></i></div>
+                <div class="org-detail">
+                  <h4>[ Nama Organisasi ]</h4>
+                  <p>[ Jabatan ] &mdash; [ Periode ]</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pengalaman Mengajar / Praktik -->
+          <div class="pend-card card-wide">
+            <h3 class="pend-card-title">
+              <i class="fas fa-chalkboard"></i> Pengalaman Mengajar & Praktik
+            </h3>
+            <div class="teach-grid">
+              <div class="teach-item">
+                <div class="teach-num">01</div>
+                <h4>[ Nama Program / Kegiatan ]</h4>
+                <p>
+                  [ Deskripsi singkat kegiatan mengajar, PPL, atau praktik
+                  kependidikan ]
+                </p>
+                <span class="teach-period">[ Periode / Tahun ]</span>
+              </div>
+              <div class="teach-item">
+                <div class="teach-num">02</div>
+                <h4>[ Nama Program / Kegiatan ]</h4>
+                <p>[ Deskripsi singkat kegiatan ]</p>
+                <span class="teach-period">[ Periode / Tahun ]</span>
+              </div>
+              <div class="teach-item">
+                <div class="teach-num">03</div>
+                <h4>[ Nama Program / Kegiatan ]</h4>
+                <p>[ Deskripsi singkat kegiatan ]</p>
+                <span class="teach-period">[ Periode / Tahun ]</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Prestasi & Penghargaan -->
+          <div class="pend-card">
+            <h3 class="pend-card-title">
+              <i class="fas fa-trophy"></i> Prestasi & Penghargaan
+            </h3>
+            <div class="achievement-list">
+              <div class="achieve-item">
+                <i class="fas fa-medal"></i>
+                <div>
+                  <h4>[ Nama Prestasi ]</h4>
+                  <p>[ Penyelenggara ] &mdash; [ Tahun ]</p>
+                </div>
+              </div>
+              <div class="achieve-item">
+                <i class="fas fa-medal"></i>
+                <div>
+                  <h4>[ Nama Prestasi ]</h4>
+                  <p>[ Penyelenggara ] &mdash; [ Tahun ]</p>
+                </div>
+              </div>
+              <div class="achieve-item">
+                <i class="fas fa-certificate"></i>
+                <div>
+                  <h4>[ Sertifikasi / Pelatihan ]</h4>
+                  <p>[ Lembaga ] &mdash; [ Tahun ]</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SECTION 3: ANALISIS ARTEFAK ===== -->
+      <section class="section" id="analisis">
+        <div class="section-header">
+          <div class="section-badge">03</div>
+          <h1 class="section-title">Analisis Artefak</h1>
+          <p class="section-subtitle">
+            Produk Rencana & Perangkat Pembelajaran
+          </p>
+          <div class="title-line"></div>
+        </div>
+
+        <div class="analisis-grid">
+          <!-- Kendala -->
+          <div class="analisis-card card-kendala">
+            <div class="analisis-icon">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>Kendala yang Dihadapi</h3>
+            <ul class="analisis-list">
+              <li>
+                <span class="list-num">01</span>
+                <div>
+                  <strong>[ Judul Kendala Pertama ]</strong>
+                  <p>
+                    [ Deskripsikan kendala yang Anda temui dalam menyusun atau
+                    melaksanakan rencana pembelajaran. ]
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span class="list-num">02</span>
+                <div>
+                  <strong>[ Judul Kendala Kedua ]</strong>
+                  <p>
+                    [ Deskripsikan kendala berikutnya — misalnya keterbatasan
+                    media, kondisi siswa, waktu, dsb. ]
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span class="list-num">03</span>
+                <div>
+                  <strong>[ Judul Kendala Ketiga ]</strong>
+                  <p>[ Kendala lainnya yang relevan. ]</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Teori / Konsep -->
+          <div class="analisis-card card-teori">
+            <div class="analisis-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3>Teori & Konsep yang Digunakan</h3>
+            <div class="teori-items">
+              <div class="teori-pill">
+                <span class="pill-label">Teori 1</span>
+                <div class="pill-content">
+                  <h4>[ Nama Teori / Konsep ]</h4>
+                  <p>
+                    [ Jelaskan teori pembelajaran yang melandasi perangkat Anda,
+                    misal: Konstruktivisme, Behaviorisme, Teori Bloom, dsb. ]
+                  </p>
+                </div>
+              </div>
+              <div class="teori-pill">
+                <span class="pill-label">Teori 2</span>
+                <div class="pill-content">
+                  <h4>[ Nama Teori / Konsep ]</h4>
+                  <p>
+                    [ Deskripsi teori dan relevansinya dengan perangkat
+                    pembelajaran Anda. ]
+                  </p>
+                </div>
+              </div>
+              <div class="teori-pill">
+                <span class="pill-label">Teori 3</span>
+                <div class="pill-content">
+                  <h4>[ Nama Teori / Konsep ]</h4>
+                  <p>[ Deskripsi teori ketiga. ]</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Faktor Keberhasilan -->
+          <div class="analisis-card card-faktor">
+            <div class="analisis-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Faktor Keberhasilan</h3>
+            <div class="faktor-grid">
+              <div class="faktor-item">
+                <div class="faktor-icon"><i class="fas fa-bullseye"></i></div>
+                <h4>[ Faktor 1 ]</h4>
+                <p>
+                  [ Jelaskan faktor yang berkontribusi pada keberhasilan
+                  pembelajaran, misal: metode aktif, motivasi siswa, dsb. ]
+                </p>
+              </div>
+              <div class="faktor-item">
+                <div class="faktor-icon"><i class="fas fa-link"></i></div>
+                <h4>[ Faktor 2 ]</h4>
+                <p>[ Deskripsi faktor keberhasilan kedua. ]</p>
+              </div>
+              <div class="faktor-item">
+                <div class="faktor-icon"><i class="fas fa-lightbulb"></i></div>
+                <h4>[ Faktor 3 ]</h4>
+                <p>[ Deskripsi faktor ketiga. ]</p>
+              </div>
+              <div class="faktor-item">
+                <div class="faktor-icon"><i class="fas fa-cogs"></i></div>
+                <h4>[ Faktor 4 ]</h4>
+                <p>[ Deskripsi faktor keempat. ]</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Perubahan Komponen -->
+          <div class="analisis-card card-perubahan">
+            <div class="analisis-icon">
+              <i class="fas fa-sync-alt"></i>
+            </div>
+            <h3>Perubahan Beberapa Komponen</h3>
+            <div class="perubahan-table">
+              <div class="perubahan-header">
+                <span>Komponen</span>
+                <span>Sebelum</span>
+                <span>Sesudah</span>
+              </div>
+              <div class="perubahan-row">
+                <span class="comp-name">[ Komponen 1 ]</span>
+                <span class="comp-before">[ Kondisi awal ]</span>
+                <span class="comp-after">[ Kondisi setelah revisi ]</span>
+              </div>
+              <div class="perubahan-row">
+                <span class="comp-name">[ Komponen 2 ]</span>
+                <span class="comp-before">[ Kondisi awal ]</span>
+                <span class="comp-after">[ Kondisi setelah revisi ]</span>
+              </div>
+              <div class="perubahan-row">
+                <span class="comp-name">[ Komponen 3 ]</span>
+                <span class="comp-before">[ Kondisi awal ]</span>
+                <span class="comp-after">[ Kondisi setelah revisi ]</span>
+              </div>
+              <div class="perubahan-row">
+                <span class="comp-name">[ Komponen 4 ]</span>
+                <span class="comp-before">[ Kondisi awal ]</span>
+                <span class="comp-after">[ Kondisi setelah revisi ]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SECTION 4: LAMPIRAN & PENILAIAN ===== -->
+      <section class="section" id="lampiran">
+        <div class="section-header">
+          <div class="section-badge">04</div>
+          <h1 class="section-title">Lampiran & Penilaian</h1>
+          <p class="section-subtitle">Perangkat & Penilaian Praktik Mengajar</p>
+          <div class="title-line"></div>
+        </div>
+
+        <div class="lampiran-grid">
+          <!-- Dokumen Perangkat -->
+          <div class="lamp-section">
+            <h3 class="lamp-section-title">
+              <i class="fas fa-folder-open"></i> Perangkat Pembelajaran
+            </h3>
+            <div class="doc-cards">
+              <div class="doc-card">
+                <div class="doc-icon"><i class="fas fa-file-alt"></i></div>
+                <div class="doc-info">
+                  <h4>Rencana Pelaksanaan Pembelajaran (RPP)</h4>
+                  <p>[ Mata Pelajaran ] &mdash; Kelas [ X ]</p>
+                  <p class="doc-desc">[ Deskripsi singkat RPP yang dibuat ]</p>
+                </div>
+                <div class="doc-actions">
+                  <button class="btn-doc">
+                    <i class="fas fa-eye"></i> Lihat
+                  </button>
+                  <button class="btn-doc btn-primary">
+                    <i class="fas fa-download"></i> Unduh
+                  </button>
+                </div>
+              </div>
+              <div class="doc-card">
+                <div class="doc-icon"><i class="fas fa-images"></i></div>
+                <div class="doc-info">
+                  <h4>Media Pembelajaran</h4>
+                  <p>[ Jenis Media ] &mdash; [ Topik ]</p>
+                  <p class="doc-desc">
+                    [ Deskripsi media yang digunakan dalam praktik ]
+                  </p>
+                </div>
+                <div class="doc-actions">
+                  <button class="btn-doc">
+                    <i class="fas fa-eye"></i> Lihat
+                  </button>
+                  <button class="btn-doc btn-primary">
+                    <i class="fas fa-download"></i> Unduh
+                  </button>
+                </div>
+              </div>
+              <div class="doc-card">
+                <div class="doc-icon"><i class="fas fa-tasks"></i></div>
+                <div class="doc-info">
+                  <h4>Lembar Kerja Peserta Didik (LKPD)</h4>
+                  <p>[ Topik ] &mdash; Kelas [ X ]</p>
+                  <p class="doc-desc">[ Deskripsi LKPD ]</p>
+                </div>
+                <div class="doc-actions">
+                  <button class="btn-doc">
+                    <i class="fas fa-eye"></i> Lihat
+                  </button>
+                  <button class="btn-doc btn-primary">
+                    <i class="fas fa-download"></i> Unduh
+                  </button>
+                </div>
+              </div>
+              <div class="doc-card">
+                <div class="doc-icon">
+                  <i class="fas fa-clipboard-list"></i>
+                </div>
+                <div class="doc-info">
+                  <h4>Instrumen Penilaian</h4>
+                  <p>[ Jenis Penilaian ] &mdash; [ Topik ]</p>
+                  <p class="doc-desc">[ Deskripsi instrumen penilaian ]</p>
+                </div>
+                <div class="doc-actions">
+                  <button class="btn-doc">
+                    <i class="fas fa-eye"></i> Lihat
+                  </button>
+                  <button class="btn-doc btn-primary">
+                    <i class="fas fa-download"></i> Unduh
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="diamond-divider" aria-hidden="true">
+            ║ ║ <span></span> ║ ║ <i></i> ║ ║ <span></span> ║ ║
+          </div>
+
+          <!-- Penilaian Praktik Mengajar -->
+          <div class="lamp-section">
+            <h3 class="lamp-section-title">
+              <i class="fas fa-chart-bar"></i> Penilaian Praktik Mengajar
+            </h3>
+            <div class="nilai-grid">
+              <div class="nilai-card">
+                <div class="nilai-label">Penguasaan Materi</div>
+                <div class="nilai-bar-wrap">
+                  <div class="nilai-bar" style="--pct: 85%"></div>
+                </div>
+                <div class="nilai-score">85 / 100</div>
+              </div>
+              <div class="nilai-card">
+                <div class="nilai-label">Pengelolaan Kelas</div>
+                <div class="nilai-bar-wrap">
+                  <div class="nilai-bar" style="--pct: 80%"></div>
+                </div>
+                <div class="nilai-score">80 / 100</div>
+              </div>
+              <div class="nilai-card">
+                <div class="nilai-label">Penggunaan Media</div>
+                <div class="nilai-bar-wrap">
+                  <div class="nilai-bar" style="--pct: 90%"></div>
+                </div>
+                <div class="nilai-score">90 / 100</div>
+              </div>
+              <div class="nilai-card">
+                <div class="nilai-label">Interaksi dengan Siswa</div>
+                <div class="nilai-bar-wrap">
+                  <div class="nilai-bar" style="--pct: 88%"></div>
+                </div>
+                <div class="nilai-score">88 / 100</div>
+              </div>
+              <div class="nilai-card">
+                <div class="nilai-label">Penguasaan Evaluasi</div>
+                <div class="nilai-bar-wrap">
+                  <div class="nilai-bar" style="--pct: 82%"></div>
+                </div>
+                <div class="nilai-score">82 / 100</div>
+              </div>
+            </div>
+            <div class="nilai-total">
+              <div class="total-label">Nilai Akhir Praktik</div>
+              <div class="total-score">[ XX ] <span>/ 100</span></div>
+              <div class="total-grade">
+                Predikat: <strong>[ A / B+ / B ]</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="diamond-divider" aria-hidden="true">
+            ║ ║ <span></span> ║ ║ <i></i> ║ ║ <span></span> ║ ║
+          </div>
+
+          <!-- Dokumentasi Foto -->
+          <div class="lamp-section">
+            <h3 class="lamp-section-title">
+              <i class="fas fa-camera"></i> Dokumentasi Praktik Mengajar
+            </h3>
+            <div class="foto-grid">
+              <div class="foto-item">
+                <div class="foto-placeholder">
+                  <i class="fas fa-image"></i><span>Foto Praktik 1</span>
+                </div>
+                <p>[ Keterangan Foto ]</p>
+              </div>
+              <div class="foto-item">
+                <div class="foto-placeholder">
+                  <i class="fas fa-image"></i><span>Foto Praktik 2</span>
+                </div>
+                <p>[ Keterangan Foto ]</p>
+              </div>
+              <div class="foto-item">
+                <div class="foto-placeholder">
+                  <i class="fas fa-image"></i><span>Foto Praktik 3</span>
+                </div>
+                <p>[ Keterangan Foto ]</p>
+              </div>
+              <div class="foto-item">
+                <div class="foto-placeholder">
+                  <i class="fas fa-image"></i><span>Foto Praktik 4</span>
+                </div>
+                <p>[ Keterangan Foto ]</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SECTION 5: MISI & KOMPETENSI ===== -->
+      <section class="section" id="misi">
+        <div class="section-header">
+          <div class="section-badge">05</div>
+          <h1 class="section-title">Misi & Kompetensi</h1>
+          <p class="section-subtitle">Menuju Guru Profesional</p>
+          <div class="title-line"></div>
+        </div>
+
+        <div class="misi-grid">
+          <!-- Visi -->
+          <div class="misi-card card-visi">
+            <div class="misi-icon"><i class="fas fa-eye"></i></div>
+            <h3>Visi Pribadi</h3>
+            <p>
+              [ Tuliskan visi besar Anda sebagai calon pendidik — gambaran ideal
+              diri Anda sebagai guru profesional di masa depan. ]
+            </p>
+          </div>
+
+          <!-- Misi Utama -->
+          <div class="misi-card card-missions">
+            <div class="misi-icon"><i class="fas fa-rocket"></i></div>
+            <h3>Misi yang Ingin Dituju</h3>
+            <ol class="misi-list">
+              <li>
+                <span class="misi-num">M1</span>
+                <div>
+                  <strong>[ Judul Misi Pertama ]</strong>
+                  <p>
+                    [ Deskripsikan misi konkret yang ingin Anda wujudkan sebagai
+                    guru profesional. ]
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span class="misi-num">M2</span>
+                <div>
+                  <strong>[ Judul Misi Kedua ]</strong>
+                  <p>[ Deskripsi misi kedua. ]</p>
+                </div>
+              </li>
+              <li>
+                <span class="misi-num">M3</span>
+                <div>
+                  <strong>[ Judul Misi Ketiga ]</strong>
+                  <p>[ Deskripsi misi ketiga. ]</p>
+                </div>
+              </li>
+              <li>
+                <span class="misi-num">M4</span>
+                <div>
+                  <strong>[ Judul Misi Keempat ]</strong>
+                  <p>[ Deskripsi misi keempat. ]</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <!-- 4 Kompetensi Guru -->
+          <div class="misi-card card-kompetensi">
+            <div class="misi-icon"><i class="fas fa-cubes"></i></div>
+            <h3>Kompetensi Guru yang Ingin Dibangun</h3>
+            <div class="kompetensi-grid">
+              <div class="komp-item">
+                <div class="komp-icon"><i class="fas fa-brain"></i></div>
+                <h4>Kompetensi Pedagogik</h4>
+                <p>
+                  [ Deskripsikan kemampuan pedagogik yang ingin Anda kuasai —
+                  pemahaman peserta didik, strategi pembelajaran, evaluasi, dsb.
+                  ]
+                </p>
+                <div class="komp-progress">
+                  <div class="komp-bar" style="--pct: 75%"></div>
+                  <span>Target: Mahir</span>
+                </div>
+              </div>
+              <div class="komp-item">
+                <div class="komp-icon"><i class="fas fa-user-tie"></i></div>
+                <h4>Kompetensi Kepribadian</h4>
+                <p>
+                  [ Nilai-nilai kepribadian yang ingin Anda bangun — integritas,
+                  dedikasi, keteladanan, empati terhadap siswa. ]
+                </p>
+                <div class="komp-progress">
+                  <div class="komp-bar" style="--pct: 85%"></div>
+                  <span>Target: Mahir</span>
+                </div>
+              </div>
+              <div class="komp-item">
+                <div class="komp-icon">
+                  <i class="fas fa-network-wired"></i>
+                </div>
+                <h4>Kompetensi Sosial</h4>
+                <p>
+                  [ Kemampuan berinteraksi dengan siswa, orang tua, kolega, dan
+                  komunitas pendidikan yang lebih luas. ]
+                </p>
+                <div class="komp-progress">
+                  <div class="komp-bar" style="--pct: 70%"></div>
+                  <span>Target: Mahir</span>
+                </div>
+              </div>
+              <div class="komp-item">
+                <div class="komp-icon"><i class="fas fa-book-reader"></i></div>
+                <h4>Kompetensi Profesional</h4>
+                <p>
+                  [ Penguasaan bidang ilmu, riset pendidikan, pengembangan
+                  kurikulum, dan inovasi pembelajaran yang berkelanjutan. ]
+                </p>
+                <div class="komp-progress">
+                  <div class="komp-bar" style="--pct: 80%"></div>
+                  <span>Target: Mahir</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Komitmen Akhir -->
+          <div class="misi-card card-komitmen">
+            <div class="komitmen-inner">
+              <i class="fas fa-shield-alt komitmen-shield"></i>
+              <h3>Komitmen Menuju Guru Profesional</h3>
+              <p>
+                [ Tuliskan pernyataan komitmen Anda — janji kepada diri sendiri,
+                kepada siswa, dan kepada bangsa bahwa Anda akan terus belajar,
+                berkembang, dan memberikan yang terbaik sebagai seorang pendidik
+                sejati. ]
+              </p>
+              <div class="komitmen-sign">
+                <div class="sign-line"></div>
+                <p>[ Nama Mahasiswa ]</p>
+                <p class="sign-date">[ Kota, Tanggal ]</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ====== SCROLL TO TOP ====== -->
+    <button class="scroll-top" id="scrollTop" aria-label="Kembali ke atas">
+      <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <script src="ornaments.js"></script>
+    <script src="ornaments-fix.js"></script>
+  </body>
+</html>
