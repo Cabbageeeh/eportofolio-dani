@@ -310,3 +310,7 @@ body::after {
   margin: 0 !important;
   padding: 0 !important;
 }
+.card-identity {
+  align-items: center !important;
+  justify-content: center;
+}

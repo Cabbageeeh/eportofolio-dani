@@ -1086,6 +1086,62 @@ function initDarkMode() {
         }
       }
 
+      /* ── FIX QUOTE CARD — Dark Mode ── */
+body.dark-mode .card-quote .main-quote {
+  color: rgba(237,217,180,0.95) !important;
+}
+
+body.dark-mode .card-quote .quote-author span {
+  color: rgba(196,149,106,0.8) !important;
+}
+
+body.dark-mode .card-quote .quote-ornament {
+  color: rgba(196,154,60,0.2) !important;
+}
+
+body.dark-mode .card-quote {
+  background: linear-gradient(
+    135deg,
+    #0d0804 0%,
+    #1a0f06 60%,
+    #080402 100%
+  ) !important;
+}
+
+/* ── FIX CARD KOMITMEN — Dark Mode ── */
+body.dark-mode .card-komitmen {
+  background: linear-gradient(
+    135deg,
+    #080402 0%,
+    #0d0804 60%,
+    #050200 100%
+  ) !important;
+}
+
+body.dark-mode .card-komitmen h3,
+body.dark-mode .card-komitmen p {
+  color: rgba(237,217,180,0.9) !important;
+}
+
+body.dark-mode .card-komitmen .komitmen-shield {
+  color: #C49A3C !important;
+}
+
+body.dark-mode .card-komitmen .sign-date {
+  color: rgba(196,149,106,0.6) !important;
+}
+
+/* ── FIX AUTHOR LINE — Dark Mode ── */
+body.dark-mode .author-line {
+  background: rgba(196,154,60,0.5) !important;
+}
+
+/* ── FIX HIGHLIGHT TYPEWRITER — Dark Mode ── */
+body.dark-mode .tw-highlight {
+  color: rgba(196,154,60,0.95) !important;
+  text-shadow: 0 0 12px rgba(196,154,60,0.4) !important;
+}
+
     `;
     document.head.appendChild(style);
   }
