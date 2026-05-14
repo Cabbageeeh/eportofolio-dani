@@ -32,11 +32,380 @@ document.addEventListener("DOMContentLoaded", () => {
   initDarkMode();
   initTypewriter();
   initStatsCounter();
-  initCustomCursor();
+  initEducationAnim();
   initMarqueeText();
+  initCustomCursor();
 
   console.log("%c ornaments-fix.js ✓", "color:#C49A3C;");
 });
+
+function initEducationAnim() {
+  /* ── Inject CSS ── */
+  if (!document.querySelector("#educationAnimStyles")) {
+    const style = document.createElement("style");
+    style.id = "educationAnimStyles";
+    style.textContent = `
+
+      /* ================================================================
+         EDUCATION TIMELINE — Animasi masuk bertahap
+         ================================================================ */
+
+      .edu-item {
+        opacity: 0;
+        transform: translateX(-30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .edu-item.anim-in {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* Garis timeline tumbuh dari atas ke bawah */
+      .edu-item:not(:last-child)::before {
+        transform-origin: top;
+        transform: scaleY(0);
+        transition: transform 0.6s ease;
+      }
+
+      .edu-item.anim-in:not(:last-child)::before {
+        transform: scaleY(1);
+      }
+
+      /* Titik tahun berdenyut saat muncul */
+      .edu-year::after {
+        transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1),
+                    box-shadow 0.4s ease;
+        transform: scale(0);
+      }
+
+      .edu-item.anim-in .edu-year::after {
+        transform: scale(1);
+      }
+
+      /* ================================================================
+         ORGANISASI — Slide dari kanan
+         ================================================================ */
+
+      .org-item {
+        opacity: 0;
+        transform: translateX(30px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+
+      .org-item.anim-in {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* ================================================================
+         TEACH ITEM — Muncul dari bawah dengan bounce
+         ================================================================ */
+
+      .teach-item {
+        opacity: 0;
+        transform: translateY(30px) scale(0.96);
+        transition: opacity 0.5s ease,
+                    transform 0.5s cubic-bezier(0.34,1.2,0.64,1);
+      }
+
+      .teach-item.anim-in {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      /* ================================================================
+         ACHIEVEMENT — Slide dari kiri + icon bounce
+         ================================================================ */
+
+      .achieve-item {
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+
+      .achieve-item.anim-in {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .achieve-item.anim-in > i {
+        animation: achieve-icon-bounce 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards;
+      }
+
+      @keyframes achieve-icon-bounce {
+        0%   { transform: scale(0) rotate(-20deg); }
+        60%  { transform: scale(1.3) rotate(5deg);  }
+        100% { transform: scale(1) rotate(0deg);   }
+      }
+
+      /* ================================================================
+         PEND CARD — Garis atas berwarna tumbuh dari kiri
+         ================================================================ */
+
+      .pend-card::before {
+        transform-origin: left;
+        transform: scaleX(0);
+        transition: transform 0.8s cubic-bezier(0.4,0,0.2,1);
+      }
+
+      .pend-card.anim-in::before {
+        transform: scaleX(1);
+      }
+
+      /* ================================================================
+         SKILL BARS — Di dalam card pengalaman mengajar
+         ================================================================ */
+
+      .teach-num {
+        opacity: 0;
+        transform: scale(0.5);
+        transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34,1.4,0.64,1);
+      }
+
+      .teach-item.anim-in .teach-num {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* ================================================================
+         COUNTER — Angka di edu-year
+         ================================================================ */
+
+      .edu-year {
+        transition: color 0.3s ease;
+      }
+
+      .edu-year.highlight {
+        color: #C49A3C;
+      }
+
+      /* ================================================================
+         SECTION PENDIDIKAN — Header ornamen khusus
+         ================================================================ */
+
+      #pendidikan .section-header {
+        position: relative;
+      }
+
+      /* Ornamen garis diagonal di header */
+      #pendidikan .section-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 120px;
+        height: 120px;
+        background-image:
+          repeating-linear-gradient(
+            45deg,
+            rgba(196,149,106,0.06) 0px,
+            rgba(196,149,106,0.06) 1px,
+            transparent 1px,
+            transparent 12px
+          );
+        border-radius: 4px;
+        pointer-events: none;
+      }
+
+      /* ================================================================
+         PROGRESS SKILL — Bar kemampuan di card pengalaman
+         ================================================================ */
+
+      .skill-bar-wrap {
+        height: 3px;
+        background: rgba(196,149,106,0.15);
+        border-radius: 2px;
+        overflow: hidden;
+        margin-top: 8px;
+      }
+
+      .skill-bar-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #C49A3C, #A0522D);
+        border-radius: 2px;
+        transition: width 1s cubic-bezier(0.4,0,0.2,1);
+        box-shadow: 0 0 6px rgba(196,154,60,0.4);
+      }
+
+      /* ================================================================
+         DARK MODE
+         ================================================================ */
+
+      body.dark-mode .pend-card::before {
+        background: linear-gradient(90deg, #C49A3C, #8B5E3C, transparent);
+      }
+
+      body.dark-mode #pendidikan .section-header::before {
+        background-image: repeating-linear-gradient(
+          45deg,
+          rgba(196,149,106,0.08) 0px,
+          rgba(196,149,106,0.08) 1px,
+          transparent 1px,
+          transparent 12px
+        );
+      }
+
+    `;
+    document.head.appendChild(style);
+  }
+
+  /* ================================================================
+     FUNGSI ANIMASI UTAMA
+     ================================================================ */
+
+  /* Observer helper */
+  function observeElements(selector, callback, delayMultiplier = 100) {
+    const elements = document.querySelectorAll(selector);
+    if (!elements.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = Array.from(elements).indexOf(entry.target);
+            setTimeout(() => {
+              callback(entry.target, idx);
+            }, idx * delayMultiplier);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -20px 0px" },
+    );
+
+    elements.forEach((el) => observer.observe(el));
+  }
+
+  /* ================================================================
+     ANIMASI EDUCATION TIMELINE
+     ================================================================ */
+  function animateEducation() {
+    const section = document.getElementById("pendidikan");
+    if (!section) return;
+
+    /* Card masuk */
+    const cards = section.querySelectorAll(".pend-card");
+    cards.forEach((card, idx) => {
+      card.style.opacity = "0";
+      card.style.transform = "translateY(24px)";
+      card.style.transition = `opacity 0.6s ease ${idx * 0.12}s,
+                               transform 0.6s ease ${idx * 0.12}s`;
+      setTimeout(
+        () => {
+          card.classList.add("anim-in");
+          card.style.opacity = "1";
+          card.style.transform = "translateY(0)";
+        },
+        100 + idx * 120,
+      );
+    });
+
+    /* Edu items — timeline */
+    setTimeout(() => {
+      const eduItems = section.querySelectorAll(".edu-item");
+      eduItems.forEach((item, idx) => {
+        setTimeout(() => {
+          item.classList.add("anim-in");
+
+          /* Highlight tahun sebentar */
+          const yearEl = item.querySelector(".edu-year");
+          if (yearEl) {
+            yearEl.classList.add("highlight");
+            setTimeout(() => yearEl.classList.remove("highlight"), 600);
+          }
+        }, idx * 180);
+      });
+    }, 300);
+
+    /* Org items */
+    setTimeout(() => {
+      const orgItems = section.querySelectorAll(".org-item");
+      orgItems.forEach((item, idx) => {
+        setTimeout(() => item.classList.add("anim-in"), idx * 150);
+      });
+    }, 200);
+
+    /* Teach items */
+    setTimeout(() => {
+      const teachItems = section.querySelectorAll(".teach-item");
+      teachItems.forEach((item, idx) => {
+        setTimeout(() => {
+          item.classList.add("anim-in");
+
+          /* Tambah skill bar jika belum ada */
+          if (!item.querySelector(".skill-bar-wrap")) {
+            const bar = document.createElement("div");
+            bar.className = "skill-bar-wrap";
+            const pct = [85, 78, 80][idx] || 75;
+            bar.innerHTML = `
+              <div class="skill-bar-fill" data-pct="${pct}"></div>
+            `;
+            item.appendChild(bar);
+
+            setTimeout(() => {
+              const fill = bar.querySelector(".skill-bar-fill");
+              if (fill) fill.style.width = pct + "%";
+            }, 400);
+          }
+        }, idx * 160);
+      });
+    }, 500);
+
+    /* Achieve items */
+    setTimeout(() => {
+      const achieveItems = section.querySelectorAll(".achieve-item");
+      achieveItems.forEach((item, idx) => {
+        setTimeout(() => item.classList.add("anim-in"), idx * 130);
+      });
+    }, 400);
+  }
+
+  /* ================================================================
+     RESET — Sebelum animasi ulang saat nav diklik
+     ================================================================ */
+  function resetEducationAnim() {
+    const section = document.getElementById("pendidikan");
+    if (!section) return;
+
+    section
+      .querySelectorAll(".edu-item, .org-item, .teach-item, .achieve-item")
+      .forEach((el) => {
+        el.classList.remove("anim-in");
+      });
+
+    section.querySelectorAll(".pend-card").forEach((card) => {
+      card.classList.remove("anim-in");
+      card.style.opacity = "0";
+      card.style.transform = "translateY(24px)";
+    });
+  }
+
+  /* ================================================================
+     TRIGGER — Saat nav pendidikan diklik
+     ================================================================ */
+  document.querySelectorAll(".nav-item").forEach((item) => {
+    item.addEventListener("click", () => {
+      const id = item.getAttribute("data-section");
+
+      if (id === "pendidikan") {
+        resetEducationAnim();
+        setTimeout(animateEducation, 400);
+      }
+    });
+  });
+
+  /* ================================================================
+     JALANKAN JIKA PENDIDIKAN SUDAH AKTIF SAAT LOAD
+     ================================================================ */
+  const pendidikanActive = document.querySelector("#pendidikan.active");
+  if (pendidikanActive) {
+    setTimeout(animateEducation, 600);
+  }
+
+  console.log("%c Education Anim ✓", "color:#C49A3C;font-style:italic;");
+}
 
 function initStatsCounter() {
   /* ── Inject CSS ── */
@@ -3007,9 +3376,55 @@ function initMarqueeText() {
         right: 0;
         background: linear-gradient(90deg, transparent, rgba(250,246,238,0.9));
       }
+        /* ── SECTION MARQUEE — Sticky di atas ── */
+
+.section-marquee {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(250,246,238,0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(196,149,106,0.15);
+  border-bottom: 1px solid rgba(196,149,106,0.15);
+  margin-bottom: 32px;
+  margin-left: -56px;
+  margin-right: -56px;
+  padding: 8px 56px;
+  width: calc(100% + 112px);
+  box-shadow: 0 2px 12px rgba(59,42,26,0.08);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Saat scroll — lebih solid */
+.section-marquee.scrolled {
+  background: rgba(250,246,238,0.97);
+  box-shadow: 0 4px 20px rgba(59,42,26,0.12);
+}
+
+/* Dark mode */
+body.dark-mode .section-marquee {
+  background: rgba(21,13,4,0.92) !important;
+}
+
+body.dark-mode .section-marquee.scrolled {
+  background: rgba(21,13,4,0.97) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+}
     `;
     document.head.appendChild(style);
   }
+  /* ── Tambahkan class scrolled saat di-scroll ── */
+  window.addEventListener(
+    "scroll",
+    () => {
+      const marquees = document.querySelectorAll(".section-marquee");
+      marquees.forEach((m) => {
+        m.classList.toggle("scrolled", window.scrollY > 10);
+      });
+    },
+    { passive: true },
+  );
 }
 
 function initCustomCursor() {
