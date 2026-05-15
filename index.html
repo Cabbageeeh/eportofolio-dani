@@ -235,30 +235,35 @@
         <div class="profil-grid">
           <!-- Foto & Identitas -->
           <div class="profil-card card-identity">
-            <div class="avatar-frame">
-              <div
-                class="avatar-placeholder"
-                style="padding: 0; overflow: hidden"
-              >
-                <img
-                  src="dani.png"
-                  alt="Foto Profil"
-                  style="
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    object-position: center 20%;
-                    border-radius: 50%;
-                    display: block;
-                  "
-                />
-              </div>
-              <div class="avatar-deco"></div>
-              <div class="avatar-ring-2"></div>
+            <!-- Background teks besar redup -->
+            <div class="identity-bg-text" aria-hidden="true">
+              <span>GURU</span>
+              <span>PENDIDIK</span>
+              <span>PROFESIONAL</span>
             </div>
-            <div class="identity-info">
+
+            <!-- Foto PNG tanpa background -->
+            <div class="identity-photo-wrap">
+              <img
+                src="dani.png"
+                alt="Muhammad Abduramadani"
+                class="identity-photo"
+              />
+              <!-- Shadow bawah foto -->
+              <div class="identity-photo-shadow"></div>
+            </div>
+
+            <!-- Info di kiri -->
+            <div class="identity-info-wrap">
+              <div class="identity-badge-top">
+                <span class="identity-program">PPG Prajabatan 2025</span>
+              </div>
               <h2 class="student-name">Muhammad Abduramadani</h2>
               <p class="student-nim">NIM: 2500103916225027</p>
+              <p class="identity-tagline">
+                Dari Pembelajaran Menuju Pendidik,<br />
+                Perjalanan Menuju Guru Profesional
+              </p>
               <div class="identity-tags">
                 <span class="tag"
                   ><i class="fas fa-map-marker-alt"></i> Malang</span
@@ -269,6 +274,11 @@
                 <span class="tag"
                   ><i class="fas fa-calendar"></i> Angkatan 2026</span
                 >
+              </div>
+              <div class="identity-social">
+                <span class="identity-handle">
+                  <i class="fas fa-at"></i> username_instagram
+                </span>
               </div>
             </div>
           </div>
