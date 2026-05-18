@@ -509,3 +509,115 @@ body.dark-mode .identity-handle {
     font-size: 2.2rem;
   }
 }
+
+/* ================================================================
+   FIX CARD IDENTITY — Mobile Layout
+   ================================================================ */
+
+/* Desktop — info di kiri, foto di kanan */
+.identity-info-wrap {
+  max-width: 55% !important;
+  padding: 24px 24px 24px 28px !important;
+}
+
+.identity-photo-wrap {
+  width: 200px !important;
+  right: 16px !important;
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+  .card-identity {
+    min-height: 280px !important;
+  }
+
+  .identity-info-wrap {
+    max-width: 52% !important;
+    padding: 20px 16px 20px 22px !important;
+  }
+
+  .identity-photo-wrap {
+    width: 170px !important;
+    right: 10px !important;
+  }
+
+  .card-identity .student-name {
+    font-size: 1.3rem !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .card-identity {
+    min-height: 240px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  /* Info wrap full width di atas */
+  .identity-info-wrap {
+    max-width: 65% !important;
+    padding: 16px 16px 12px 18px !important;
+    gap: 5px !important;
+  }
+
+  .card-identity .student-name {
+    font-size: 1.1rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .identity-tagline {
+    font-size: 0.78rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  .identity-tags {
+    gap: 5px !important;
+  }
+
+  .tag {
+    font-size: 0.68rem !important;
+    padding: 3px 8px !important;
+  }
+
+  /* Foto lebih kecil di mobile */
+  .identity-photo-wrap {
+    width: 130px !important;
+    right: 8px !important;
+    bottom: 0 !important;
+  }
+
+  /* Teks background lebih kecil */
+  .identity-bg-text span {
+    font-size: 2rem !important;
+  }
+
+  /* Badge program */
+  .identity-program {
+    font-size: 0.52rem !important;
+    padding: 2px 7px !important;
+  }
+
+  /* Social handle sembunyikan di mobile kecil */
+  .identity-social {
+    display: none !important;
+  }
+}
+
+/* Mobile sangat kecil */
+@media (max-width: 380px) {
+  .identity-info-wrap {
+    max-width: 60% !important;
+  }
+
+  .identity-photo-wrap {
+    width: 110px !important;
+  }
+
+  .card-identity .student-name {
+    font-size: 0.95rem !important;
+  }
+}
