@@ -33,11 +33,1046 @@ document.addEventListener("DOMContentLoaded", () => {
   initTypewriter();
   initStatsCounter();
   initEducationAnim();
+  initProfilModal();
   initMarqueeText();
   initCustomCursor();
 
   console.log("%c ornaments-fix.js ✓", "color:#C49A3C;");
 });
+
+function initProfilModal() {
+  /* ── Inject CSS ── */
+  if (!document.querySelector("#profilModalStyles")) {
+    const style = document.createElement("style");
+    style.id = "profilModalStyles";
+    style.textContent = `
+
+      /* ================================================================
+         CARD PROFIL — Cursor pointer & hint klik
+         ================================================================ */
+
+      .card-asal,
+      .card-inspirasi,
+      .card-quote,
+      .card-identity {
+        cursor: pointer;
+      }
+
+      /* Hint "klik untuk detail" */
+      .card-asal::before,
+      .card-inspirasi::before,
+      .card-quote::before,
+      .card-identity::before {
+        content: 'Klik untuk detail';
+        position: absolute;
+        bottom: 12px;
+        right: 14px;
+        font-family: 'DM Mono', monospace;
+        font-size: 0.55rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(196,154,60,0.6);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 3;
+        pointer-events: none;
+      }
+
+      .card-asal:hover::before,
+      .card-inspirasi:hover::before,
+      .card-quote:hover::before,
+      .card-identity:hover::before {
+        opacity: 1;
+      }
+
+      /* ================================================================
+         MODAL OVERLAY
+         ================================================================ */
+
+      #profil-modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(15,8,2,0.82);
+        z-index: 99990;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.35s ease, visibility 0.35s ease;
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+      }
+
+      #profil-modal-overlay.open {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* ================================================================
+         MODAL BOX
+         ================================================================ */
+
+      #profil-modal-box {
+        background: #FAF6EE;
+        border-radius: 12px;
+        width: 100%;
+        max-width: 780px;
+        max-height: 88vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        box-shadow:
+          0 24px 80px rgba(0,0,0,0.4),
+          0 0 0 1px rgba(196,149,106,0.2);
+        transform: scale(0.92) translateY(20px);
+        transition: transform 0.35s cubic-bezier(0.34,1.1,0.64,1);
+      }
+
+      #profil-modal-overlay.open #profil-modal-box {
+        transform: scale(1) translateY(0);
+      }
+
+      body.dark-mode #profil-modal-box {
+        background: #1a0f06;
+        box-shadow:
+          0 24px 80px rgba(0,0,0,0.6),
+          0 0 0 1px rgba(196,149,106,0.15);
+      }
+
+      /* ================================================================
+         MODAL HEADER
+         ================================================================ */
+
+      #profil-modal-header {
+        padding: 28px 32px 20px;
+        border-bottom: 1px solid rgba(196,149,106,0.18);
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        flex-shrink: 0;
+        position: relative;
+        background: linear-gradient(
+          135deg,
+          rgba(245,237,220,0.8),
+          rgba(237,217,180,0.4)
+        );
+      }
+
+      body.dark-mode #profil-modal-header {
+        background: linear-gradient(
+          135deg,
+          rgba(30,18,8,0.9),
+          rgba(42,26,8,0.6)
+        );
+      }
+
+      /* Garis emas atas */
+      #profil-modal-header::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #C49A3C, #A0522D, #C49A3C);
+      }
+
+      .modal-header-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        color: #EDD9B4;
+        flex-shrink: 0;
+      }
+
+      .modal-header-text { flex: 1; }
+
+      .modal-header-text h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #3B2A1A;
+        margin-bottom: 4px;
+      }
+
+      body.dark-mode .modal-header-text h2 {
+        color: #EDD9B4;
+      }
+
+      .modal-header-text p {
+        font-family: 'DM Mono', monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #8B5E3C;
+      }
+
+      body.dark-mode .modal-header-text p {
+        color: #C4956A;
+      }
+
+      /* Tombol tutup */
+      #profil-modal-close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 32px;
+        height: 32px;
+        background: rgba(139,94,60,0.1);
+        border: 1px solid rgba(139,94,60,0.2);
+        border-radius: 6px;
+        color: #8B5E3C;
+        font-size: 0.8rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+      }
+
+      #profil-modal-close:hover {
+        background: rgba(139,94,60,0.2);
+        color: #3B2A1A;
+        transform: rotate(90deg);
+      }
+
+      body.dark-mode #profil-modal-close {
+        background: rgba(196,149,106,0.08);
+        border-color: rgba(196,149,106,0.15);
+        color: #C4956A;
+      }
+
+      /* ================================================================
+         MODAL BODY — Scrollable
+         ================================================================ */
+
+      #profil-modal-body {
+        overflow-y: auto;
+        flex: 1;
+        padding: 28px 32px;
+        scroll-behavior: smooth;
+      }
+
+      #profil-modal-body::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      #profil-modal-body::-webkit-scrollbar-track {
+        background: rgba(196,149,106,0.08);
+      }
+
+      #profil-modal-body::-webkit-scrollbar-thumb {
+        background: rgba(196,149,106,0.4);
+        border-radius: 2px;
+      }
+
+      /* ================================================================
+         MODAL FOTO GALLERY
+         ================================================================ */
+
+      .modal-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 24px;
+      }
+
+      .modal-gallery-item {
+        aspect-ratio: 4/3;
+        border-radius: 6px;
+        overflow: hidden;
+        background: linear-gradient(135deg, #EDD9B4, #D4B483);
+        position: relative;
+        cursor: zoom-in;
+        border: 1px solid rgba(196,149,106,0.2);
+      }
+
+      .modal-gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+        display: block;
+      }
+
+      .modal-gallery-item:hover img {
+        transform: scale(1.06);
+      }
+
+      /* Placeholder jika foto belum ada */
+      .modal-gallery-item .gallery-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #8B5E3C;
+        gap: 6px;
+        font-family: 'DM Mono', monospace;
+        font-size: 0.6rem;
+        letter-spacing: 0.1em;
+      }
+
+      .modal-gallery-item .gallery-placeholder i {
+        font-size: 1.4rem;
+        opacity: 0.5;
+      }
+
+      body.dark-mode .modal-gallery-item {
+        background: linear-gradient(135deg, #2a1a08, #1a0f06);
+        border-color: rgba(196,149,106,0.12);
+      }
+
+      /* ================================================================
+         MODAL KONTEN TEKS
+         ================================================================ */
+
+      .modal-section {
+        margin-bottom: 24px;
+      }
+
+      .modal-section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #3B2A1A;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(196,149,106,0.15);
+      }
+
+      body.dark-mode .modal-section-title {
+        color: #EDD9B4;
+        border-bottom-color: rgba(196,149,106,0.12);
+      }
+
+      .modal-section-title i {
+        color: #C49A3C;
+        font-size: 0.85rem;
+      }
+
+      .modal-section p {
+        font-family: 'Crimson Pro', serif;
+        font-size: 1rem;
+        color: #5C3D1E;
+        line-height: 1.85;
+        margin-bottom: 12px;
+      }
+
+      body.dark-mode .modal-section p {
+        color: #C4956A;
+      }
+
+      /* Highlight teks penting */
+      .modal-section strong {
+        color: #3B2A1A;
+        font-weight: 600;
+      }
+
+      body.dark-mode .modal-section strong {
+        color: #EDD9B4;
+      }
+
+      /* ================================================================
+         MODAL HIGHLIGHT PILLS
+         ================================================================ */
+
+      .modal-highlights {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .modal-highlight-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 7px 14px;
+        background: rgba(139,94,60,0.07);
+        border: 1px solid rgba(139,94,60,0.15);
+        border-left: 3px solid #C49A3C;
+        border-radius: 0 4px 4px 0;
+        font-family: 'Crimson Pro', serif;
+        font-size: 0.9rem;
+        color: #5C3D1E;
+        transition: background 0.2s ease;
+      }
+
+      .modal-highlight-pill:hover {
+        background: rgba(139,94,60,0.13);
+      }
+
+      body.dark-mode .modal-highlight-pill {
+        background: rgba(196,149,106,0.06);
+        border-color: rgba(196,149,106,0.12);
+        color: #C4956A;
+      }
+
+      .modal-highlight-pill i {
+        color: #C49A3C;
+        font-size: 0.75rem;
+      }
+
+      /* ================================================================
+         MODAL TIMELINE — Untuk card inspirasi
+         ================================================================ */
+
+      .modal-timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-top: 12px;
+      }
+
+      .modal-timeline-item {
+        display: flex;
+        gap: 16px;
+        padding: 12px 0;
+        position: relative;
+      }
+
+      .modal-timeline-item:not(:last-child)::before {
+        content: '';
+        position: absolute;
+        left: 17px;
+        top: 32px;
+        bottom: -12px;
+        width: 2px;
+        background: linear-gradient(
+          180deg,
+          rgba(196,154,60,0.5),
+          rgba(196,154,60,0.1)
+        );
+      }
+
+      .modal-tl-dot {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #C49A3C, #A0522D);
+        color: #EDD9B4;
+        font-size: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 0 0 0 4px rgba(196,154,60,0.15);
+        position: relative;
+        z-index: 1;
+      }
+
+      .modal-tl-content h4 {
+        font-family: 'Playfair Display', serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #3B2A1A;
+        margin-bottom: 4px;
+      }
+
+      body.dark-mode .modal-tl-content h4 {
+        color: #EDD9B4;
+      }
+
+      .modal-tl-content p {
+        font-size: 0.88rem !important;
+        line-height: 1.65 !important;
+        margin-bottom: 0 !important;
+      }
+
+      /* ================================================================
+         MODAL QUOTE BESAR — Untuk card quote
+         ================================================================ */
+
+      .modal-big-quote {
+        position: relative;
+        padding: 24px 28px;
+        background: linear-gradient(135deg, #3B2A1A, #1e1208);
+        border-radius: 8px;
+        margin-bottom: 20px;
+        overflow: hidden;
+      }
+
+      .modal-big-quote::before {
+        content: '\\201C';
+        position: absolute;
+        top: -10px;
+        left: 16px;
+        font-family: 'Playfair Display', serif;
+        font-size: 7rem;
+        color: rgba(196,154,60,0.15);
+        line-height: 1;
+        pointer-events: none;
+      }
+
+      .modal-big-quote p {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.15rem !important;
+        font-style: italic;
+        color: rgba(237,217,180,0.95) !important;
+        line-height: 1.8 !important;
+        position: relative;
+        z-index: 1;
+      }
+
+      .modal-big-quote cite {
+        display: block;
+        margin-top: 14px;
+        font-family: 'DM Mono', monospace;
+        font-size: 0.65rem;
+        color: rgba(196,149,106,0.7);
+        letter-spacing: 0.1em;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ================================================================
+         MODAL FOOTER
+         ================================================================ */
+
+      #profil-modal-footer {
+        padding: 16px 32px;
+        border-top: 1px solid rgba(196,149,106,0.15);
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        flex-shrink: 0;
+        background: rgba(245,237,220,0.5);
+      }
+
+      body.dark-mode #profil-modal-footer {
+        background: rgba(15,8,2,0.5);
+        border-top-color: rgba(196,149,106,0.1);
+      }
+
+      .modal-btn-close {
+        padding: 8px 20px;
+        background: linear-gradient(135deg, #5C3D1E, #3B2A1A);
+        border: none;
+        border-radius: 4px;
+        color: #EDD9B4;
+        font-family: 'DM Mono', monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .modal-btn-close:hover {
+        background: linear-gradient(135deg, #8B5E3C, #5C3D1E);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(59,42,26,0.3);
+      }
+
+      /* ================================================================
+         LIGHTBOX — Saat foto di klik
+         ================================================================ */
+
+      #photo-lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.92);
+        z-index: 999999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        cursor: zoom-out;
+      }
+
+      #photo-lightbox.open {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      #photo-lightbox img {
+        max-width: 90vw;
+        max-height: 85vh;
+        object-fit: contain;
+        border-radius: 4px;
+        transform: scale(0.9);
+        transition: transform 0.3s cubic-bezier(0.34,1.1,0.64,1);
+        box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+      }
+
+      #photo-lightbox.open img {
+        transform: scale(1);
+      }
+
+      /* ================================================================
+         RESPONSIVE
+         ================================================================ */
+
+      @media (max-width: 640px) {
+        #profil-modal-box { max-height: 92vh; }
+        #profil-modal-header { padding: 20px 20px 16px; }
+        #profil-modal-body  { padding: 20px; }
+        #profil-modal-footer{ padding: 12px 20px; }
+        .modal-gallery { grid-template-columns: repeat(2, 1fr); }
+        .modal-header-text h2 { font-size: 1.15rem; }
+      }
+
+    `;
+    document.head.appendChild(style);
+  }
+
+  /* ================================================================
+     DATA MODAL — Isi sesuai data asli Anda
+     ================================================================ */
+  const modalData = {
+    /* ── CARD IDENTITY ── */
+    identity: {
+      icon: "fa-user-circle",
+      color: "linear-gradient(135deg, #5C3D1E, #3B2A1A)",
+      title: "Profil Lengkap",
+      sub: "Muhammad Abduramadani",
+      photos: [
+        { src: "foto-profil.png", caption: "Foto Formal" },
+        { src: "foto-wisuda.jpg", caption: "Wisuda" },
+        { src: "foto-kegiatan.jpg", caption: "Kegiatan Kampus" },
+      ],
+      sections: [
+        {
+          icon: "fa-id-card",
+          title: "Identitas Diri",
+          body: `
+            <p>Nama lengkap saya adalah <strong>Muhammad Abduramadani</strong>,
+            lahir di <strong>[ Kota, Tanggal Lahir ]</strong>. Saya merupakan
+            mahasiswa Program Studi <strong>Informatika</strong> angkatan 2026
+            di Universitas <strong>[ Nama Universitas ]</strong>.</p>
+            <p>[ Tambahkan cerita singkat tentang diri Anda — kepribadian,
+            hobi, atau hal menarik yang mendefinisikan Anda sebagai pribadi. ]</p>
+          `,
+        },
+        {
+          icon: "fa-heart",
+          title: "Minat & Hobi",
+          body: `
+            <p>[ Ceritakan minat dan hobi Anda yang relevan dengan profesi
+            guru — misalnya suka membaca, menulis, teknologi pendidikan,
+            olahraga, atau seni. ]</p>
+          `,
+        },
+      ],
+      highlights: [
+        { icon: "fa-map-marker-alt", text: "Malang, Jawa Timur" },
+        { icon: "fa-university", text: "Informatika" },
+        { icon: "fa-calendar", text: "Angkatan 2026" },
+        { icon: "fa-star", text: "IPK [ X.XX ]" },
+      ],
+    },
+
+    /* ── CARD ASAL DAERAH ── */
+    asal: {
+      icon: "fa-mountain",
+      color: "linear-gradient(135deg, #4A5240, #2d3328)",
+      title: "Asal & Keunikan Daerah",
+      sub: "Kabupaten Malang, Jawa Timur",
+      photos: [
+        { src: "foto-bromo.jpg", caption: "Gunung Bromo & Semeru" },
+        { src: "foto-balekambang.jpg", caption: "Pantai Balekambang" },
+        { src: "foto-topeng.jpg", caption: "Tari Topeng Malangan" },
+      ],
+      sections: [
+        {
+          icon: "fa-map",
+          title: "Tentang Kabupaten Malang",
+          body: `
+            <p>Saya berasal dari <strong>Kabupaten Malang</strong>, sebuah
+            daerah yang terletak di bagian selatan Jawa Timur. Kabupaten Malang
+            merupakan salah satu kabupaten terluas di Jawa Timur dengan luas
+            wilayah sekitar 3.534 km².</p>
+            <p>Daerah ini dikelilingi oleh pegunungan dan perbukitan yang
+            subur, menjadikannya salah satu destinasi wisata alam terpopuler
+            di Indonesia. Dari <strong>Gunung Bromo</strong> yang ikonik hingga
+            <strong>Pantai Balekambang</strong> yang eksotis.</p>
+          `,
+        },
+        {
+          icon: "fa-theater-masks",
+          title: "Budaya & Tradisi",
+          body: `
+            <p><strong>Tari Topeng Malangan</strong> adalah salah satu warisan
+            budaya paling khas dari daerah ini. Tarian ini memiliki ratusan
+            jenis topeng dengan karakter yang berbeda-beda, mencerminkan
+            kekayaan budaya Jawa yang mendalam.</p>
+            <p>Selain itu, <strong>Bahasa Walikan</strong> atau bahasa
+            Malangan yang unik — di mana kata-kata dibalik — menjadi
+            identitas kultural yang membedakan masyarakat Malang dari
+            daerah lain di Jawa Timur.</p>
+          `,
+        },
+        {
+          icon: "fa-leaf",
+          title: "Alam & Wisata",
+          body: `
+            <p>[ Ceritakan lebih detail tentang keindahan alam daerah Anda —
+            tempat wisata favorit, keunikan geografis, atau pengalaman
+            pribadi Anda menikmati keindahan daerah asal. ]</p>
+          `,
+        },
+      ],
+      highlights: [
+        { icon: "fa-mountain", text: "Gunung Bromo & Semeru" },
+        { icon: "fa-water", text: "Pantai Balekambang" },
+        { icon: "fa-mask", text: "Tari Topeng Malangan" },
+        { icon: "fa-comments", text: "Bahasa Walikan & Arema" },
+      ],
+    },
+
+    /* ── CARD INSPIRASI ── */
+    inspirasi: {
+      icon: "fa-fire",
+      color: "linear-gradient(135deg, #8B3A2A, #5C2A1A)",
+      title: "Inspirasi & Tujuan Guru",
+      sub: "Perjalanan Menuju Guru Profesional",
+      photos: [
+        { src: "foto-kbm.jpg", caption: "Kegiatan Belajar Mengajar" },
+        { src: "foto-ppl.jpg", caption: "PPL / Praktik Lapangan" },
+        { src: "foto-seminar.jpg", caption: "Seminar Pendidikan" },
+      ],
+      sections: [
+        {
+          icon: "fa-star",
+          title: "Awal Inspirasi",
+          body: `
+            <p>[ Ceritakan dengan lengkap kisah awal yang menginspirasi
+            Anda memilih profesi guru. Siapa sosok yang menginspirasi?
+            Momen apa yang menjadi titik balik keputusan Anda? ]</p>
+          `,
+        },
+        {
+          icon: "fa-bullseye",
+          title: "Tujuan Menjadi Guru Profesional",
+          body: `
+            <p>[ Jelaskan secara mendalam tujuan besar Anda menjadi guru
+            profesional. Apa yang ingin Anda ubah dalam dunia pendidikan?
+            Dampak apa yang ingin Anda tinggalkan? ]</p>
+          `,
+        },
+      ],
+      timeline: [
+        {
+          icon: "fa-seedling",
+          title: "Terinspirasi",
+          desc: "[ Ceritakan momen pertama kali terinspirasi menjadi guru ]",
+        },
+        {
+          icon: "fa-book-open",
+          title: "Belajar",
+          desc: "[ Perjalanan belajar dan menimba ilmu kependidikan ]",
+        },
+        {
+          icon: "fa-chalkboard-teacher",
+          title: "Praktik",
+          desc: "[ Pengalaman pertama mengajar dan kesan yang dirasakan ]",
+        },
+        {
+          icon: "fa-graduation-cap",
+          title: "Profesional",
+          desc: "[ Target dan mimpi besar sebagai guru profesional ]",
+        },
+      ],
+    },
+
+    /* ── CARD QUOTE ── */
+    quote: {
+      icon: "fa-quote-right",
+      color: "linear-gradient(135deg, #C49A3C, #8B5E3C)",
+      title: "Kutipan & Filosofi",
+      sub: "Landasan Pikir Seorang Pendidik",
+      photos: [
+        { src: "foto-kihajar.jpg", caption: "Ki Hajar Dewantara" },
+        { src: "foto-filosofi.jpg", caption: "Filosofi Pendidikan" },
+        { src: "foto-buku.jpg", caption: "Referensi Bacaan" },
+      ],
+      sections: [
+        {
+          icon: "fa-info-circle",
+          title: "Makna Kutipan",
+          body: `
+            <p>[ Jelaskan secara mendalam makna kutipan yang Anda pilih.
+            Mengapa kutipan ini bermakna bagi Anda? Bagaimana kutipan
+            ini mempengaruhi cara pandang Anda tentang pendidikan? ]</p>
+          `,
+        },
+        {
+          icon: "fa-book",
+          title: "Filosofi Pendidikan Saya",
+          body: `
+            <p>[ Tuliskan filosofi pribadi Anda tentang pendidikan —
+            bagaimana seharusnya seorang guru memandang muridnya,
+            memandang ilmu, dan memandang tanggung jawabnya. ]</p>
+          `,
+        },
+      ],
+      extraQuotes: [
+        {
+          text: "Ing ngarsa sung tulada, ing madya mangun karsa, tut wuri handayani.",
+          author: "— Ki Hajar Dewantara",
+        },
+        {
+          text: "[ Tambahkan kutipan lain yang Anda sukai ]",
+          author: "— [ Nama Tokoh ]",
+        },
+      ],
+    },
+  };
+
+  /* ================================================================
+     BUAT ELEMEN MODAL & LIGHTBOX
+     ================================================================ */
+
+  /* Overlay */
+  const overlay = document.createElement("div");
+  overlay.id = "profil-modal-overlay";
+  overlay.innerHTML = `
+    <div id="profil-modal-box">
+      <div id="profil-modal-header">
+        <div class="modal-header-icon" id="modal-header-icon"></div>
+        <div class="modal-header-text">
+          <h2 id="modal-title"></h2>
+          <p  id="modal-sub"></p>
+        </div>
+        <button id="profil-modal-close" aria-label="Tutup">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div id="profil-modal-body"></div>
+      <div id="profil-modal-footer">
+        <button class="modal-btn-close" id="modal-btn-close-bottom">
+          <i class="fas fa-times"></i> Tutup
+        </button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  /* Lightbox foto */
+  const lightbox = document.createElement("div");
+  lightbox.id = "photo-lightbox";
+  lightbox.innerHTML = `<img src="" alt="Foto detail" id="lightbox-img"/>`;
+  document.body.appendChild(lightbox);
+
+  /* ================================================================
+     FUNGSI RENDER MODAL
+     ================================================================ */
+  function renderModal(type) {
+    const data = modalData[type];
+    if (!data) return;
+
+    /* Header */
+    const iconEl = document.getElementById("modal-header-icon");
+    const titleEl = document.getElementById("modal-title");
+    const subEl = document.getElementById("modal-sub");
+    const bodyEl = document.getElementById("profil-modal-body");
+
+    iconEl.style.background = data.color;
+    iconEl.innerHTML = `<i class="fas ${data.icon}"></i>`;
+    titleEl.textContent = data.title;
+    subEl.textContent = data.sub;
+
+    /* Body */
+    let html = "";
+
+    /* Gallery foto */
+    if (data.photos && data.photos.length) {
+      html += `<div class="modal-gallery">`;
+      data.photos.forEach((photo) => {
+        html += `
+          <div class="modal-gallery-item" data-src="${photo.src}">
+            <img src="${photo.src}"
+                 alt="${photo.caption}"
+                 onerror="this.parentElement.innerHTML='
+                   <div class=\\'gallery-placeholder\\'>
+                     <i class=\\'fas fa-image\\'></i>
+                     <span>${photo.caption}</span>
+                   </div>'"/>
+          </div>
+        `;
+      });
+      html += `</div>`;
+    }
+
+    /* Quote besar — khusus card quote */
+    if (data.extraQuotes) {
+      data.extraQuotes.forEach((q) => {
+        html += `
+          <div class="modal-big-quote">
+            <p>${q.text}</p>
+            <cite>${q.author}</cite>
+          </div>
+        `;
+      });
+    }
+
+    /* Sections teks */
+    if (data.sections) {
+      data.sections.forEach((sec) => {
+        html += `
+          <div class="modal-section">
+            <div class="modal-section-title">
+              <i class="fas ${sec.icon}"></i>
+              ${sec.title}
+            </div>
+            ${sec.body}
+          </div>
+        `;
+      });
+    }
+
+    /* Timeline — khusus card inspirasi */
+    if (data.timeline) {
+      html += `
+        <div class="modal-section">
+          <div class="modal-section-title">
+            <i class="fas fa-route"></i>
+            Perjalanan Menuju Guru Profesional
+          </div>
+          <div class="modal-timeline">
+      `;
+      data.timeline.forEach((item) => {
+        html += `
+          <div class="modal-timeline-item">
+            <div class="modal-tl-dot">
+              <i class="fas ${item.icon}"></i>
+            </div>
+            <div class="modal-tl-content">
+              <h4>${item.title}</h4>
+              <p>${item.desc}</p>
+            </div>
+          </div>
+        `;
+      });
+      html += `</div></div>`;
+    }
+
+    /* Highlights pills */
+    if (data.highlights) {
+      html += `<div class="modal-highlights">`;
+      data.highlights.forEach((h) => {
+        html += `
+          <div class="modal-highlight-pill">
+            <i class="fas ${h.icon}"></i>
+            ${h.text}
+          </div>
+        `;
+      });
+      html += `</div>`;
+    }
+
+    bodyEl.innerHTML = html;
+
+    /* Pasang event klik foto → lightbox */
+    bodyEl.querySelectorAll(".modal-gallery-item").forEach((item) => {
+      item.addEventListener("click", () => {
+        const src = item.getAttribute("data-src");
+        const img = item.querySelector("img");
+        if (!img) return;
+        openLightbox(src);
+      });
+    });
+  }
+
+  /* ================================================================
+     BUKA & TUTUP MODAL
+     ================================================================ */
+  function openModal(type) {
+    renderModal(type);
+    overlay.classList.add("open");
+    document.body.style.overflow = "hidden";
+
+    /* Reset scroll body modal */
+    const body = document.getElementById("profil-modal-body");
+    if (body) body.scrollTop = 0;
+  }
+
+  function closeModal() {
+    overlay.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  /* ================================================================
+     BUKA & TUTUP LIGHTBOX
+     ================================================================ */
+  function openLightbox(src) {
+    const img = document.getElementById("lightbox-img");
+    if (img) img.src = src;
+    lightbox.classList.add("open");
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("open");
+  }
+
+  /* ================================================================
+     EVENT LISTENERS
+     ================================================================ */
+
+  /* Tombol tutup */
+  document
+    .getElementById("profil-modal-close")
+    ?.addEventListener("click", closeModal);
+  document
+    .getElementById("modal-btn-close-bottom")
+    ?.addEventListener("click", closeModal);
+
+  /* Klik overlay untuk tutup */
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closeModal();
+  });
+
+  /* Lightbox — klik untuk tutup */
+  lightbox.addEventListener("click", closeLightbox);
+
+  /* ESC untuk tutup */
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      if (lightbox.classList.contains("open")) {
+        closeLightbox();
+      } else {
+        closeModal();
+      }
+    }
+  });
+
+  /* ── Pasang klik ke 4 card ── */
+  const cardMap = {
+    ".card-identity": "identity",
+    ".card-asal": "asal",
+    ".card-inspirasi": "inspirasi",
+    ".card-quote": "quote",
+  };
+
+  Object.entries(cardMap).forEach(([selector, type]) => {
+    const card = document.querySelector(selector);
+    if (!card) return;
+
+    card.addEventListener("click", (e) => {
+      /* Jangan trigger jika klik tombol di dalam card */
+      if (e.target.closest("button")) return;
+      openModal(type);
+    });
+  });
+
+  console.log("%c Profil Modal ✓", "color:#C49A3C;font-style:italic;");
+}
 
 function initEducationAnim() {
   /* ── Inject CSS ── */
