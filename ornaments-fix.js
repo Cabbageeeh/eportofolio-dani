@@ -643,8 +643,8 @@ function initProfilModal() {
       title: "Profil Lengkap",
       sub: "Muhammad Abduramadani",
       photos: [
-        { src: "foto-profil.png", caption: "Foto Formal" },
-        { src: "foto-wisuda.jpg", caption: "Wisuda" },
+        { src: "eportfolio/foto-profil.png", caption: "Foto Formal" },
+        { src: "eportfolio/foto-wisuda.JPG", caption: "Wisuda" },
         { src: "foto-kegiatan.jpg", caption: "Kegiatan Kampus" },
       ],
       sections: [
@@ -653,20 +653,17 @@ function initProfilModal() {
           title: "Identitas Diri",
           body: `
             <p>Nama lengkap saya adalah <strong>Muhammad Abduramadani</strong>,
-            lahir di <strong>[ Kota, Tanggal Lahir ]</strong>. Saya merupakan
+            lahir di <strong>Malang, 29 November 2001</strong>. Saya merupakan
             mahasiswa Program Studi <strong>Informatika</strong> angkatan 2026
-            di Universitas <strong>[ Nama Universitas ]</strong>.</p>
-            <p>[ Tambahkan cerita singkat tentang diri Anda — kepribadian,
-            hobi, atau hal menarik yang mendefinisikan Anda sebagai pribadi. ]</p>
+            di Universitas <strong>Universitas Negeri Surabaya</strong>.</p>
+            <p>Saya memiliki minat besar di bidang teknologi, khususnya pengembangan sistem berbasis web dan desain digital. Saya dikenal sebagai pribadi yang disiplin, mudah beradaptasi, serta senang mempelajari hal-hal baru yang dapat meningkatkan kemampuan diri maupun pengalaman profesional.</p>
           `,
         },
         {
           icon: "fa-heart",
           title: "Minat & Hobi",
           body: `
-            <p>[ Ceritakan minat dan hobi Anda yang relevan dengan profesi
-            guru — misalnya suka membaca, menulis, teknologi pendidikan,
-            olahraga, atau seni. ]</p>
+            <p>Saya memiliki minat pada bidang pendidikan, teknologi pembelajaran, dan pengembangan media digital. Saya senang mempelajari cara memanfaatkan teknologi untuk menciptakan proses belajar yang lebih menarik dan efektif bagi peserta didik. Selain itu, saya juga memiliki hobi membaca informasi seputar teknologi dan pendidikan, mendesain konten digital, serta mengikuti perkembangan media pembelajaran modern. Di waktu luang, saya menikmati kegiatan mendengarkan musik, olahraga ringan, dan mengeksplorasi hal-hal baru yang dapat meningkatkan kreativitas serta kemampuan diri sebagai calon pendidik.</p>
           `,
         },
       ],
@@ -685,9 +682,12 @@ function initProfilModal() {
       title: "Asal & Keunikan Daerah",
       sub: "Kabupaten Malang, Jawa Timur",
       photos: [
-        { src: "foto-bromo.jpg", caption: "Gunung Bromo & Semeru" },
-        { src: "foto-balekambang.jpg", caption: "Pantai Balekambang" },
-        { src: "foto-topeng.jpg", caption: "Tari Topeng Malangan" },
+        { src: "eportfolio/foto-bromo.jpg", caption: "Gunung Bromo & Semeru" },
+        {
+          src: "eportfolio/foto-balekambang.webp",
+          caption: "Pantai Balekambang",
+        },
+        { src: "eportfolio/foto-topeng.jpg", caption: "Tari Topeng Malangan" },
       ],
       sections: [
         {
@@ -712,6 +712,13 @@ function initProfilModal() {
             budaya paling khas dari daerah ini. Tarian ini memiliki ratusan
             jenis topeng dengan karakter yang berbeda-beda, mencerminkan
             kekayaan budaya Jawa yang mendalam.</p>
+
+            <p>Selain itu ada juga <strong>Sound Horeg</strong> istilah yang populer di wilayah Malang dan Jawa Timur untuk menyebut sistem audio berukuran besar dengan suara bass yang sangat kuat dan menggelegar. Kata “horeg” sendiri berasal dari bahasa Jawa yang menggambarkan sesuatu yang bergetar atau berguncang karena dentuman suara.
+
+Biasanya sound horeg digunakan pada acara hiburan masyarakat seperti karnaval, hajatan, pesta rakyat, hingga arak-arakan. Ciri khasnya adalah susunan speaker besar yang ditumpuk tinggi di atas mobil pickup atau truk, lengkap dengan lampu warna-warni dan musik remix atau DJ dengan volume sangat keras sehingga suara dan getarannya bisa terasa dari jarak jauh.
+
+Bagi masyarakat Malang dan sekitarnya, sound horeg sudah menjadi bagian dari budaya hiburan modern anak muda dan acara kampung. Namun, karena volumenya sangat keras, sound horeg juga sering menimbulkan pro dan kontra di masyarakat, terutama terkait kebisingan dan kenyamanan lingkungan sekitar..</p>
+            
             <p>Selain itu, <strong>Bahasa Walikan</strong> atau bahasa
             Malangan yang unik — di mana kata-kata dibalik — menjadi
             identitas kultural yang membedakan masyarakat Malang dari
@@ -722,9 +729,8 @@ function initProfilModal() {
           icon: "fa-leaf",
           title: "Alam & Wisata",
           body: `
-            <p>[ Ceritakan lebih detail tentang keindahan alam daerah Anda —
-            tempat wisata favorit, keunikan geografis, atau pengalaman
-            pribadi Anda menikmati keindahan daerah asal. ]</p>
+            <p>Malang Raya memiliki banyak destinasi alam yang indah dan terkenal di Indonesia. Keunikan geografisnya yang dikelilingi pegunungan membuat daerah ini memiliki udara yang sejuk serta panorama alam yang memukau. Beberapa tempat wisata populer di Malang Raya antara lain Gunung Bromo, Gunung Semeru, Pantai Balekambang.
+            Malang Selatan memiliki deretan pantai yang sangat indah dan membentang luas dari wilayah timur hingga barat Kabupaten Malang. Setiap pantai memiliki karakteristik yang berbeda, mulai dari pantai berpasir putih, tebing karang eksotis, hingga ombak besar khas Samudra Hindia.</p>
           `,
         },
       ],
@@ -752,18 +758,14 @@ function initProfilModal() {
           icon: "fa-star",
           title: "Awal Inspirasi",
           body: `
-            <p>[ Ceritakan dengan lengkap kisah awal yang menginspirasi
-            Anda memilih profesi guru. Siapa sosok yang menginspirasi?
-            Momen apa yang menjadi titik balik keputusan Anda? ]</p>
+            <p>Ketertarikan saya terhadap dunia pendidikan muncul dari keinginan untuk dapat berbagi ilmu dan memberikan manfaat bagi orang lain. Saya terinspirasi oleh sosok guru yang tidak hanya mengajarkan materi pelajaran, tetapi juga mampu memberikan motivasi, arahan, dan teladan dalam kehidupan. Seiring perkembangan teknologi, saya juga melihat bahwa peran guru sangat penting dalam membantu peserta didik memahami pembelajaran secara kreatif dan inovatif. Dari situlah muncul keinginan saya untuk menjadi seorang guru profesional yang mampu memanfaatkan teknologi sebagai media pembelajaran yang menarik dan efektif.</p>
           `,
         },
         {
           icon: "fa-bullseye",
           title: "Tujuan Menjadi Guru Profesional",
           body: `
-            <p>[ Jelaskan secara mendalam tujuan besar Anda menjadi guru
-            profesional. Apa yang ingin Anda ubah dalam dunia pendidikan?
-            Dampak apa yang ingin Anda tinggalkan? ]</p>
+            <p>Tujuan saya menjadi guru profesional adalah untuk membantu menciptakan generasi yang cerdas, berkarakter, dan mampu beradaptasi dengan perkembangan zaman. Saya ingin menjadi pendidik yang tidak hanya fokus pada nilai akademik, tetapi juga membimbing peserta didik dalam membangun sikap disiplin, tanggung jawab, dan rasa percaya diri. Selain itu, saya ingin menghadirkan pembelajaran yang menyenangkan dengan memanfaatkan teknologi digital agar peserta didik lebih aktif dan mudah memahami materi. Saya berharap dapat memberikan dampak positif bagi dunia pendidikan serta menjadi guru yang inspiratif bagi siswa di masa depan.</p>
           `,
         },
       ],
@@ -771,22 +773,22 @@ function initProfilModal() {
         {
           icon: "fa-seedling",
           title: "Terinspirasi",
-          desc: "[ Ceritakan momen pertama kali terinspirasi menjadi guru ]",
+          desc: "Saya mulai terinspirasi menjadi guru ketika melihat bagaimana seorang pendidik mampu memberikan semangat dan pengaruh positif kepada peserta didik. Dari pengalaman tersebut, saya menyadari bahwa guru memiliki peran besar dalam membentuk masa depan generasi muda.",
         },
         {
           icon: "fa-book-open",
           title: "Belajar",
-          desc: "[ Perjalanan belajar dan menimba ilmu kependidikan ]",
+          desc: "Perjalanan saya dalam dunia pendidikan dimulai dengan mempelajari berbagai ilmu pengetahuan, metode pembelajaran, serta pemanfaatan teknologi dalam pendidikan. Saya terus berusaha meningkatkan kemampuan diri agar dapat menjadi pendidik yang profesional dan adaptif terhadap perkembangan zaman.",
         },
         {
           icon: "fa-chalkboard-teacher",
           title: "Praktik",
-          desc: "[ Pengalaman pertama mengajar dan kesan yang dirasakan ]",
+          desc: "Pengalaman pertama dalam mengajar memberikan banyak pelajaran berharga bagi saya, terutama dalam membangun komunikasi dengan peserta didik dan menciptakan suasana belajar yang nyaman. Dari pengalaman tersebut, saya semakin memahami pentingnya kesabaran, kreativitas, dan tanggung jawab seorang guru.",
         },
         {
           icon: "fa-graduation-cap",
           title: "Profesional",
-          desc: "[ Target dan mimpi besar sebagai guru profesional ]",
+          desc: "Saya memiliki harapan untuk menjadi guru profesional yang mampu memberikan pembelajaran berkualitas, menjadi teladan yang baik, serta terus mengembangkan kompetensi diri. Saya ingin berkontribusi dalam menciptakan pendidikan yang lebih inovatif, inspiratif, dan bermanfaat bagi generasi masa depan.",
         },
       ],
     },
@@ -807,18 +809,14 @@ function initProfilModal() {
           icon: "fa-info-circle",
           title: "Makna Kutipan",
           body: `
-            <p>[ Jelaskan secara mendalam makna kutipan yang Anda pilih.
-            Mengapa kutipan ini bermakna bagi Anda? Bagaimana kutipan
-            ini mempengaruhi cara pandang Anda tentang pendidikan? ]</p>
+            <p>Kutipan tersebut memiliki makna yang sangat mendalam bagi saya karena pendidikan bukan sekadar proses menyampaikan materi pelajaran, tetapi juga membentuk karakter, sikap, dan pola pikir peserta didik. Seorang guru memiliki peran penting dalam membantu siswa berkembang menjadi pribadi yang percaya diri, disiplin, dan memiliki semangat belajar. Kutipan ini juga mengingatkan saya bahwa guru bukan hanya sumber ilmu, tetapi juga sosok yang dapat memberikan motivasi dan inspirasi bagi masa depan peserta didik. Oleh karena itu, saya ingin menjadi pendidik yang mampu menciptakan suasana belajar yang positif, menyenangkan, dan bermakna.</p>
           `,
         },
         {
           icon: "fa-book",
           title: "Filosofi Pendidikan Saya",
           body: `
-            <p>[ Tuliskan filosofi pribadi Anda tentang pendidikan —
-            bagaimana seharusnya seorang guru memandang muridnya,
-            memandang ilmu, dan memandang tanggung jawabnya. ]</p>
+            <p>Bagi saya, pendidikan adalah proses membimbing dan membantu peserta didik untuk berkembang sesuai potensi yang dimiliki. Seorang guru seharusnya tidak hanya mengajar, tetapi juga menjadi teladan, pendengar, dan motivator bagi siswa. Saya percaya bahwa setiap peserta didik memiliki kemampuan dan cara belajar yang berbeda, sehingga guru perlu menciptakan pembelajaran yang kreatif, inklusif, dan mudah dipahami. Selain itu, pendidikan juga harus mampu menanamkan nilai-nilai karakter seperti tanggung jawab, kerja sama, kejujuran, dan rasa percaya diri agar peserta didik siap menghadapi tantangan di masa depan.</p>
           `,
         },
       ],
@@ -828,8 +826,8 @@ function initProfilModal() {
           author: "— Ki Hajar Dewantara",
         },
         {
-          text: "[ Tambahkan kutipan lain yang Anda sukai ]",
-          author: "— [ Nama Tokoh ]",
+          text: "Pendidikan bukan hanya tentang memperoleh ilmu, tetapi juga membentuk karakter dan masa depan.",
+          author: "— Ki Hajar Dewantara",
         },
       ],
     },
