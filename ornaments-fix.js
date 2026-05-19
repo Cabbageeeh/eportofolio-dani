@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ── CUSTOM CURSOR ── */
+  initLandingPage();
   initLoadingScreen();
   initSmoothTransition();
   initScrollProgress();
@@ -39,6 +40,544 @@ document.addEventListener("DOMContentLoaded", () => {
 
   console.log("%c ornaments-fix.js ✓", "color:#C49A3C;");
 });
+
+function initLandingPage() {
+  /* ── Inject CSS ── */
+  if (!document.querySelector("#landingPageStyles")) {
+    const style = document.createElement("style");
+    style.id = "landingPageStyles";
+    style.textContent = `
+
+      /* ================================================================
+         LANDING PAGE — Full screen cover
+         ================================================================ */
+
+      #landing-page {
+        position: fixed;
+        inset: 0;
+        z-index: 9999999;
+        background: linear-gradient(
+          135deg,
+          #0d0804 0%,
+          #1e1208 30%,
+          #2a1a08 60%,
+          #1a0f06 100%
+        );
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      /* ── Grain texture ── */
+      #landing-page::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* ── Ornamen kompas besar di belakang ── */
+      #landing-compass-bg {
+        position: absolute;
+        width: 700px;
+        height: 700px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: rgba(196,154,60,0.04);
+        pointer-events: none;
+        z-index: 0;
+        animation: rotate-slow 60s linear infinite;
+      }
+
+      /* ── Ornamen sudut ── */
+      .landing-corner {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .landing-corner.tl {
+        top: 24px; left: 24px;
+        border-top: 1px solid rgba(196,154,60,0.3);
+        border-left: 1px solid rgba(196,154,60,0.3);
+      }
+
+      .landing-corner.tr {
+        top: 24px; right: 24px;
+        border-top: 1px solid rgba(196,154,60,0.3);
+        border-right: 1px solid rgba(196,154,60,0.3);
+      }
+
+      .landing-corner.bl {
+        bottom: 24px; left: 24px;
+        border-bottom: 1px solid rgba(196,154,60,0.3);
+        border-left: 1px solid rgba(196,154,60,0.3);
+      }
+
+      .landing-corner.br {
+        bottom: 24px; right: 24px;
+        border-bottom: 1px solid rgba(196,154,60,0.3);
+        border-right: 1px solid rgba(196,154,60,0.3);
+      }
+
+      /* ── Konten utama ── */
+      #landing-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0;
+        padding: 0 24px;
+      }
+
+      /* Label atas */
+      #landing-label {
+        font-family: 'DM Mono', monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: rgba(196,154,60,0.6);
+        margin-bottom: 20px;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      #landing-label::before,
+      #landing-label::after {
+        content: '';
+        width: 32px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(196,154,60,0.5));
+      }
+
+      #landing-label::after {
+        background: linear-gradient(90deg, rgba(196,154,60,0.5), transparent);
+      }
+
+      /* Nama besar */
+      #landing-name {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2.5rem, 7vw, 5rem);
+        font-weight: 900;
+        color: #EDD9B4;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        margin-bottom: 8px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+      }
+
+      /* Garis bawah nama */
+      #landing-name-line {
+        width: 0px;
+        height: 2px;
+        background: linear-gradient(90deg, #C49A3C, #A0522D);
+        margin: 0 auto 20px;
+        border-radius: 1px;
+        transition: width 0.8s cubic-bezier(0.4,0,0.2,1) 0.6s;
+        box-shadow: 0 0 10px rgba(196,154,60,0.4);
+      }
+
+      /* Prodi / program */
+      #landing-program {
+        font-family: 'Crimson Pro', serif;
+        font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+        color: rgba(196,149,106,0.7);
+        font-style: italic;
+        margin-bottom: 48px;
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity 0.7s ease 0.5s, transform 0.7s ease 0.5s;
+        letter-spacing: 0.02em;
+      }
+
+      /* Tombol masuk */
+      #landing-btn {
+        position: relative;
+        padding: 14px 44px;
+        background: transparent;
+        border: 1px solid rgba(196,154,60,0.5);
+        border-radius: 3px;
+        color: #EDD9B4;
+        font-family: 'DM Mono', monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        cursor: pointer;
+        opacity: 0;
+        transform: translateY(14px);
+        transition:
+          opacity 0.7s ease 0.8s,
+          transform 0.7s ease 0.8s,
+          background 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+        overflow: hidden;
+      }
+
+      #landing-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(196,154,60,0),
+          rgba(196,154,60,0.08)
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      #landing-btn:hover::before { opacity: 1; }
+
+      #landing-btn:hover {
+        border-color: rgba(196,154,60,0.9);
+        box-shadow:
+          0 0 20px rgba(196,154,60,0.2),
+          inset 0 0 20px rgba(196,154,60,0.05);
+        color: #C49A3C;
+      }
+
+      #landing-btn:active {
+        transform: scale(0.97) translateY(14px) !important;
+      }
+
+      /* Ikon panah di dalam tombol */
+      #landing-btn i {
+        margin-left: 10px;
+        font-size: 0.65rem;
+        transition: transform 0.3s ease;
+      }
+
+      #landing-btn:hover i {
+        transform: translateX(4px);
+      }
+
+      /* ── Scan line di tombol ── */
+      #landing-btn::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -80%;
+        width: 55%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,0.06),
+          transparent
+        );
+        animation: scan-line 3.5s ease-in-out infinite;
+      }
+
+      /* ── NIM / info kecil bawah ── */
+      #landing-nim {
+        margin-top: 24px;
+        font-family: 'DM Mono', monospace;
+        font-size: 0.58rem;
+        letter-spacing: 0.18em;
+        color: rgba(196,149,106,0.35);
+        opacity: 0;
+        transition: opacity 0.7s ease 1.1s;
+      }
+
+      /* ── Marquee bawah landing ── */
+      #landing-marquee {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+        padding: 10px 0;
+        border-top: 1px solid rgba(196,149,106,0.08);
+        z-index: 2;
+      }
+
+      #landing-marquee-track {
+        display: flex;
+        gap: 40px;
+        white-space: nowrap;
+        animation: marquee-scroll 16s linear infinite;
+        width: max-content;
+      }
+
+      #landing-marquee-track span {
+        font-family: 'DM Mono', monospace;
+        font-size: 0.55rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(196,149,106,0.2);
+        flex-shrink: 0;
+      }
+
+      /* ── Foto profil kecil di landing (opsional) ── */
+      #landing-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 1px solid rgba(196,154,60,0.3);
+        object-fit: cover;
+        object-position: center top;
+        margin-bottom: 20px;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: opacity 0.7s ease 0.1s, transform 0.7s cubic-bezier(0.34,1.2,0.64,1) 0.1s;
+        box-shadow:
+          0 0 0 4px rgba(196,154,60,0.08),
+          0 0 20px rgba(196,154,60,0.15);
+      }
+
+      /* ── Visible states ── */
+      #landing-page.ready #landing-label,
+      #landing-page.ready #landing-name,
+      #landing-page.ready #landing-program,
+      #landing-page.ready #landing-btn,
+      #landing-page.ready #landing-nim,
+      #landing-page.ready #landing-avatar {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      #landing-page.ready #landing-avatar {
+        transform: scale(1);
+      }
+
+      #landing-page.ready #landing-name-line {
+        width: 120px;
+      }
+
+      /* ── Exit animation ── */
+      #landing-page.exit {
+        animation: landing-exit 0.8s cubic-bezier(0.4,0,0.2,1) forwards;
+      }
+
+      @keyframes landing-exit {
+        0%   { opacity: 1; transform: scale(1);    }
+        30%  { opacity: 1; transform: scale(1.02); }
+        100% { opacity: 0; transform: scale(1.06); visibility: hidden; }
+      }
+
+      /* ── Particles di landing ── */
+      .landing-particle {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(196,154,60,0.7), transparent);
+        pointer-events: none;
+        animation: particle-rise var(--dur,6s) ease-in var(--delay,0s) infinite;
+      }
+
+      /* ── Responsive ── */
+      @media (max-width: 640px) {
+        #landing-compass-bg { width: 400px; height: 400px; }
+        .landing-corner { width: 50px; height: 50px; }
+        #landing-btn { padding: 12px 32px; }
+      }
+
+    `;
+    document.head.appendChild(style);
+  }
+
+  /* ================================================================
+     BUAT ELEMEN LANDING PAGE
+     ================================================================ */
+  const landing = document.createElement("div");
+  landing.id = "landing-page";
+
+  /* Teks marquee */
+  const marqueeTexts = [
+    "✦ E-PORTOFOLIO",
+    "✦ GURU PROFESIONAL",
+    "✦ KNOWLEDGE",
+    "✦ INTEGRITY",
+    "✦ DEDICATION",
+    "✦ MENDIDIK ADALAH MEWARISKAN CAHAYA",
+    "✦ E-PORTOFOLIO",
+    "✦ GURU PROFESIONAL",
+    "✦ KNOWLEDGE",
+    "✦ INTEGRITY",
+    "✦ DEDICATION",
+    "✦ MENDIDIK ADALAH MEWARISKAN CAHAYA",
+  ];
+
+  landing.innerHTML = `
+
+    <!-- Kompas besar di belakang -->
+    <div id="landing-compass-bg">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"
+           style="width:100%;height:100%;">
+        <circle cx="100" cy="100" r="95" stroke="currentColor" stroke-width="0.5" fill="none"/>
+        <circle cx="100" cy="100" r="80" stroke="currentColor" stroke-width="0.3" fill="none" stroke-dasharray="4 6"/>
+        <circle cx="100" cy="100" r="65" stroke="currentColor" stroke-width="0.5" fill="none"/>
+        <circle cx="100" cy="100" r="48" stroke="currentColor" stroke-width="0.3" fill="none" stroke-dasharray="2 5"/>
+        <circle cx="100" cy="100" r="30" stroke="currentColor" stroke-width="0.4" fill="none"/>
+        <line x1="100" y1="5"   x2="100" y2="195" stroke="currentColor" stroke-width="0.4"/>
+        <line x1="5"   y1="100" x2="195" y2="100" stroke="currentColor" stroke-width="0.4"/>
+        <line x1="29"  y1="29"  x2="171" y2="171" stroke="currentColor" stroke-width="0.2"/>
+        <line x1="171" y1="29"  x2="29"  y2="171" stroke="currentColor" stroke-width="0.2"/>
+        <polygon points="100,8 103,92 100,82 97,92" fill="currentColor"/>
+        <polygon points="100,192 103,108 100,118 97,108" fill="currentColor" opacity="0.3"/>
+        <circle cx="100" cy="100" r="4" fill="currentColor"/>
+        <text x="100" y="20" text-anchor="middle" font-size="8"
+          fill="currentColor" font-family="serif" font-weight="bold">N</text>
+        <text x="100" y="188" text-anchor="middle" font-size="7"
+          fill="currentColor" font-family="serif">S</text>
+        <text x="182" y="104" text-anchor="middle" font-size="7"
+          fill="currentColor" font-family="serif">E</text>
+        <text x="18" y="104" text-anchor="middle" font-size="7"
+          fill="currentColor" font-family="serif">W</text>
+      </svg>
+    </div>
+
+    <!-- Ornamen sudut -->
+    <div class="landing-corner tl"></div>
+    <div class="landing-corner tr"></div>
+    <div class="landing-corner bl"></div>
+    <div class="landing-corner br"></div>
+
+    <!-- Konten utama -->
+    <div id="landing-content">
+
+      <!-- Foto profil kecil -->
+      <img
+        src="foto-profil.png"
+        alt="Foto Profil"
+        id="landing-avatar"
+        onerror="this.style.display='none'"
+      />
+
+      <!-- Label atas -->
+      <div id="landing-label">E-Portofolio</div>
+
+      <!-- Nama besar -->
+      <h1 id="landing-name">Muhammad<br>Abduramadani</h1>
+
+      <!-- Garis bawah nama -->
+      <div id="landing-name-line"></div>
+
+      <!-- Program studi -->
+      <p id="landing-program">
+        PPG Prajabatan 2025 &nbsp;·&nbsp; Informatika
+      </p>
+
+      <!-- Tombol masuk -->
+      <button id="landing-btn">
+        Masuk ke Portofolio
+        <i class="fas fa-arrow-right"></i>
+      </button>
+
+      <!-- NIM -->
+      <p id="landing-nim">NIM: 2500103916225027</p>
+
+    </div>
+
+    <!-- Marquee bawah -->
+    <div id="landing-marquee">
+      <div id="landing-marquee-track">
+        ${marqueeTexts.map((t) => `<span>${t}</span>`).join("")}
+      </div>
+    </div>
+
+  `;
+
+  document.body.appendChild(landing);
+
+  /* ================================================================
+     BUAT PARTIKEL DI LANDING
+     ================================================================ */
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement("div");
+    p.className = "landing-particle";
+
+    const size = (Math.random() * 3 + 1.5).toFixed(1);
+    const left = (Math.random() * 92 + 3).toFixed(1);
+    const top = (Math.random() * 70 + 20).toFixed(1);
+    const dur = (Math.random() * 5 + 5).toFixed(1);
+    const delay = (Math.random() * 7).toFixed(1);
+    const drift = ((Math.random() - 0.5) * 45).toFixed(0);
+
+    p.style.cssText = `
+      width: ${size}px;
+      height: ${size}px;
+      left: ${left}%;
+      top: ${top}%;
+      --dur: ${dur}s;
+      --delay: ${delay}s;
+      --drift: ${drift}px;
+    `;
+    landing.appendChild(p);
+  }
+
+  /* ================================================================
+     ANIMASI MASUK — Elemen muncul bertahap
+     ================================================================ */
+  setTimeout(() => {
+    landing.classList.add("ready");
+  }, 200);
+
+  /* ================================================================
+     TOMBOL MASUK — Trigger loading screen lalu hilang
+     ================================================================ */
+  const btn = document.getElementById("landing-btn");
+  if (btn) {
+    btn.addEventListener("click", () => {
+      /* Efek ripple di tombol */
+      const ripple = document.createElement("span");
+      Object.assign(ripple.style, {
+        position: "absolute",
+        width: "200px",
+        height: "200px",
+        borderRadius: "50%",
+        background: "rgba(196,154,60,0.15)",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%,-50%) scale(0)",
+        animation: "ripple-expand 0.6s ease forwards",
+        pointerEvents: "none",
+      });
+      btn.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 700);
+
+      /* Tunggu sebentar lalu exit */
+      setTimeout(() => {
+        landing.classList.add("exit");
+
+        /* Hapus dari DOM setelah animasi */
+        setTimeout(() => {
+          landing.remove();
+        }, 850);
+      }, 200);
+    });
+  }
+
+  /* ================================================================
+     KEYBOARD — Enter / Space untuk masuk
+     ================================================================ */
+  document.addEventListener("keydown", (e) => {
+    if (
+      (e.key === "Enter" || e.key === " ") &&
+      document.getElementById("landing-page")
+    ) {
+      e.preventDefault();
+      btn?.click();
+    }
+  });
+
+  console.log("%c Landing Page ✓", "color:#C49A3C;font-style:italic;");
+}
 
 function initProfilModal() {
   /* ── Inject CSS ── */
