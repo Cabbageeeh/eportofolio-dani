@@ -24,8 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ── CUSTOM CURSOR ── */
+  initCustomCursor();
   initLandingPage();
-  initLoadingScreen();
+  initLoadingScreen(false);
   initSmoothTransition();
   initScrollProgress();
   initCardFlip();
@@ -36,7 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initEducationAnim();
   initProfilModal();
   initMarqueeText();
-  initCustomCursor();
 
   console.log("%c ornaments-fix.js ✓", "color:#C49A3C;");
 });
@@ -577,6 +577,35 @@ function initLandingPage() {
   });
 
   console.log("%c Landing Page ✓", "color:#C49A3C;font-style:italic;");
+  /* ── Paksa cursor muncul di landing page ── */
+  const forceCursorOnLanding = (e) => {
+    const crosshair = document.getElementById("cursor-crosshair");
+    const ring = document.getElementById("cursor-ring");
+    const dot = document.getElementById("cursor-dot");
+    const landing = document.getElementById("landing-page");
+
+    /* Hanya aktif saat landing page masih ada */
+    if (!landing) {
+      document.removeEventListener("mousemove", forceCursorOnLanding);
+      return;
+    }
+
+    if (crosshair) {
+      crosshair.style.opacity = "1";
+      crosshair.style.left = e.clientX + "px";
+      crosshair.style.top = e.clientY + "px";
+    }
+    if (ring) {
+      ring.style.opacity = "1";
+    }
+    if (dot) {
+      dot.style.opacity = "1";
+      dot.style.left = e.clientX + "px";
+      dot.style.top = e.clientY + "px";
+    }
+  };
+
+  document.addEventListener("mousemove", forceCursorOnLanding);
 }
 
 function initProfilModal() {
@@ -3390,9 +3419,18 @@ function initSoundEffect() {
      SOUND LOADING DONE
      Deteksi saat loading screen hilang lalu bunyikan ding
      ================================================================ */
+  /* Hanya jalankan loaderCheck jika loading screen sudah visible */
   const loaderCheck = setInterval(() => {
     const loader = document.getElementById("loading-screen");
-    if (!loader || loader.style.opacity === "0") {
+
+    /* Skip jika loader belum visible — artinya belum distart */
+    if (!loader) {
+      clearInterval(loaderCheck);
+      return;
+    }
+
+    /* Cek visibility dan opacity */
+    if (loader.style.visibility === "hidden" || loader.style.opacity === "0") {
       clearInterval(loaderCheck);
       setTimeout(() => playLoadingDone(), 200);
     }
@@ -4486,7 +4524,7 @@ function initSmoothTransition() {
   }
 }
 
-function initLoadingScreen() {
+function initLoadingScreen(autoStart = true) {
   /* ── Buat elemen loading screen ── */
   const loader = document.createElement("div");
   loader.id = "loading-screen";
@@ -4669,6 +4707,10 @@ function initLoadingScreen() {
   `;
 
   document.body.appendChild(loader);
+  if (!autoStart) {
+    loader.style.opacity = "0";
+    loader.style.visibility = "hidden";
+  }
 
   /* ── Inject keyframe loader ── */
   if (!document.querySelector("#loaderKeyframes")) {
@@ -4704,37 +4746,126 @@ function initLoadingScreen() {
   });
 
   /* ── Animasi progress bar ── */
+  /* ── Animasi progress bar ── */
   const bar = document.getElementById("loader-bar");
   const pct = document.getElementById("loader-pct");
   let progress = 0;
 
-  /* Kecepatan progress — naik cepat di awal, melambat di akhir */
-  const speeds = [
-    { target: 30, speed: 12, delay: 100 },
-    { target: 60, speed: 8, delay: 500 },
-    { target: 85, speed: 4, delay: 1000 },
-    { target: 100, speed: 6, delay: 1600 },
-  ];
+  /* Saat landing mulai hilang — tampilkan loading screen */
+  setTimeout(() => {
+    const loader = document.getElementById("loading-screen");
+    if (loader) {
+      /* Reset progress bar dulu */
+      const bar = loader.querySelector("#loader-bar");
+      const pct = loader.querySelector("#loader-pct");
+      if (bar) bar.style.width = "0%";
+      if (pct) pct.textContent = "0%";
 
-  speeds.forEach(({ target, speed, delay }) => {
+      /* Tampilkan */
+      loader.style.visibility = "visible";
+      loader.style.opacity = "1";
+    }
+
+    /* Tunggu sebentar lalu start progress */
     setTimeout(() => {
-      const interval = setInterval(() => {
-        if (progress >= target) {
-          clearInterval(interval);
-          return;
-        }
-        progress = Math.min(progress + 1, target);
-        if (bar) bar.style.width = progress + "%";
-        if (pct) pct.textContent = progress + "%";
+      if (window._startLoadingScreen) {
+        window._startLoadingScreen();
+      }
+    }, 300);
+  }, 400);
 
-        /* Saat 100% — mulai hide loader */
-        if (progress >= 100) {
-          clearInterval(interval);
-          setTimeout(hideLoader, 400);
+  /* Expose fungsi start agar bisa dipanggil dari luar */
+  window._startLoadingScreen = function () {
+    /* Reset progress */
+    let progress = 0;
+    const bar = document.getElementById("loader-bar");
+    const pct = document.getElementById("loader-pct");
+
+    /* Tampilkan teks */
+    const title = document.getElementById("loader-title");
+    const sub = document.getElementById("loader-sub");
+    if (title) {
+      title.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+      title.style.opacity = "1";
+      title.style.transform = "translateY(0)";
+    }
+    if (sub) {
+      sub.style.transition = "opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s";
+      sub.style.opacity = "1";
+      sub.style.transform = "translateY(0)";
+    }
+
+    /* Fungsi update bar */
+    function updateBar(value) {
+      progress = value;
+      if (bar) bar.style.width = progress + "%";
+      if (pct) pct.textContent = progress + "%";
+    }
+
+    /* Animasi progress bertahap */
+    function runSegment(from, to, duration, onDone) {
+      const startTime = performance.now();
+      const diff = to - from;
+
+      function step(now) {
+        const elapsed = now - startTime;
+        const fraction = Math.min(elapsed / duration, 1);
+        /* Easing ease-out */
+        const eased = 1 - Math.pow(1 - fraction, 2);
+        const current = Math.round(from + diff * eased);
+
+        updateBar(current);
+
+        if (fraction < 1) {
+          requestAnimationFrame(step);
+        } else {
+          updateBar(to);
+          if (onDone) onDone();
         }
-      }, speed);
-    }, delay);
-  });
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    /* Jalankan segmen berurutan */
+    /* 0 → 30 dalam 600ms */
+    runSegment(0, 30, 600, () => {
+      /* Jeda 300ms lalu 30 → 65 dalam 800ms */
+      setTimeout(() => {
+        runSegment(30, 65, 800, () => {
+          /* Jeda 400ms lalu 65 → 85 dalam 600ms */
+          setTimeout(() => {
+            runSegment(65, 85, 600, () => {
+              /* Jeda 300ms lalu 85 → 100 dalam 400ms */
+              setTimeout(() => {
+                runSegment(85, 100, 400, () => {
+                  /* Selesai — hide loader */
+                  setTimeout(hideLoader, 500);
+                });
+              }, 300);
+            });
+          }, 400);
+        });
+      }, 300);
+    });
+  };
+
+  /* Autostart jika dipanggil langsung */
+  if (autoStart) {
+    setTimeout(() => {
+      const title = document.getElementById("loader-title");
+      const sub = document.getElementById("loader-sub");
+      if (title) {
+        title.style.opacity = "1";
+        title.style.transform = "translateY(0)";
+      }
+      if (sub) {
+        sub.style.opacity = "1";
+        sub.style.transform = "translateY(0)";
+      }
+      window._startLoadingScreen();
+    }, 200);
+  }
 
   /* ── Fungsi sembunyikan loader ── */
   function hideLoader() {
@@ -5039,17 +5170,17 @@ function initCustomCursor() {
     </svg>
   `;
   crosshair.style.cssText = `
-    position: fixed;
-    width: 32px;
-    height: 32px;
-    pointer-events: none;
-    z-index: 99999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.08s ease, opacity 0.3s ease;
-    opacity: 0;
-    will-change: transform;
-    mix-blend-mode: multiply;
-  `;
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  z-index: 99999999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease, opacity 0.3s ease;
+  opacity: 1;
+  will-change: transform;
+  mix-blend-mode: normal;
+`;
   document.body.appendChild(crosshair);
 
   /* ── ELEMEN 2: Ring luar yang mengikuti dengan delay ── */
@@ -5111,7 +5242,7 @@ function initCustomCursor() {
       dot.style.opacity = "1";
     }
 
-    /* Crosshair & dot langsung mengikuti mouse */
+    /* Update posisi crosshair & dot langsung */
     crosshair.style.left = mouseX + "px";
     crosshair.style.top = mouseY + "px";
     dot.style.left = mouseX + "px";
