@@ -37,9 +37,41 @@ document.addEventListener("DOMContentLoaded", () => {
   initEducationAnim();
   initProfilModal();
   initMarqueeText();
+  initSiklusTab();
 
   console.log("%c ornaments-fix.js ✓", "color:#C49A3C;");
 });
+
+function initSiklusTab() {
+  const tabs = document.querySelectorAll(".siklus-tab");
+  const contents = document.querySelectorAll(".siklus-content");
+  if (!tabs.length) return;
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const target = tab.getAttribute("data-siklus");
+
+      /* Update tab aktif */
+      tabs.forEach((t) => t.classList.remove("active"));
+      tab.classList.add("active");
+
+      /* Update konten aktif */
+      contents.forEach((c) => c.classList.remove("active"));
+      const targetContent = document.querySelector(
+        `.siklus-content[data-siklus="${target}"]`,
+      );
+      if (targetContent) targetContent.classList.add("active");
+
+      /* Sound effect */
+      if (window.playNavHover) playNavHover?.();
+
+      /* Scroll ke atas konten */
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+
+  console.log("%c Siklus Tab ✓", "color:#C49A3C;font-style:italic;");
+}
 
 function initLandingPage() {
   /* ── Inject CSS ── */

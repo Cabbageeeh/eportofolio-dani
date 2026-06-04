@@ -621,3 +621,570 @@ body.dark-mode .identity-handle {
     font-size: 0.95rem !important;
   }
 }
+
+/* ================================================================
+   SIKLUS TAB SYSTEM — Analisis Artefak
+   ================================================================ */
+
+/* Wrapper tab */
+.siklus-tab-wrap {
+  margin-bottom: 32px;
+  position: relative;
+}
+
+/* Tab container */
+.siklus-tabs {
+  display: flex;
+  gap: 4px;
+  background: rgba(139, 94, 60, 0.08);
+  border: 1px solid rgba(196, 149, 106, 0.2);
+  border-radius: 10px;
+  padding: 6px;
+  position: relative;
+}
+
+/* Tab button */
+.siklus-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 14px 20px;
+  background: transparent;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.siklus-tab::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(196, 154, 60, 0),
+    rgba(196, 154, 60, 0.06)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 7px;
+}
+
+.siklus-tab:hover::before {
+  opacity: 1;
+}
+
+/* Tab aktif */
+.siklus-tab.active {
+  background: linear-gradient(135deg, #5c3d1e, #3b2a1a);
+  box-shadow: 0 4px 16px rgba(59, 42, 26, 0.3);
+}
+
+.siklus-tab.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, #c49a3c, #a0522d);
+  border-radius: 1px;
+}
+
+/* Nomor tab */
+.tab-num {
+  font-family: "DM Mono", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: rgba(196, 149, 106, 0.5);
+  transition: color 0.3s ease;
+}
+
+.siklus-tab.active .tab-num {
+  color: rgba(196, 149, 106, 0.7);
+}
+
+/* Label tab */
+.tab-label {
+  font-family: "Playfair Display", serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #8b5e3c;
+  transition: color 0.3s ease;
+}
+
+.siklus-tab.active .tab-label {
+  color: #edd9b4;
+}
+.siklus-tab:hover .tab-label {
+  color: #5c3d1e;
+}
+
+/* Sub label */
+.tab-sub {
+  font-family: "DM Mono", monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(139, 94, 60, 0.5);
+  transition: color 0.3s ease;
+}
+
+.siklus-tab.active .tab-sub {
+  color: rgba(196, 149, 106, 0.6);
+}
+
+/* ── Konten siklus ── */
+.siklus-content {
+  display: none;
+  animation: siklus-fade-in 0.4s ease forwards;
+}
+
+.siklus-content.active {
+  display: block;
+}
+
+@keyframes siklus-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark mode */
+body.dark-mode .siklus-tabs {
+  background: rgba(196, 149, 106, 0.05);
+  border-color: rgba(196, 149, 106, 0.12);
+}
+
+body.dark-mode .siklus-tab.active {
+  background: linear-gradient(135deg, #1a0f06, #0d0804);
+}
+
+body.dark-mode .tab-label {
+  color: #c4956a;
+}
+body.dark-mode .tab-sub {
+  color: rgba(196, 149, 106, 0.35);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .tab-sub {
+    display: none;
+  }
+  .tab-label {
+    font-size: 0.85rem;
+  }
+  .siklus-tab {
+    padding: 10px 8px;
+  }
+}
+
+/* ================================================================
+   ARTEFAK CARD — Layout analisis per siklus
+   ================================================================ */
+
+.siklus-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.siklus-label-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196, 149, 106, 0.3));
+}
+
+.siklus-label-line:last-child {
+  background: linear-gradient(90deg, rgba(196, 149, 106, 0.3), transparent);
+}
+
+.siklus-label-text {
+  font-family: "DM Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(196, 149, 106, 0.7);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.siklus-label-text i {
+  color: #c49a3c;
+}
+
+/* Grid artefak */
+.artefak-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Card artefak */
+.artefak-card {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(196, 149, 106, 0.22);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(59, 42, 26, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.artefak-card:hover {
+  box-shadow: 0 6px 24px rgba(59, 42, 26, 0.18);
+}
+
+body.dark-mode .artefak-card {
+  background: rgba(26, 15, 6, 0.85);
+  border-color: rgba(196, 149, 106, 0.12);
+}
+
+/* Header artefak */
+.artefak-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 28px;
+  background: linear-gradient(
+    135deg,
+    rgba(92, 61, 30, 0.06),
+    rgba(196, 149, 106, 0.04)
+  );
+  border-bottom: 1px solid rgba(196, 149, 106, 0.15);
+  position: relative;
+}
+
+.artefak-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #c49a3c, #a0522d, transparent);
+}
+
+body.dark-mode .artefak-header {
+  background: linear-gradient(
+    135deg,
+    rgba(196, 149, 106, 0.05),
+    rgba(196, 149, 106, 0.02)
+  );
+  border-bottom-color: rgba(196, 149, 106, 0.1);
+}
+
+.artefak-icon {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #5c3d1e, #3b2a1a);
+  color: #edd9b4;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(59, 42, 26, 0.2);
+}
+
+.artefak-num {
+  font-family: "DM Mono", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c49a3c;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.artefak-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #3b2a1a;
+  margin: 0;
+}
+
+body.dark-mode .artefak-title {
+  color: #edd9b4;
+}
+
+/* Grid 4 aspek */
+.artefak-aspects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+/* Setiap aspek */
+.aspect-item {
+  display: flex;
+  gap: 14px;
+  padding: 22px 28px;
+  border-right: 1px solid rgba(196, 149, 106, 0.12);
+  border-bottom: 1px solid rgba(196, 149, 106, 0.12);
+  transition: background 0.2s ease;
+}
+
+.aspect-item:hover {
+  background: rgba(196, 149, 106, 0.04);
+}
+
+/* Kelebihan & Kekurangan — full width */
+.aspect-double {
+  grid-column: 1 / 3;
+  border-right: none;
+}
+
+/* Hapus border kanan pada kolom kanan */
+.aspect-item:nth-child(2),
+.aspect-item:nth-child(4) {
+  border-right: none;
+}
+
+/* Hapus border bawah pada baris terakhir */
+.aspect-item:nth-last-child(-n + 2) {
+  border-bottom: none;
+}
+
+.aspect-double:last-child {
+  border-bottom: none;
+}
+
+body.dark-mode .aspect-item {
+  border-color: rgba(196, 149, 106, 0.08);
+}
+
+/* Icon aspek */
+.aspect-icon-wrap {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(
+    135deg,
+    rgba(196, 154, 60, 0.15),
+    rgba(196, 154, 60, 0.08)
+  );
+  border: 1px solid rgba(196, 154, 60, 0.2);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c49a3c;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Judul aspek */
+.aspect-title {
+  font-family: "Playfair Display", serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #3b2a1a;
+  margin-bottom: 8px;
+}
+
+body.dark-mode .aspect-title {
+  color: #edd9b4;
+}
+
+/* Body aspek */
+.aspect-body {
+  font-family: "Crimson Pro", serif;
+  font-size: 0.95rem;
+  color: #5c3d1e;
+  line-height: 1.75;
+  margin: 0;
+}
+
+body.dark-mode .aspect-body {
+  color: #c4956a;
+}
+
+/* ── Kelebihan & Kekurangan ── */
+.kelebihan-kekurangan {
+  display: flex;
+  gap: 0;
+  margin-top: 4px;
+}
+
+.kk-col {
+  flex: 1;
+}
+
+.kk-divider {
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(196, 149, 106, 0.3),
+    transparent
+  );
+  margin: 0 20px;
+}
+
+.kk-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-family: "DM Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.kelebihan .kk-header {
+  color: #4a5240;
+}
+.kekurangan .kk-header {
+  color: #8b3a2a;
+}
+
+.kelebihan .kk-header i {
+  color: #4a5240;
+}
+.kekurangan .kk-header i {
+  color: #8b3a2a;
+}
+
+body.dark-mode .kelebihan .kk-header {
+  color: #7a9a6a;
+}
+body.dark-mode .kekurangan .kk-header {
+  color: #c4614a;
+}
+
+.kk-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.kk-list li {
+  font-family: "Crimson Pro", serif;
+  font-size: 0.92rem;
+  color: #5c3d1e;
+  line-height: 1.55;
+  padding-left: 14px;
+  position: relative;
+}
+
+body.dark-mode .kk-list li {
+  color: #c4956a;
+}
+
+.kelebihan .kk-list li::before {
+  content: "+";
+  position: absolute;
+  left: 0;
+  color: #4a5240;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.kekurangan .kk-list li::before {
+  content: "−";
+  position: absolute;
+  left: 0;
+  color: #8b3a2a;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* ── Teori Tags ── */
+.teori-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.teori-tag-item {
+  padding: 10px 14px;
+  background: rgba(139, 94, 60, 0.05);
+  border-left: 3px solid #c49a3c;
+  border-radius: 0 4px 4px 0;
+}
+
+body.dark-mode .teori-tag-item {
+  background: rgba(196, 149, 106, 0.05);
+}
+
+.teori-tag-name {
+  display: block;
+  font-family: "DM Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #c49a3c;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.teori-tag-desc {
+  font-family: "Crimson Pro", serif;
+  font-size: 0.9rem;
+  color: #5c3d1e;
+  line-height: 1.65;
+  margin: 0;
+}
+
+body.dark-mode .teori-tag-desc {
+  color: #c4956a;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .artefak-aspects {
+    grid-template-columns: 1fr;
+  }
+  .aspect-double {
+    grid-column: 1 / 2;
+  }
+  .aspect-item {
+    border-right: none !important;
+  }
+  .aspect-item:nth-last-child(-n + 2) {
+    border-bottom: 1px solid rgba(196, 149, 106, 0.12);
+  }
+  .aspect-item:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .artefak-header {
+    padding: 16px 20px;
+  }
+  .aspect-item {
+    padding: 16px 20px;
+  }
+  .kelebihan-kekurangan {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .kk-divider {
+    width: 100%;
+    height: 1px;
+    margin: 0;
+  }
+}
