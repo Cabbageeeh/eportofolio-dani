@@ -1188,3 +1188,337 @@ body.dark-mode .teori-tag-desc {
     margin: 0;
   }
 }
+
+/* ================================================================
+   PORTO SWITCHER — LK4 / UTS / UAS
+   ================================================================ */
+
+.porto-switcher {
+  display: flex;
+  align-items: center;
+  background: rgba(139, 94, 60, 0.06);
+  border: 1px solid rgba(196, 149, 106, 0.2);
+  border-radius: 10px;
+  padding: 8px;
+  margin-bottom: 32px;
+  gap: 4px;
+  position: relative;
+}
+
+.porto-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: transparent;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.porto-btn > i {
+  font-size: 1.1rem;
+  color: rgba(139, 94, 60, 0.4);
+  transition: color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.porto-btn-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.porto-btn-label {
+  font-family: "Playfair Display", serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #8b5e3c;
+  transition: color 0.3s ease;
+  line-height: 1;
+}
+
+.porto-btn-sub {
+  font-family: "DM Mono", monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(139, 94, 60, 0.5);
+  transition: color 0.3s ease;
+}
+
+/* Aktif */
+.porto-btn.active {
+  background: linear-gradient(135deg, #5c3d1e, #3b2a1a);
+  box-shadow: 0 4px 16px rgba(59, 42, 26, 0.3);
+}
+
+.porto-btn.active > i {
+  color: #c49a3c;
+}
+.porto-btn.active .porto-btn-label {
+  color: #edd9b4;
+}
+.porto-btn.active .porto-btn-sub {
+  color: rgba(196, 149, 106, 0.65);
+}
+
+/* Hover */
+.porto-btn:hover:not(.active) {
+  background: rgba(139, 94, 60, 0.08);
+}
+
+.porto-btn:hover:not(.active) .porto-btn-label {
+  color: #5c3d1e;
+}
+.porto-btn:hover:not(.active) > i {
+  color: rgba(139, 94, 60, 0.7);
+}
+
+/* Divider */
+.porto-switcher-divider {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(196, 149, 106, 0.3),
+    transparent
+  );
+  flex-shrink: 0;
+}
+
+/* Badge indikator pada nav sub item */
+.nav-sub-badge {
+  margin-left: auto;
+  font-family: "DM Mono", monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(196, 149, 106, 0.5);
+  background: rgba(196, 149, 106, 0.08);
+  border: 1px solid rgba(196, 149, 106, 0.15);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* Porto content */
+.porto-content {
+  display: none;
+  animation: siklus-fade-in 0.4s ease forwards;
+}
+
+.porto-content.active {
+  display: block;
+}
+
+/* ── UTS Extra Aspects ── */
+.uts-extra {
+  background: rgba(139, 94, 60, 0.03);
+  border-top: 1px solid rgba(196, 149, 106, 0.1) !important;
+}
+
+.uts-icon {
+  background: linear-gradient(
+    135deg,
+    rgba(160, 82, 45, 0.2),
+    rgba(160, 82, 45, 0.1)
+  ) !important;
+  border-color: rgba(160, 82, 45, 0.25) !important;
+  color: #a0522d !important;
+}
+
+/* ── Refleksi Card UAS ── */
+.refleksi-card {
+  border-color: rgba(196, 154, 60, 0.3) !important;
+  box-shadow:
+    0 2px 8px rgba(59, 42, 26, 0.1),
+    0 0 0 1px rgba(196, 154, 60, 0.1) !important;
+}
+
+.refleksi-header {
+  background: linear-gradient(
+    135deg,
+    rgba(196, 154, 60, 0.08),
+    rgba(196, 154, 60, 0.04)
+  ) !important;
+  border-bottom-color: rgba(196, 154, 60, 0.2) !important;
+}
+
+.refleksi-header::before {
+  background: linear-gradient(90deg, #c49a3c, #edd9b4, #c49a3c) !important;
+}
+
+.refleksi-icon {
+  background: linear-gradient(135deg, #c49a3c, #8b5e3c) !important;
+}
+
+.refleksi-aspect-icon {
+  background: linear-gradient(
+    135deg,
+    rgba(196, 154, 60, 0.2),
+    rgba(196, 154, 60, 0.1)
+  ) !important;
+  border-color: rgba(196, 154, 60, 0.3) !important;
+  color: #c49a3c !important;
+}
+
+/* Nilai grid dalam refleksi */
+.nilai-grid-refleksi {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.nilai-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(196, 154, 60, 0.04);
+  border: 1px solid rgba(196, 154, 60, 0.12);
+  border-radius: 6px;
+}
+
+.nilai-icon {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(
+    135deg,
+    rgba(196, 154, 60, 0.2),
+    rgba(196, 154, 60, 0.08)
+  );
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c49a3c;
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+
+.nilai-item strong {
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-size: 0.9rem;
+  color: #3b2a1a;
+  margin-bottom: 3px;
+}
+
+body.dark-mode .nilai-item strong {
+  color: #edd9b4;
+}
+
+.nilai-item p {
+  font-family: "Crimson Pro", serif;
+  font-size: 0.88rem;
+  color: #5c3d1e;
+  line-height: 1.6;
+  margin: 0;
+}
+
+body.dark-mode .nilai-item p {
+  color: #c4956a;
+}
+
+/* ── NAV DROPDOWN ── */
+.nav-has-dropdown {
+  position: relative;
+}
+
+.nav-dropdown {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.nav-has-dropdown.open .nav-dropdown {
+  max-height: 200px;
+}
+
+.nav-sub-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 28px 9px 48px;
+  color: rgba(196, 149, 106, 0.65);
+  text-decoration: none;
+  font-family: "Crimson Pro", serif;
+  font-size: 0.88rem;
+  transition: all 0.2s ease;
+}
+
+.nav-sub-item:hover,
+.nav-sub-item.active-sub {
+  color: #edd9b4;
+  background: rgba(196, 149, 106, 0.08);
+}
+
+.nav-sub-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(196, 149, 106, 0.3);
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+
+.nav-sub-item.active-sub .nav-sub-dot {
+  background: #c49a3c;
+  box-shadow: 0 0 5px rgba(196, 154, 60, 0.6);
+}
+
+/* Arrow icon pada nav trigger */
+.nav-arrow {
+  margin-left: auto;
+  font-size: 0.6rem;
+  color: rgba(196, 149, 106, 0.4);
+  transition:
+    transform 0.3s ease,
+    color 0.2s ease;
+}
+
+.nav-has-dropdown.open .nav-arrow {
+  transform: rotate(180deg);
+  color: rgba(196, 149, 106, 0.7);
+}
+
+/* Dark mode */
+body.dark-mode .porto-switcher {
+  background: rgba(196, 149, 106, 0.04);
+  border-color: rgba(196, 149, 106, 0.12);
+}
+
+body.dark-mode .porto-btn.active {
+  background: linear-gradient(135deg, #1a0f06, #0d0804);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .porto-btn {
+    padding: 10px 8px;
+    gap: 8px;
+  }
+  .porto-btn-sub {
+    display: none;
+  }
+  .porto-btn > i {
+    font-size: 0.9rem;
+  }
+  .porto-btn-label {
+    font-size: 0.85rem;
+  }
+  .porto-switcher-divider {
+    height: 24px;
+  }
+}

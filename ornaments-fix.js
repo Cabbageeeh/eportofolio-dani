@@ -37,10 +37,116 @@ document.addEventListener("DOMContentLoaded", () => {
   initEducationAnim();
   initProfilModal();
   initMarqueeText();
+  initPortoSwitcher();
   initSiklusTab();
 
   console.log("%c ornaments-fix.js ✓", "color:#C49A3C;");
 });
+
+function initPortoSwitcher() {
+  /* ── Porto Switcher ── */
+  const portoBtns = document.querySelectorAll(".porto-btn");
+  const portoContents = document.querySelectorAll(".porto-content");
+
+  portoBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const target = btn.getAttribute("data-porto");
+
+      /* Update tombol aktif */
+      portoBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      /* Update konten aktif */
+      portoContents.forEach((c) => c.classList.remove("active"));
+      const targetContent = document.querySelector(
+        `.porto-content[data-porto="${target}"]`,
+      );
+      if (targetContent) targetContent.classList.add("active");
+
+      /* Update nav sub item aktif */
+      document.querySelectorAll(".nav-sub-item").forEach((s) => {
+        s.classList.toggle(
+          "active-sub",
+          s.getAttribute("data-portofolio") === target,
+        );
+      });
+
+      /* Reset siklus tab ke pertama */
+      const firstTab = targetContent?.querySelector(".siklus-tab");
+      if (firstTab) firstTab.click();
+
+      /* Sound */
+      if (typeof playNavHover === "function") playNavHover();
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+
+  /* ── Nav Dropdown ── */
+  const trigger = document.querySelector(".nav-dropdown-trigger");
+  const parent = trigger?.closest(".nav-has-dropdown");
+
+  if (trigger && parent) {
+    trigger.addEventListener("click", (e) => {
+      /* Jika sudah di section analisis — toggle dropdown saja */
+      const isAnalisis = document
+        .getElementById("analisis")
+        ?.classList.contains("active");
+
+      if (isAnalisis) {
+        e.preventDefault();
+        parent.classList.toggle("open");
+      } else {
+        /* Jika belum di analisis — buka section dulu */
+        setTimeout(() => parent.classList.add("open"), 500);
+      }
+    });
+  }
+
+  /* Nav sub item — klik untuk switch portofolio */
+  document.querySelectorAll(".nav-sub-item").forEach((item) => {
+    item.addEventListener("click", (e) => {
+      e.preventDefault();
+      const porto = item.getAttribute("data-portofolio");
+
+      /* Pindah ke section analisis dulu */
+      const navAnalisis = document.querySelector(
+        '.nav-item[data-section="analisis"]',
+      );
+      if (navAnalisis) navAnalisis.click();
+
+      /* Switch ke portofolio yang dipilih */
+      setTimeout(() => {
+        const targetBtn = document.querySelector(
+          `.porto-btn[data-porto="${porto}"]`,
+        );
+        if (targetBtn) targetBtn.click();
+      }, 400);
+
+      /* Tutup dropdown di mobile */
+      if (window.innerWidth <= 640) {
+        parent?.classList.remove("open");
+        if (typeof closeSidebarMobile === "function") {
+          closeSidebarMobile();
+        }
+      }
+    });
+  });
+
+  /* Tutup dropdown saat klik nav lain */
+  document
+    .querySelectorAll(".nav-item:not(.nav-dropdown-trigger)")
+    .forEach((item) => {
+      item.addEventListener("click", () => {
+        parent?.classList.remove("open");
+      });
+    });
+
+  /* Set sub item pertama aktif */
+  document.querySelector(".nav-sub-item")?.classList.add("active-sub");
+
+  console.log("%c Porto Switcher ✓", "color:#C49A3C;font-style:italic;");
+}
 
 function initSiklusTab() {
   const tabs = document.querySelectorAll(".siklus-tab");

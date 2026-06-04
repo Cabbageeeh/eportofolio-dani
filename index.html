@@ -44,11 +44,39 @@
             <span class="nav-label">Pendidikan & Pengalaman</span>
           </a>
         </li>
-        <li>
-          <a href="#analisis" class="nav-item" data-section="analisis">
+        <li class="nav-has-dropdown">
+          <a
+            href="#analisis"
+            class="nav-item nav-dropdown-trigger"
+            data-section="analisis"
+          >
             <span class="nav-icon"><i class="fas fa-microscope"></i></span>
             <span class="nav-label">Analisis Artefak</span>
+            <span class="nav-arrow"><i class="fas fa-chevron-down"></i></span>
           </a>
+          <ul class="nav-dropdown">
+            <li>
+              <a href="#analisis" class="nav-sub-item" data-portofolio="lk4">
+                <span class="nav-sub-dot"></span>
+                <span>LK 4</span>
+                <span class="nav-sub-badge">Dasar</span>
+              </a>
+            </li>
+            <li>
+              <a href="#analisis" class="nav-sub-item" data-portofolio="uts">
+                <span class="nav-sub-dot"></span>
+                <span>UTS</span>
+                <span class="nav-sub-badge">Lanjut</span>
+              </a>
+            </li>
+            <li>
+              <a href="#analisis" class="nav-sub-item" data-portofolio="uas">
+                <span class="nav-sub-dot"></span>
+                <span>UAS</span>
+                <span class="nav-sub-badge">Final</span>
+              </a>
+            </li>
+          </ul>
         </li>
         <li>
           <a href="#lampiran" class="nav-item" data-section="lampiran">
@@ -537,228 +565,146 @@
           <div class="title-line"></div>
         </div>
 
-        <!-- ══ TAB NAVIGATION SIKLUS ══ -->
-        <div class="siklus-tab-wrap">
-          <div class="siklus-tabs">
-            <button class="siklus-tab active" data-siklus="1">
-              <span class="tab-num">01</span>
-              <span class="tab-label">Siklus 1</span>
-              <span class="tab-sub">Perencanaan Awal</span>
-            </button>
-
-            <button class="siklus-tab" data-siklus="2">
-              <span class="tab-num">02</span>
-              <span class="tab-label">Siklus 2</span>
-              <span class="tab-sub">Perbaikan & Refleksi</span>
-            </button>
-
-            <button class="siklus-tab" data-siklus="3">
-              <span class="tab-num">03</span>
-              <span class="tab-label">Siklus 3</span>
-              <span class="tab-sub">Optimalisasi</span>
-            </button>
-          </div>
-          <!-- Garis indikator aktif -->
-          <div class="siklus-tab-indicator"></div>
+        <!-- ══ PORTOFOLIO SWITCHER ══ -->
+        <div class="porto-switcher">
+          <button class="porto-btn active" data-porto="lk4">
+            <i class="fas fa-file-alt"></i>
+            <div class="porto-btn-text">
+              <span class="porto-btn-label">LK 4</span>
+              <span class="porto-btn-sub">Artefak Dasar</span>
+            </div>
+          </button>
+          <div class="porto-switcher-divider"></div>
+          <button class="porto-btn" data-porto="uts">
+            <i class="fas fa-layer-group"></i>
+            <div class="porto-btn-text">
+              <span class="porto-btn-label">UTS</span>
+              <span class="porto-btn-sub">Artefak Lanjut</span>
+            </div>
+          </button>
+          <div class="porto-switcher-divider"></div>
+          <button class="porto-btn" data-porto="uas">
+            <i class="fas fa-award"></i>
+            <div class="porto-btn-text">
+              <span class="porto-btn-label">UAS</span>
+              <span class="porto-btn-sub">Artefak Final</span>
+            </div>
+          </button>
         </div>
 
-        <!-- ══ KONTEN SIKLUS 1 ══ -->
-        <!-- ══ KONTEN SIKLUS 1 ══ -->
-        <div class="siklus-content active" data-siklus="1">
-          <!-- Label siklus -->
-          <div class="siklus-label">
-            <div class="siklus-label-line"></div>
-            <span class="siklus-label-text">
-              <i class="fas fa-sync-alt"></i>
-              Siklus 1 — Perencanaan Awal
-            </span>
-            <div class="siklus-label-line"></div>
+        <!-- ══ KONTEN LK 4 ══ -->
+        <div class="porto-content active" data-porto="lk4">
+          <!-- Tab Siklus -->
+          <div class="siklus-tab-wrap">
+            <div class="siklus-tabs">
+              <button class="siklus-tab active" data-siklus="lk4-1">
+                <span class="tab-num">01</span>
+                <span class="tab-label">Siklus 1</span>
+                <span class="tab-sub">Perencanaan Awal</span>
+              </button>
+              <button class="siklus-tab" data-siklus="lk4-2">
+                <span class="tab-num">02</span>
+                <span class="tab-label">Siklus 2</span>
+                <span class="tab-sub">Perbaikan</span>
+              </button>
+              <button class="siklus-tab" data-siklus="lk4-3">
+                <span class="tab-num">03</span>
+                <span class="tab-label">Siklus 3</span>
+                <span class="tab-sub">Optimalisasi</span>
+              </button>
+            </div>
           </div>
 
-          <!-- Grid artefak -->
-          <div class="artefak-grid">
-            <!-- ARTEFAK 1 — contoh RPP -->
-            <div class="artefak-card">
-              <!-- Header artefak -->
-              <div class="artefak-header">
-                <div class="artefak-icon">
-                  <i class="fas fa-file-alt"></i>
-                </div>
-                <div class="artefak-title-wrap">
-                  <span class="artefak-num">Artefak 01</span>
-                  <h3 class="artefak-title">[ Nama Artefak — misal: RPP ]</h3>
-                </div>
-              </div>
-
-              <!-- 4 Aspek Analisis -->
-              <div class="artefak-aspects">
-                <!-- Konteks -->
-                <div class="aspect-item">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-map-marker-alt"></i>
-                  </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Konteks</h4>
-                    <p class="aspect-body">
-                      [ Jelaskan konteks artefak ini — di kelas mana, mata
-                      pelajaran apa, kondisi siswa, dan situasi pembelajaran
-                      saat artefak ini digunakan pada siklus 1. ]
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Tujuan -->
-                <div class="aspect-item">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-bullseye"></i>
-                  </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Tujuan</h4>
-                    <p class="aspect-body">
-                      [ Jelaskan tujuan dibuatnya artefak ini — apa yang ingin
-                      dicapai, kompetensi apa yang ingin dikembangkan, dan
-                      indikator keberhasilan yang diharapkan. ]
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Kelebihan & Kekurangan -->
-                <div class="aspect-item aspect-double">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-balance-scale"></i>
-                  </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Kelebihan & Kekurangan</h4>
-                    <div class="kelebihan-kekurangan">
-                      <div class="kk-col kelebihan">
-                        <div class="kk-header">
-                          <i class="fas fa-plus-circle"></i>
-                          <span>Kelebihan</span>
-                        </div>
-                        <ul class="kk-list">
-                          <li>[ Kelebihan artefak 1 ]</li>
-                          <li>[ Kelebihan artefak 2 ]</li>
-                          <li>[ Kelebihan artefak 3 ]</li>
-                        </ul>
-                      </div>
-                      <div class="kk-divider"></div>
-                      <div class="kk-col kekurangan">
-                        <div class="kk-header">
-                          <i class="fas fa-minus-circle"></i>
-                          <span>Kekurangan</span>
-                        </div>
-                        <ul class="kk-list">
-                          <li>[ Kekurangan artefak 1 ]</li>
-                          <li>[ Kekurangan artefak 2 ]</li>
-                          <li>[ Kekurangan artefak 3 ]</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Teori yang Digunakan -->
-                <div class="aspect-item">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-book-open"></i>
-                  </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Teori yang Digunakan</h4>
-                    <div class="teori-tags">
-                      <div class="teori-tag-item">
-                        <span class="teori-tag-name">[ Nama Teori 1 ]</span>
-                        <p class="teori-tag-desc">
-                          [ Jelaskan bagaimana teori ini diterapkan dalam
-                          artefak pada siklus 1. ]
-                        </p>
-                      </div>
-                      <div class="teori-tag-item">
-                        <span class="teori-tag-name">[ Nama Teori 2 ]</span>
-                        <p class="teori-tag-desc">
-                          [ Jelaskan relevansi teori kedua dengan artefak. ]
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <!-- Siklus 1 LK4 -->
+          <div class="siklus-content active" data-siklus="lk4-1">
+            <div class="siklus-label">
+              <div class="siklus-label-line"></div>
+              <span class="siklus-label-text">
+                <i class="fas fa-sync-alt"></i>
+                LK 4 — Siklus 1
+              </span>
+              <div class="siklus-label-line"></div>
             </div>
-
-            <!-- ARTEFAK 2 — tambah jika ada lebih dari 1 artefak per siklus -->
-            <div class="artefak-card">
-              <div class="artefak-header">
-                <div class="artefak-icon">
-                  <i class="fas fa-tasks"></i>
-                </div>
-                <div class="artefak-title-wrap">
-                  <span class="artefak-num">Artefak 02</span>
-                  <h3 class="artefak-title">[ Nama Artefak — misal: LKPD ]</h3>
-                </div>
-              </div>
-
-              <div class="artefak-aspects">
-                <div class="aspect-item">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-map-marker-alt"></i>
+            <div class="artefak-grid">
+              <div class="artefak-card">
+                <div class="artefak-header">
+                  <div class="artefak-icon">
+                    <i class="fas fa-file-alt"></i>
                   </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Konteks</h4>
-                    <p class="aspect-body">[ Konteks artefak 2 siklus 1. ]</p>
+                  <div class="artefak-title-wrap">
+                    <span class="artefak-num">Artefak 01</span>
+                    <h3 class="artefak-title">[ Nama Artefak — misal: RPP ]</h3>
                   </div>
                 </div>
-
-                <div class="aspect-item">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-bullseye"></i>
+                <div class="artefak-aspects">
+                  <div class="aspect-item">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Konteks</h4>
+                      <p class="aspect-body">
+                        [ Konteks artefak LK4 Siklus 1 ]
+                      </p>
+                    </div>
                   </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Tujuan</h4>
-                    <p class="aspect-body">[ Tujuan artefak 2 siklus 1. ]</p>
+                  <div class="aspect-item">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-bullseye"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Tujuan</h4>
+                      <p class="aspect-body">[ Tujuan artefak LK4 Siklus 1 ]</p>
+                    </div>
                   </div>
-                </div>
-
-                <div class="aspect-item aspect-double">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-balance-scale"></i>
-                  </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Kelebihan & Kekurangan</h4>
-                    <div class="kelebihan-kekurangan">
-                      <div class="kk-col kelebihan">
-                        <div class="kk-header">
-                          <i class="fas fa-plus-circle"></i>
-                          <span>Kelebihan</span>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Kelebihan & Kekurangan</h4>
+                      <div class="kelebihan-kekurangan">
+                        <div class="kk-col kelebihan">
+                          <div class="kk-header">
+                            <i class="fas fa-plus-circle"></i
+                            ><span>Kelebihan</span>
+                          </div>
+                          <ul class="kk-list">
+                            <li>[ Kelebihan 1 ]</li>
+                            <li>[ Kelebihan 2 ]</li>
+                            <li>[ Kelebihan 3 ]</li>
+                          </ul>
                         </div>
-                        <ul class="kk-list">
-                          <li>[ Kelebihan 1 ]</li>
-                          <li>[ Kelebihan 2 ]</li>
-                        </ul>
-                      </div>
-                      <div class="kk-divider"></div>
-                      <div class="kk-col kekurangan">
-                        <div class="kk-header">
-                          <i class="fas fa-minus-circle"></i>
-                          <span>Kekurangan</span>
+                        <div class="kk-divider"></div>
+                        <div class="kk-col kekurangan">
+                          <div class="kk-header">
+                            <i class="fas fa-minus-circle"></i
+                            ><span>Kekurangan</span>
+                          </div>
+                          <ul class="kk-list">
+                            <li>[ Kekurangan 1 ]</li>
+                            <li>[ Kekurangan 2 ]</li>
+                            <li>[ Kekurangan 3 ]</li>
+                          </ul>
                         </div>
-                        <ul class="kk-list">
-                          <li>[ Kekurangan 1 ]</li>
-                          <li>[ Kekurangan 2 ]</li>
-                        </ul>
                       </div>
                     </div>
                   </div>
-                </div>
-
-                <div class="aspect-item">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-book-open"></i>
-                  </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Teori yang Digunakan</h4>
-                    <div class="teori-tags">
-                      <div class="teori-tag-item">
-                        <span class="teori-tag-name">[ Nama Teori ]</span>
-                        <p class="teori-tag-desc">[ Deskripsi teori. ]</p>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Teori yang Digunakan</h4>
+                      <div class="teori-tags">
+                        <div class="teori-tag-item">
+                          <span class="teori-tag-name">[ Nama Teori 1 ]</span>
+                          <p class="teori-tag-desc">[ Deskripsi teori 1 ]</p>
+                        </div>
+                        <div class="teori-tag-item">
+                          <span class="teori-tag-name">[ Nama Teori 2 ]</span>
+                          <p class="teori-tag-desc">[ Deskripsi teori 2 ]</p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -766,204 +712,177 @@
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- ══ KONTEN SIKLUS 2 ══ -->
-        <div class="siklus-content active" data-siklus="2">
-          <!-- Label siklus -->
-          <div class="siklus-label">
-            <div class="siklus-label-line"></div>
-            <span class="siklus-label-text">
-              <i class="fas fa-sync-alt"></i>
-              Siklus 2 — Perbaikan & Refleksi
-            </span>
-            <div class="siklus-label-line"></div>
-          </div>
-
-          <!-- Grid artefak -->
-          <div class="artefak-grid">
-            <!-- ARTEFAK 1 — contoh RPP -->
-            <div class="artefak-card">
-              <!-- Header artefak -->
-              <div class="artefak-header">
-                <div class="artefak-icon">
-                  <i class="fas fa-file-alt"></i>
-                </div>
-                <div class="artefak-title-wrap">
-                  <span class="artefak-num">Artefak 01</span>
-                  <h3 class="artefak-title">[ Nama Artefak — misal: RPP ]</h3>
-                </div>
-              </div>
-
-              <!-- 4 Aspek Analisis -->
-              <div class="artefak-aspects">
-                <!-- Konteks -->
-                <div class="aspect-item">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-map-marker-alt"></i>
+          <!-- Siklus 2 LK4 — duplikat Siklus 1, ganti data-siklus="lk4-2" -->
+          <div class="siklus-content" data-siklus="lk4-2">
+            <div class="siklus-label">
+              <div class="siklus-label-line"></div>
+              <span class="siklus-label-text"
+                ><i class="fas fa-sync-alt"></i> LK 4 — Siklus 2</span
+              >
+              <div class="siklus-label-line"></div>
+            </div>
+            <div class="artefak-grid">
+              <div class="artefak-card">
+                <div class="artefak-header">
+                  <div class="artefak-icon">
+                    <i class="fas fa-file-alt"></i>
                   </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Konteks</h4>
-                    <p class="aspect-body">
-                      [ Jelaskan konteks artefak ini — di kelas mana, mata
-                      pelajaran apa, kondisi siswa, dan situasi pembelajaran
-                      saat artefak ini digunakan pada siklus 1. ]
-                    </p>
+                  <div class="artefak-title-wrap">
+                    <span class="artefak-num">Artefak 01</span>
+                    <h3 class="artefak-title">[ Nama Artefak Siklus 2 ]</h3>
                   </div>
                 </div>
-
-                <!-- Tujuan -->
-                <div class="aspect-item">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-bullseye"></i>
+                <div class="artefak-aspects">
+                  <div class="aspect-item">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Konteks</h4>
+                      <p class="aspect-body">[ Konteks LK4 Siklus 2 ]</p>
+                    </div>
                   </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Tujuan</h4>
-                    <p class="aspect-body">
-                      [ Jelaskan tujuan dibuatnya artefak ini — apa yang ingin
-                      dicapai, kompetensi apa yang ingin dikembangkan, dan
-                      indikator keberhasilan yang diharapkan. ]
-                    </p>
+                  <div class="aspect-item">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-bullseye"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Tujuan</h4>
+                      <p class="aspect-body">[ Tujuan LK4 Siklus 2 ]</p>
+                    </div>
                   </div>
-                </div>
-
-                <!-- Kelebihan & Kekurangan -->
-                <div class="aspect-item aspect-double">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-balance-scale"></i>
-                  </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Kelebihan & Kekurangan</h4>
-                    <div class="kelebihan-kekurangan">
-                      <div class="kk-col kelebihan">
-                        <div class="kk-header">
-                          <i class="fas fa-plus-circle"></i>
-                          <span>Kelebihan</span>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Kelebihan & Kekurangan</h4>
+                      <div class="kelebihan-kekurangan">
+                        <div class="kk-col kelebihan">
+                          <div class="kk-header">
+                            <i class="fas fa-plus-circle"></i
+                            ><span>Kelebihan</span>
+                          </div>
+                          <ul class="kk-list">
+                            <li>[ Kelebihan 1 ]</li>
+                            <li>[ Kelebihan 2 ]</li>
+                          </ul>
                         </div>
-                        <ul class="kk-list">
-                          <li>[ Kelebihan artefak 1 ]</li>
-                          <li>[ Kelebihan artefak 2 ]</li>
-                          <li>[ Kelebihan artefak 3 ]</li>
-                        </ul>
-                      </div>
-                      <div class="kk-divider"></div>
-                      <div class="kk-col kekurangan">
-                        <div class="kk-header">
-                          <i class="fas fa-minus-circle"></i>
-                          <span>Kekurangan</span>
+                        <div class="kk-divider"></div>
+                        <div class="kk-col kekurangan">
+                          <div class="kk-header">
+                            <i class="fas fa-minus-circle"></i
+                            ><span>Kekurangan</span>
+                          </div>
+                          <ul class="kk-list">
+                            <li>[ Kekurangan 1 ]</li>
+                            <li>[ Kekurangan 2 ]</li>
+                          </ul>
                         </div>
-                        <ul class="kk-list">
-                          <li>[ Kekurangan artefak 1 ]</li>
-                          <li>[ Kekurangan artefak 2 ]</li>
-                          <li>[ Kekurangan artefak 3 ]</li>
-                        </ul>
                       </div>
                     </div>
                   </div>
-                </div>
-
-                <!-- Teori yang Digunakan -->
-                <div class="aspect-item">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-book-open"></i>
-                  </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Teori yang Digunakan</h4>
-                    <div class="teori-tags">
-                      <div class="teori-tag-item">
-                        <span class="teori-tag-name">[ Nama Teori 1 ]</span>
-                        <p class="teori-tag-desc">
-                          [ Jelaskan bagaimana teori ini diterapkan dalam
-                          artefak pada siklus 1. ]
-                        </p>
-                      </div>
-                      <div class="teori-tag-item">
-                        <span class="teori-tag-name">[ Nama Teori 2 ]</span>
-                        <p class="teori-tag-desc">
-                          [ Jelaskan relevansi teori kedua dengan artefak. ]
-                        </p>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Teori yang Digunakan</h4>
+                      <div class="teori-tags">
+                        <div class="teori-tag-item">
+                          <span class="teori-tag-name">[ Nama Teori ]</span>
+                          <p class="teori-tag-desc">[ Deskripsi ]</p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            <!-- ARTEFAK 2 — tambah jika ada lebih dari 1 artefak per siklus -->
-            <div class="artefak-card">
-              <div class="artefak-header">
-                <div class="artefak-icon">
-                  <i class="fas fa-tasks"></i>
-                </div>
-                <div class="artefak-title-wrap">
-                  <span class="artefak-num">Artefak 02</span>
-                  <h3 class="artefak-title">[ Nama Artefak — misal: LKPD ]</h3>
-                </div>
-              </div>
-
-              <div class="artefak-aspects">
-                <div class="aspect-item">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-map-marker-alt"></i>
+          <!-- Siklus 3 LK4 -->
+          <div class="siklus-content" data-siklus="lk4-3">
+            <div class="siklus-label">
+              <div class="siklus-label-line"></div>
+              <span class="siklus-label-text"
+                ><i class="fas fa-sync-alt"></i> LK 4 — Siklus 3</span
+              >
+              <div class="siklus-label-line"></div>
+            </div>
+            <div class="artefak-grid">
+              <div class="artefak-card">
+                <div class="artefak-header">
+                  <div class="artefak-icon">
+                    <i class="fas fa-file-alt"></i>
                   </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Konteks</h4>
-                    <p class="aspect-body">[ Konteks artefak 2 siklus 1. ]</p>
-                  </div>
-                </div>
-
-                <div class="aspect-item">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-bullseye"></i>
-                  </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Tujuan</h4>
-                    <p class="aspect-body">[ Tujuan artefak 2 siklus 1. ]</p>
+                  <div class="artefak-title-wrap">
+                    <span class="artefak-num">Artefak 01</span>
+                    <h3 class="artefak-title">[ Nama Artefak Siklus 3 ]</h3>
                   </div>
                 </div>
-
-                <div class="aspect-item aspect-double">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-balance-scale"></i>
+                <div class="artefak-aspects">
+                  <div class="aspect-item">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Konteks</h4>
+                      <p class="aspect-body">[ Konteks LK4 Siklus 3 ]</p>
+                    </div>
                   </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Kelebihan & Kekurangan</h4>
-                    <div class="kelebihan-kekurangan">
-                      <div class="kk-col kelebihan">
-                        <div class="kk-header">
-                          <i class="fas fa-plus-circle"></i>
-                          <span>Kelebihan</span>
+                  <div class="aspect-item">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-bullseye"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Tujuan</h4>
+                      <p class="aspect-body">[ Tujuan LK4 Siklus 3 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Kelebihan & Kekurangan</h4>
+                      <div class="kelebihan-kekurangan">
+                        <div class="kk-col kelebihan">
+                          <div class="kk-header">
+                            <i class="fas fa-plus-circle"></i
+                            ><span>Kelebihan</span>
+                          </div>
+                          <ul class="kk-list">
+                            <li>[ Kelebihan 1 ]</li>
+                            <li>[ Kelebihan 2 ]</li>
+                          </ul>
                         </div>
-                        <ul class="kk-list">
-                          <li>[ Kelebihan 1 ]</li>
-                          <li>[ Kelebihan 2 ]</li>
-                        </ul>
-                      </div>
-                      <div class="kk-divider"></div>
-                      <div class="kk-col kekurangan">
-                        <div class="kk-header">
-                          <i class="fas fa-minus-circle"></i>
-                          <span>Kekurangan</span>
+                        <div class="kk-divider"></div>
+                        <div class="kk-col kekurangan">
+                          <div class="kk-header">
+                            <i class="fas fa-minus-circle"></i
+                            ><span>Kekurangan</span>
+                          </div>
+                          <ul class="kk-list">
+                            <li>[ Kekurangan 1 ]</li>
+                            <li>[ Kekurangan 2 ]</li>
+                          </ul>
                         </div>
-                        <ul class="kk-list">
-                          <li>[ Kekurangan 1 ]</li>
-                          <li>[ Kekurangan 2 ]</li>
-                        </ul>
                       </div>
                     </div>
                   </div>
-                </div>
-
-                <div class="aspect-item">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-book-open"></i>
-                  </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Teori yang Digunakan</h4>
-                    <div class="teori-tags">
-                      <div class="teori-tag-item">
-                        <span class="teori-tag-name">[ Nama Teori ]</span>
-                        <p class="teori-tag-desc">[ Deskripsi teori. ]</p>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Teori yang Digunakan</h4>
+                      <div class="teori-tags">
+                        <div class="teori-tag-item">
+                          <span class="teori-tag-name">[ Nama Teori ]</span>
+                          <p class="teori-tag-desc">[ Deskripsi ]</p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -973,202 +892,961 @@
           </div>
         </div>
 
-        <!-- ══ KONTEN SIKLUS 3 ══ -->
-        <div class="siklus-content active" data-siklus="3">
-          <!-- Label siklus -->
-          <div class="siklus-label">
-            <div class="siklus-label-line"></div>
-            <span class="siklus-label-text">
-              <i class="fas fa-sync-alt"></i>
-              Siklus 3 — Optimalisasi
-            </span>
-            <div class="siklus-label-line"></div>
+        <!-- ══ KONTEN UTS ══ -->
+        <div class="porto-content" data-porto="uts">
+          <div class="siklus-tab-wrap">
+            <div class="siklus-tabs">
+              <button class="siklus-tab active" data-siklus="uts-1">
+                <span class="tab-num">01</span>
+                <span class="tab-label">Siklus 1</span>
+                <span class="tab-sub">Perencanaan Awal</span>
+              </button>
+              <button class="siklus-tab" data-siklus="uts-2">
+                <span class="tab-num">02</span>
+                <span class="tab-label">Siklus 2</span>
+                <span class="tab-sub">Perbaikan</span>
+              </button>
+              <button class="siklus-tab" data-siklus="uts-3">
+                <span class="tab-num">03</span>
+                <span class="tab-label">Siklus 3</span>
+                <span class="tab-sub">Optimalisasi</span>
+              </button>
+            </div>
           </div>
 
-          <!-- Grid artefak -->
-          <div class="artefak-grid">
-            <!-- ARTEFAK 1 — contoh RPP -->
-            <div class="artefak-card">
-              <!-- Header artefak -->
-              <div class="artefak-header">
-                <div class="artefak-icon">
-                  <i class="fas fa-file-alt"></i>
-                </div>
-                <div class="artefak-title-wrap">
-                  <span class="artefak-num">Artefak 01</span>
-                  <h3 class="artefak-title">[ Nama Artefak — misal: RPP ]</h3>
-                </div>
-              </div>
-
-              <!-- 4 Aspek Analisis -->
-              <div class="artefak-aspects">
-                <!-- Konteks -->
-                <div class="aspect-item">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-map-marker-alt"></i>
+          <!-- Siklus 1 UTS -->
+          <div class="siklus-content active" data-siklus="uts-1">
+            <div class="siklus-label">
+              <div class="siklus-label-line"></div>
+              <span class="siklus-label-text"
+                ><i class="fas fa-sync-alt"></i> UTS — Siklus 1</span
+              >
+              <div class="siklus-label-line"></div>
+            </div>
+            <div class="artefak-grid">
+              <div class="artefak-card">
+                <div class="artefak-header">
+                  <div class="artefak-icon">
+                    <i class="fas fa-file-alt"></i>
                   </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Konteks</h4>
-                    <p class="aspect-body">
-                      [ Jelaskan konteks artefak ini — di kelas mana, mata
-                      pelajaran apa, kondisi siswa, dan situasi pembelajaran
-                      saat artefak ini digunakan pada siklus 1. ]
-                    </p>
+                  <div class="artefak-title-wrap">
+                    <span class="artefak-num">Artefak 01</span>
+                    <h3 class="artefak-title">[ Nama Artefak UTS Siklus 1 ]</h3>
                   </div>
                 </div>
-
-                <!-- Tujuan -->
-                <div class="aspect-item">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-bullseye"></i>
+                <div class="artefak-aspects">
+                  <!-- Aspek LK4 -->
+                  <div class="aspect-item">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Konteks</h4>
+                      <p class="aspect-body">[ Konteks UTS Siklus 1 ]</p>
+                    </div>
                   </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Tujuan</h4>
-                    <p class="aspect-body">
-                      [ Jelaskan tujuan dibuatnya artefak ini — apa yang ingin
-                      dicapai, kompetensi apa yang ingin dikembangkan, dan
-                      indikator keberhasilan yang diharapkan. ]
-                    </p>
+                  <div class="aspect-item">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-bullseye"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Tujuan</h4>
+                      <p class="aspect-body">[ Tujuan UTS Siklus 1 ]</p>
+                    </div>
                   </div>
-                </div>
-
-                <!-- Kelebihan & Kekurangan -->
-                <div class="aspect-item aspect-double">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-balance-scale"></i>
-                  </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Kelebihan & Kekurangan</h4>
-                    <div class="kelebihan-kekurangan">
-                      <div class="kk-col kelebihan">
-                        <div class="kk-header">
-                          <i class="fas fa-plus-circle"></i>
-                          <span>Kelebihan</span>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Kelebihan & Kekurangan</h4>
+                      <div class="kelebihan-kekurangan">
+                        <div class="kk-col kelebihan">
+                          <div class="kk-header">
+                            <i class="fas fa-plus-circle"></i
+                            ><span>Kelebihan</span>
+                          </div>
+                          <ul class="kk-list">
+                            <li>[ Kelebihan 1 ]</li>
+                            <li>[ Kelebihan 2 ]</li>
+                          </ul>
                         </div>
-                        <ul class="kk-list">
-                          <li>[ Kelebihan artefak 1 ]</li>
-                          <li>[ Kelebihan artefak 2 ]</li>
-                          <li>[ Kelebihan artefak 3 ]</li>
-                        </ul>
-                      </div>
-                      <div class="kk-divider"></div>
-                      <div class="kk-col kekurangan">
-                        <div class="kk-header">
-                          <i class="fas fa-minus-circle"></i>
-                          <span>Kekurangan</span>
+                        <div class="kk-divider"></div>
+                        <div class="kk-col kekurangan">
+                          <div class="kk-header">
+                            <i class="fas fa-minus-circle"></i
+                            ><span>Kekurangan</span>
+                          </div>
+                          <ul class="kk-list">
+                            <li>[ Kekurangan 1 ]</li>
+                            <li>[ Kekurangan 2 ]</li>
+                          </ul>
                         </div>
-                        <ul class="kk-list">
-                          <li>[ Kekurangan artefak 1 ]</li>
-                          <li>[ Kekurangan artefak 2 ]</li>
-                          <li>[ Kekurangan artefak 3 ]</li>
-                        </ul>
                       </div>
                     </div>
                   </div>
-                </div>
-
-                <!-- Teori yang Digunakan -->
-                <div class="aspect-item">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-book-open"></i>
-                  </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Teori yang Digunakan</h4>
-                    <div class="teori-tags">
-                      <div class="teori-tag-item">
-                        <span class="teori-tag-name">[ Nama Teori 1 ]</span>
-                        <p class="teori-tag-desc">
-                          [ Jelaskan bagaimana teori ini diterapkan dalam
-                          artefak pada siklus 1. ]
-                        </p>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Teori yang Digunakan</h4>
+                      <div class="teori-tags">
+                        <div class="teori-tag-item">
+                          <span class="teori-tag-name">[ Nama Teori ]</span>
+                          <p class="teori-tag-desc">[ Deskripsi ]</p>
+                        </div>
                       </div>
-                      <div class="teori-tag-item">
-                        <span class="teori-tag-name">[ Nama Teori 2 ]</span>
-                        <p class="teori-tag-desc">
-                          [ Jelaskan relevansi teori kedua dengan artefak. ]
-                        </p>
+                    </div>
+                  </div>
+
+                  <!-- Aspek Tambahan UTS -->
+                  <div class="aspect-item uts-extra">
+                    <div class="aspect-icon-wrap uts-icon">
+                      <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Kendala</h4>
+                      <p class="aspect-body">
+                        [ Kendala yang dihadapi pada UTS Siklus 1 ]
+                      </p>
+                    </div>
+                  </div>
+                  <div class="aspect-item uts-extra">
+                    <div class="aspect-icon-wrap uts-icon">
+                      <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Faktor Keberhasilan</h4>
+                      <p class="aspect-body">
+                        [ Faktor yang mendukung keberhasilan UTS Siklus 1 ]
+                      </p>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double uts-extra">
+                    <div class="aspect-icon-wrap uts-icon">
+                      <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">
+                        RPP Fleksibel di Kelas Berbeda
+                      </h4>
+                      <p class="aspect-body">
+                        [ Jelaskan bagaimana RPP diadaptasi untuk konteks kelas
+                        yang berbeda — perbedaan karakteristik siswa, kondisi
+                        ruang, atau ketersediaan media. ]
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Siklus 2 UTS -->
+          <div class="siklus-content" data-siklus="uts-2">
+            <div class="siklus-label">
+              <div class="siklus-label-line"></div>
+              <span class="siklus-label-text"
+                ><i class="fas fa-sync-alt"></i> UTS — Siklus 2</span
+              >
+              <div class="siklus-label-line"></div>
+            </div>
+            <div class="artefak-grid">
+              <div class="artefak-card">
+                <div class="artefak-header">
+                  <div class="artefak-icon">
+                    <i class="fas fa-file-alt"></i>
+                  </div>
+                  <div class="artefak-title-wrap">
+                    <span class="artefak-num">Artefak 01</span>
+                    <h3 class="artefak-title">[ Nama Artefak UTS Siklus 2 ]</h3>
+                  </div>
+                </div>
+                <div class="artefak-aspects">
+                  <div class="aspect-item">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Konteks</h4>
+                      <p class="aspect-body">[ Konteks UTS Siklus 2 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-bullseye"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Tujuan</h4>
+                      <p class="aspect-body">[ Tujuan UTS Siklus 2 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Kelebihan & Kekurangan</h4>
+                      <div class="kelebihan-kekurangan">
+                        <div class="kk-col kelebihan">
+                          <div class="kk-header">
+                            <i class="fas fa-plus-circle"></i
+                            ><span>Kelebihan</span>
+                          </div>
+                          <ul class="kk-list">
+                            <li>[ Kelebihan 1 ]</li>
+                            <li>[ Kelebihan 2 ]</li>
+                          </ul>
+                        </div>
+                        <div class="kk-divider"></div>
+                        <div class="kk-col kekurangan">
+                          <div class="kk-header">
+                            <i class="fas fa-minus-circle"></i
+                            ><span>Kekurangan</span>
+                          </div>
+                          <ul class="kk-list">
+                            <li>[ Kekurangan 1 ]</li>
+                            <li>[ Kekurangan 2 ]</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Teori yang Digunakan</h4>
+                      <div class="teori-tags">
+                        <div class="teori-tag-item">
+                          <span class="teori-tag-name">[ Teori ]</span>
+                          <p class="teori-tag-desc">[ Deskripsi ]</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="aspect-item uts-extra">
+                    <div class="aspect-icon-wrap uts-icon">
+                      <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Kendala</h4>
+                      <p class="aspect-body">[ Kendala UTS Siklus 2 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item uts-extra">
+                    <div class="aspect-icon-wrap uts-icon">
+                      <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Faktor Keberhasilan</h4>
+                      <p class="aspect-body">[ Faktor UTS Siklus 2 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double uts-extra">
+                    <div class="aspect-icon-wrap uts-icon">
+                      <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">
+                        RPP Fleksibel di Kelas Berbeda
+                      </h4>
+                      <p class="aspect-body">[ RPP Fleksibel UTS Siklus 2 ]</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Siklus 3 UTS -->
+          <div class="siklus-content" data-siklus="uts-3">
+            <div class="siklus-label">
+              <div class="siklus-label-line"></div>
+              <span class="siklus-label-text"
+                ><i class="fas fa-sync-alt"></i> UTS — Siklus 3</span
+              >
+              <div class="siklus-label-line"></div>
+            </div>
+            <div class="artefak-grid">
+              <div class="artefak-card">
+                <div class="artefak-header">
+                  <div class="artefak-icon">
+                    <i class="fas fa-file-alt"></i>
+                  </div>
+                  <div class="artefak-title-wrap">
+                    <span class="artefak-num">Artefak 01</span>
+                    <h3 class="artefak-title">[ Nama Artefak UTS Siklus 3 ]</h3>
+                  </div>
+                </div>
+                <div class="artefak-aspects">
+                  <div class="aspect-item">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Konteks</h4>
+                      <p class="aspect-body">[ Konteks UTS Siklus 3 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-bullseye"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Tujuan</h4>
+                      <p class="aspect-body">[ Tujuan UTS Siklus 3 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Kelebihan & Kekurangan</h4>
+                      <div class="kelebihan-kekurangan">
+                        <div class="kk-col kelebihan">
+                          <div class="kk-header">
+                            <i class="fas fa-plus-circle"></i
+                            ><span>Kelebihan</span>
+                          </div>
+                          <ul class="kk-list">
+                            <li>[ Kelebihan 1 ]</li>
+                            <li>[ Kelebihan 2 ]</li>
+                          </ul>
+                        </div>
+                        <div class="kk-divider"></div>
+                        <div class="kk-col kekurangan">
+                          <div class="kk-header">
+                            <i class="fas fa-minus-circle"></i
+                            ><span>Kekurangan</span>
+                          </div>
+                          <ul class="kk-list">
+                            <li>[ Kekurangan 1 ]</li>
+                            <li>[ Kekurangan 2 ]</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Teori yang Digunakan</h4>
+                      <div class="teori-tags">
+                        <div class="teori-tag-item">
+                          <span class="teori-tag-name">[ Teori ]</span>
+                          <p class="teori-tag-desc">[ Deskripsi ]</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="aspect-item uts-extra">
+                    <div class="aspect-icon-wrap uts-icon">
+                      <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Kendala</h4>
+                      <p class="aspect-body">[ Kendala UTS Siklus 3 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item uts-extra">
+                    <div class="aspect-icon-wrap uts-icon">
+                      <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Faktor Keberhasilan</h4>
+                      <p class="aspect-body">[ Faktor UTS Siklus 3 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double uts-extra">
+                    <div class="aspect-icon-wrap uts-icon">
+                      <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">
+                        RPP Fleksibel di Kelas Berbeda
+                      </h4>
+                      <p class="aspect-body">[ RPP Fleksibel UTS Siklus 3 ]</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ KONTEN UAS ══ -->
+        <div class="porto-content" data-porto="uas">
+          <div class="siklus-tab-wrap">
+            <div class="siklus-tabs">
+              <button class="siklus-tab active" data-siklus="uas-1">
+                <span class="tab-num">01</span>
+                <span class="tab-label">Siklus 1</span>
+                <span class="tab-sub">Perencanaan Awal</span>
+              </button>
+              <button class="siklus-tab" data-siklus="uas-2">
+                <span class="tab-num">02</span>
+                <span class="tab-label">Siklus 2</span>
+                <span class="tab-sub">Perbaikan</span>
+              </button>
+              <button class="siklus-tab" data-siklus="uas-3">
+                <span class="tab-num">03</span>
+                <span class="tab-label">Siklus 3</span>
+                <span class="tab-sub">Optimalisasi</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Siklus 1 UAS -->
+          <div class="siklus-content active" data-siklus="uas-1">
+            <div class="siklus-label">
+              <div class="siklus-label-line"></div>
+              <span class="siklus-label-text"
+                ><i class="fas fa-sync-alt"></i> UAS — Siklus 1</span
+              >
+              <div class="siklus-label-line"></div>
+            </div>
+            <div class="artefak-grid">
+              <div class="artefak-card">
+                <div class="artefak-header">
+                  <div class="artefak-icon">
+                    <i class="fas fa-file-alt"></i>
+                  </div>
+                  <div class="artefak-title-wrap">
+                    <span class="artefak-num">Artefak 01</span>
+                    <h3 class="artefak-title">[ Nama Artefak UAS Siklus 1 ]</h3>
+                  </div>
+                </div>
+                <div class="artefak-aspects">
+                  <div class="aspect-item">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Konteks</h4>
+                      <p class="aspect-body">[ Konteks UAS Siklus 1 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-bullseye"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Tujuan</h4>
+                      <p class="aspect-body">[ Tujuan UAS Siklus 1 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Kelebihan & Kekurangan</h4>
+                      <div class="kelebihan-kekurangan">
+                        <div class="kk-col kelebihan">
+                          <div class="kk-header">
+                            <i class="fas fa-plus-circle"></i
+                            ><span>Kelebihan</span>
+                          </div>
+                          <ul class="kk-list">
+                            <li>[ Kelebihan 1 ]</li>
+                            <li>[ Kelebihan 2 ]</li>
+                          </ul>
+                        </div>
+                        <div class="kk-divider"></div>
+                        <div class="kk-col kekurangan">
+                          <div class="kk-header">
+                            <i class="fas fa-minus-circle"></i
+                            ><span>Kekurangan</span>
+                          </div>
+                          <ul class="kk-list">
+                            <li>[ Kekurangan 1 ]</li>
+                            <li>[ Kekurangan 2 ]</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Teori yang Digunakan</h4>
+                      <div class="teori-tags">
+                        <div class="teori-tag-item">
+                          <span class="teori-tag-name">[ Teori ]</span>
+                          <p class="teori-tag-desc">[ Deskripsi ]</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="aspect-item uts-extra">
+                    <div class="aspect-icon-wrap uts-icon">
+                      <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Kendala</h4>
+                      <p class="aspect-body">[ Kendala UAS Siklus 1 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item uts-extra">
+                    <div class="aspect-icon-wrap uts-icon">
+                      <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Faktor Keberhasilan</h4>
+                      <p class="aspect-body">[ Faktor UAS Siklus 1 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double uts-extra">
+                    <div class="aspect-icon-wrap uts-icon">
+                      <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">
+                        RPP Fleksibel di Kelas Berbeda
+                      </h4>
+                      <p class="aspect-body">[ RPP Fleksibel UAS Siklus 1 ]</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Refleksi Akhir — khusus UAS -->
+              <div class="artefak-card refleksi-card">
+                <div class="artefak-header refleksi-header">
+                  <div class="artefak-icon refleksi-icon">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="artefak-title-wrap">
+                    <span class="artefak-num">Refleksi Akhir</span>
+                    <h3 class="artefak-title">
+                      Pengalaman PPL & Filosofi Mengajar
+                    </h3>
+                  </div>
+                </div>
+                <div class="artefak-aspects">
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap refleksi-aspect-icon">
+                      <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Pengalaman PPL</h4>
+                      <p class="aspect-body">
+                        [ Ceritakan pengalaman PPL Anda secara mendalam — momen
+                        berkesan, tantangan yang dihadapi, dan pelajaran
+                        berharga yang diperoleh dari praktik langsung di
+                        sekolah. ]
+                      </p>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap refleksi-aspect-icon">
+                      <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Filosofi Mengajar</h4>
+                      <p class="aspect-body">
+                        [ Jelaskan filosofi mengajar Anda — pandangan tentang
+                        hakikat pembelajaran, peran guru, dan cara terbaik
+                        memfasilitasi perkembangan siswa. ]
+                      </p>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap refleksi-aspect-icon">
+                      <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">
+                        Prinsip, Keyakinan & Nilai yang Mendasari
+                      </h4>
+                      <div class="nilai-grid-refleksi">
+                        <div class="nilai-item">
+                          <span class="nilai-icon"
+                            ><i class="fas fa-shield-alt"></i
+                          ></span>
+                          <div>
+                            <strong>[ Prinsip 1 ]</strong>
+                            <p>
+                              [ Jelaskan prinsip yang mendasari cara Anda
+                              mengajar ]
+                            </p>
+                          </div>
+                        </div>
+                        <div class="nilai-item">
+                          <span class="nilai-icon"
+                            ><i class="fas fa-star"></i
+                          ></span>
+                          <div>
+                            <strong>[ Nilai 1 ]</strong>
+                            <p>
+                              [ Nilai yang Anda pegang teguh sebagai pendidik ]
+                            </p>
+                          </div>
+                        </div>
+                        <div class="nilai-item">
+                          <span class="nilai-icon"
+                            ><i class="fas fa-compass"></i
+                          ></span>
+                          <div>
+                            <strong>[ Keyakinan 1 ]</strong>
+                            <p>
+                              [ Keyakinan yang mendorong semangat Anda mengajar
+                              ]
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            <!-- ARTEFAK 2 — tambah jika ada lebih dari 1 artefak per siklus -->
-            <div class="artefak-card">
-              <div class="artefak-header">
-                <div class="artefak-icon">
-                  <i class="fas fa-tasks"></i>
+          <!-- Siklus 2 UAS -->
+          <div class="siklus-content" data-siklus="uas-2">
+            <div class="siklus-label">
+              <div class="siklus-label-line"></div>
+              <span class="siklus-label-text"
+                ><i class="fas fa-sync-alt"></i> UAS — Siklus 2</span
+              >
+              <div class="siklus-label-line"></div>
+            </div>
+            <div class="artefak-grid">
+              <div class="artefak-card">
+                <div class="artefak-header">
+                  <div class="artefak-icon">
+                    <i class="fas fa-file-alt"></i>
+                  </div>
+                  <div class="artefak-title-wrap">
+                    <span class="artefak-num">Artefak 01</span>
+                    <h3 class="artefak-title">[ Nama Artefak UAS Siklus 2 ]</h3>
+                  </div>
                 </div>
-                <div class="artefak-title-wrap">
-                  <span class="artefak-num">Artefak 02</span>
-                  <h3 class="artefak-title">[ Nama Artefak — misal: LKPD ]</h3>
+                <div class="artefak-aspects">
+                  <div class="aspect-item">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Konteks</h4>
+                      <p class="aspect-body">[ Konteks UAS Siklus 2 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-bullseye"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Tujuan</h4>
+                      <p class="aspect-body">[ Tujuan UAS Siklus 2 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Kelebihan & Kekurangan</h4>
+                      <div class="kelebihan-kekurangan">
+                        <div class="kk-col kelebihan">
+                          <div class="kk-header">
+                            <i class="fas fa-plus-circle"></i
+                            ><span>Kelebihan</span>
+                          </div>
+                          <ul class="kk-list">
+                            <li>[ Kelebihan 1 ]</li>
+                            <li>[ Kelebihan 2 ]</li>
+                          </ul>
+                        </div>
+                        <div class="kk-divider"></div>
+                        <div class="kk-col kekurangan">
+                          <div class="kk-header">
+                            <i class="fas fa-minus-circle"></i
+                            ><span>Kekurangan</span>
+                          </div>
+                          <ul class="kk-list">
+                            <li>[ Kekurangan 1 ]</li>
+                            <li>[ Kekurangan 2 ]</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Teori yang Digunakan</h4>
+                      <div class="teori-tags">
+                        <div class="teori-tag-item">
+                          <span class="teori-tag-name">[ Teori ]</span>
+                          <p class="teori-tag-desc">[ Deskripsi ]</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="aspect-item uts-extra">
+                    <div class="aspect-icon-wrap uts-icon">
+                      <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Kendala</h4>
+                      <p class="aspect-body">[ Kendala UAS Siklus 2 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item uts-extra">
+                    <div class="aspect-icon-wrap uts-icon">
+                      <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Faktor Keberhasilan</h4>
+                      <p class="aspect-body">[ Faktor UAS Siklus 2 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double uts-extra">
+                    <div class="aspect-icon-wrap uts-icon">
+                      <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">
+                        RPP Fleksibel di Kelas Berbeda
+                      </h4>
+                      <p class="aspect-body">[ RPP Fleksibel UAS Siklus 2 ]</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              <div class="artefak-aspects">
-                <div class="aspect-item">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-map-marker-alt"></i>
+              <div class="artefak-card refleksi-card">
+                <div class="artefak-header refleksi-header">
+                  <div class="artefak-icon refleksi-icon">
+                    <i class="fas fa-star"></i>
                   </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Konteks</h4>
-                    <p class="aspect-body">[ Konteks artefak 2 siklus 1. ]</p>
-                  </div>
-                </div>
-
-                <div class="aspect-item">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-bullseye"></i>
-                  </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Tujuan</h4>
-                    <p class="aspect-body">[ Tujuan artefak 2 siklus 1. ]</p>
+                  <div class="artefak-title-wrap">
+                    <span class="artefak-num">Refleksi Akhir</span>
+                    <h3 class="artefak-title">
+                      Pengalaman PPL & Filosofi Mengajar
+                    </h3>
                   </div>
                 </div>
-
-                <div class="aspect-item aspect-double">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-balance-scale"></i>
+                <div class="artefak-aspects">
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap refleksi-aspect-icon">
+                      <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Pengalaman PPL</h4>
+                      <p class="aspect-body">[ Pengalaman PPL UAS Siklus 2 ]</p>
+                    </div>
                   </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Kelebihan & Kekurangan</h4>
-                    <div class="kelebihan-kekurangan">
-                      <div class="kk-col kelebihan">
-                        <div class="kk-header">
-                          <i class="fas fa-plus-circle"></i>
-                          <span>Kelebihan</span>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap refleksi-aspect-icon">
+                      <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Filosofi Mengajar</h4>
+                      <p class="aspect-body">
+                        [ Filosofi mengajar UAS Siklus 2 ]
+                      </p>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap refleksi-aspect-icon">
+                      <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Prinsip, Keyakinan & Nilai</h4>
+                      <div class="nilai-grid-refleksi">
+                        <div class="nilai-item">
+                          <span class="nilai-icon"
+                            ><i class="fas fa-shield-alt"></i
+                          ></span>
+                          <div>
+                            <strong>[ Prinsip ]</strong>
+                            <p>[ Deskripsi ]</p>
+                          </div>
                         </div>
-                        <ul class="kk-list">
-                          <li>[ Kelebihan 1 ]</li>
-                          <li>[ Kelebihan 2 ]</li>
-                        </ul>
-                      </div>
-                      <div class="kk-divider"></div>
-                      <div class="kk-col kekurangan">
-                        <div class="kk-header">
-                          <i class="fas fa-minus-circle"></i>
-                          <span>Kekurangan</span>
-                        </div>
-                        <ul class="kk-list">
-                          <li>[ Kekurangan 1 ]</li>
-                          <li>[ Kekurangan 2 ]</li>
-                        </ul>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
 
-                <div class="aspect-item">
-                  <div class="aspect-icon-wrap">
-                    <i class="fas fa-book-open"></i>
+          <!-- Siklus 3 UAS -->
+          <div class="siklus-content" data-siklus="uas-3">
+            <div class="siklus-label">
+              <div class="siklus-label-line"></div>
+              <span class="siklus-label-text"
+                ><i class="fas fa-sync-alt"></i> UAS — Siklus 3</span
+              >
+              <div class="siklus-label-line"></div>
+            </div>
+            <div class="artefak-grid">
+              <div class="artefak-card">
+                <div class="artefak-header">
+                  <div class="artefak-icon">
+                    <i class="fas fa-file-alt"></i>
                   </div>
-                  <div class="aspect-content">
-                    <h4 class="aspect-title">Teori yang Digunakan</h4>
-                    <div class="teori-tags">
-                      <div class="teori-tag-item">
-                        <span class="teori-tag-name">[ Nama Teori ]</span>
-                        <p class="teori-tag-desc">[ Deskripsi teori. ]</p>
+                  <div class="artefak-title-wrap">
+                    <span class="artefak-num">Artefak 01</span>
+                    <h3 class="artefak-title">[ Nama Artefak UAS Siklus 3 ]</h3>
+                  </div>
+                </div>
+                <div class="artefak-aspects">
+                  <div class="aspect-item">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Konteks</h4>
+                      <p class="aspect-body">[ Konteks UAS Siklus 3 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-bullseye"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Tujuan</h4>
+                      <p class="aspect-body">[ Tujuan UAS Siklus 3 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Kelebihan & Kekurangan</h4>
+                      <div class="kelebihan-kekurangan">
+                        <div class="kk-col kelebihan">
+                          <div class="kk-header">
+                            <i class="fas fa-plus-circle"></i
+                            ><span>Kelebihan</span>
+                          </div>
+                          <ul class="kk-list">
+                            <li>[ Kelebihan 1 ]</li>
+                            <li>[ Kelebihan 2 ]</li>
+                          </ul>
+                        </div>
+                        <div class="kk-divider"></div>
+                        <div class="kk-col kekurangan">
+                          <div class="kk-header">
+                            <i class="fas fa-minus-circle"></i
+                            ><span>Kekurangan</span>
+                          </div>
+                          <ul class="kk-list">
+                            <li>[ Kekurangan 1 ]</li>
+                            <li>[ Kekurangan 2 ]</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap">
+                      <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Teori yang Digunakan</h4>
+                      <div class="teori-tags">
+                        <div class="teori-tag-item">
+                          <span class="teori-tag-name">[ Teori ]</span>
+                          <p class="teori-tag-desc">[ Deskripsi ]</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="aspect-item uts-extra">
+                    <div class="aspect-icon-wrap uts-icon">
+                      <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Kendala</h4>
+                      <p class="aspect-body">[ Kendala UAS Siklus 3 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item uts-extra">
+                    <div class="aspect-icon-wrap uts-icon">
+                      <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Faktor Keberhasilan</h4>
+                      <p class="aspect-body">[ Faktor UAS Siklus 3 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double uts-extra">
+                    <div class="aspect-icon-wrap uts-icon">
+                      <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">
+                        RPP Fleksibel di Kelas Berbeda
+                      </h4>
+                      <p class="aspect-body">[ RPP Fleksibel UAS Siklus 3 ]</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="artefak-card refleksi-card">
+                <div class="artefak-header refleksi-header">
+                  <div class="artefak-icon refleksi-icon">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="artefak-title-wrap">
+                    <span class="artefak-num">Refleksi Akhir</span>
+                    <h3 class="artefak-title">
+                      Pengalaman PPL & Filosofi Mengajar
+                    </h3>
+                  </div>
+                </div>
+                <div class="artefak-aspects">
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap refleksi-aspect-icon">
+                      <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Pengalaman PPL</h4>
+                      <p class="aspect-body">[ Pengalaman PPL UAS Siklus 3 ]</p>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap refleksi-aspect-icon">
+                      <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Filosofi Mengajar</h4>
+                      <p class="aspect-body">
+                        [ Filosofi mengajar UAS Siklus 3 ]
+                      </p>
+                    </div>
+                  </div>
+                  <div class="aspect-item aspect-double">
+                    <div class="aspect-icon-wrap refleksi-aspect-icon">
+                      <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="aspect-content">
+                      <h4 class="aspect-title">Prinsip, Keyakinan & Nilai</h4>
+                      <div class="nilai-grid-refleksi">
+                        <div class="nilai-item">
+                          <span class="nilai-icon"
+                            ><i class="fas fa-shield-alt"></i
+                          ></span>
+                          <div>
+                            <strong>[ Prinsip ]</strong>
+                            <p>[ Deskripsi ]</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
