@@ -107,21 +107,35 @@ function initPortoSwitcher() {
   document.querySelectorAll(".nav-sub-item").forEach((item) => {
     item.addEventListener("click", (e) => {
       e.preventDefault();
+      e.stopPropagation();
       const porto = item.getAttribute("data-portofolio");
 
-      /* Pindah ke section analisis dulu */
-      const navAnalisis = document.querySelector(
-        '.nav-item[data-section="analisis"]',
-      );
-      if (navAnalisis) navAnalisis.click();
+      /* Cek apakah sudah di section analisis */
+      const isAlreadyAnalisis = document
+        .getElementById("analisis")
+        ?.classList.contains("active");
 
-      /* Switch ke portofolio yang dipilih */
-      setTimeout(() => {
+      if (isAlreadyAnalisis) {
+        /* Sudah di analisis — langsung switch konten tanpa trigger nav click */
         const targetBtn = document.querySelector(
           `.porto-btn[data-porto="${porto}"]`,
         );
         if (targetBtn) targetBtn.click();
-      }, 400);
+      } else {
+        /* Pindah ke section analisis dulu */
+        const navAnalisis = document.querySelector(
+          '.nav-item[data-section="analisis"]',
+        );
+        if (navAnalisis) navAnalisis.click();
+
+        /* Switch ke portofolio yang dipilih setelah section terbuka */
+        setTimeout(() => {
+          const targetBtn = document.querySelector(
+            `.porto-btn[data-porto="${porto}"]`,
+          );
+          if (targetBtn) targetBtn.click();
+        }, 400);
+      }
 
       /* Tutup dropdown di mobile */
       if (window.innerWidth <= 640) {
@@ -133,12 +147,17 @@ function initPortoSwitcher() {
     });
   });
 
-  /* Tutup dropdown saat klik nav lain */
+  /* Tutup dropdown hanya saat klik nav section LAIN
+   bukan saat klik sub item LK4/UTS/UAS */
   document
     .querySelectorAll(".nav-item:not(.nav-dropdown-trigger)")
     .forEach((item) => {
       item.addEventListener("click", () => {
-        parent?.classList.remove("open");
+        const section = item.getAttribute("data-section");
+        /* Hanya tutup jika pindah ke section selain analisis */
+        if (section && section !== "analisis") {
+          parent?.classList.remove("open");
+        }
       });
     });
 

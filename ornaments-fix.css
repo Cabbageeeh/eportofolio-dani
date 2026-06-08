@@ -1522,3 +1522,41 @@ body.dark-mode .porto-btn.active {
     height: 24px;
   }
 }
+
+/* ================================================================
+   FIX KOMP FLIP — min-height agar konten tidak terpotong
+   ================================================================ */
+
+.komp-flip-inner {
+  min-height: 260px !important;
+}
+
+/* Pastikan front card tidak memotong konten */
+.komp-flip-front {
+  position: relative !important;
+  height: auto !important;
+  min-height: 260px !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Progress bar selalu di bawah */
+.komp-flip-front .komp-progress {
+  margin-top: auto !important;
+  padding-top: 12px !important;
+}
+
+/* Samakan tinggi semua card */
+.komp-item {
+  height: auto !important;
+}
+
+.kompetensi-grid {
+  align-items: stretch !important;
+}
+
+/* Dropdown analisis selalu open saat section analisis aktif */
+#analisis.active ~ * .nav-has-dropdown .nav-dropdown,
+.nav-has-dropdown.open .nav-dropdown {
+  max-height: 200px !important;
+}
