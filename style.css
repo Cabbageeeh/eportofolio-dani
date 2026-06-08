@@ -1746,3 +1746,139 @@ body {
   .perubahan-row { grid-template-columns: 1fr 1fr; }
   .scroll-top { bottom: 20px; right: 16px; }
 }
+
+/* ============================================
+   ACCESSIBILITY — SKIP TO CONTENT
+   ============================================ */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 9999;
+  padding: 12px 24px;
+  background: var(--gold);
+  color: var(--soil);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: var(--shadow-md);
+  transition: top 0.2s var(--ease);
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* ============================================
+   ACCESSIBILITY — FOCUS INDICATORS
+   Hanya tampil saat navigasi keyboard (Tab)
+   ============================================ */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Nav items — focus state yang lebih jelas */
+.nav-item:focus-visible {
+  outline: none;
+  border-left-color: var(--gold);
+  background: rgba(196, 149, 106, 0.15);
+  color: var(--linen);
+}
+
+.nav-sub-item:focus-visible {
+  outline: none;
+  background: rgba(196, 149, 106, 0.12);
+  color: var(--linen);
+  box-shadow: inset 3px 0 0 var(--gold);
+}
+
+/* Card focus untuk keyboard navigation */
+.profil-card:focus-visible,
+.pend-card:focus-visible,
+.analisis-card:focus-visible,
+.misi-card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(196, 154, 60, 0.2);
+}
+
+/* ============================================
+   TYPOGRAPHY — MINIMUM FONT SIZE 0.7rem
+   Memastikan teks tetap terbaca di semua device
+   ============================================ */
+.section-badge {
+  font-size: 0.75rem;
+}
+
+.sidebar-year,
+.logo-sub {
+  font-size: 0.68rem;
+}
+
+/* ============================================
+   WHITE SPACE — ANALISIS SECTION
+   Memberi ruang napas pada konten padat
+   ============================================ */
+.siklus-content {
+  padding-top: 8px;
+}
+
+.artefak-card {
+  margin-bottom: 20px;
+}
+
+.artefak-card:last-child {
+  margin-bottom: 0;
+}
+
+.siklus-label {
+  margin-bottom: 28px;
+}
+
+/* Jarak antar aspek dalam artefact card */
+.aspek-item {
+  margin-bottom: 4px;
+}
+
+/* ============================================
+   CONSISTENT ACCENT — GARIS EMAS DI ATAS
+   Setiap section header memiliki aksen konsisten
+   ============================================ */
+.section-header::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--copper));
+  border-radius: 2px;
+  margin-bottom: 12px;
+  opacity: 0.7;
+}
+
+/* ============================================
+   REDUCED MOTION — HORMATI PREFERENSI USER
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .compass-ornament,
+  .particle-field,
+  .avatar-ring-2 {
+    display: none !important;
+  }
+}

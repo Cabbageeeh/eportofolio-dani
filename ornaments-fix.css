@@ -271,10 +271,10 @@ body::after {
 
 .compass-ornament {
   position: absolute !important;
-  top: 60px !important; /* sesuaikan dengan padding section */
-  right: 56px !important;
-  width: 180px !important;
-  height: 180px !important;
+  top: 60px !important; /* ubah dari 60px ke atas */
+  right: 36px !important;
+  width: 110px !important;
+  height: 110px !important;
   z-index: 0 !important;
   pointer-events: none !important;
   margin: 0 !important;
@@ -311,25 +311,17 @@ body::after {
   padding: 0 !important;
 }
 .card-identity {
-  align-items: center !important;
-  justify-content: center;
-}
-
-/* ================================================================
-   CARD IDENTITY — Redesign dengan foto PNG
-   ================================================================ */
-
-.card-identity {
   position: relative;
   overflow: hidden !important;
-  min-height: 320px;
+  min-height: 380px;
   display: flex !important;
-  align-items: flex-end !important;
+  align-items: stretch !important;
   padding: 0 !important;
   background: linear-gradient(
     135deg,
-    rgba(245, 237, 220, 0.95) 0%,
-    rgba(237, 217, 180, 0.9) 100%
+    rgba(245, 237, 220, 0.97) 0%,
+    rgba(237, 217, 180, 0.92) 50%,
+    rgba(230, 208, 168, 0.88) 100%
   ) !important;
   border: 1px solid rgba(196, 149, 106, 0.3) !important;
 }
@@ -337,21 +329,21 @@ body::after {
 body.dark-mode .card-identity {
   background: linear-gradient(
     135deg,
-    rgba(30, 18, 8, 0.95) 0%,
-    rgba(42, 26, 8, 0.9) 100%
+    rgba(30, 18, 8, 0.97) 0%,
+    rgba(42, 26, 8, 0.92) 100%
   ) !important;
 }
 
-/* ── Teks besar redup di background ── */
+/* ── Teks besar redup di background — lebih terlihat ── */
 .identity-bg-text {
   position: absolute;
   top: 0;
-  right: -20px;
+  right: -10px;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0;
+  gap: 2px;
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
@@ -359,25 +351,25 @@ body.dark-mode .card-identity {
 
 .identity-bg-text span {
   font-family: "Playfair Display", serif;
-  font-size: 4.5rem;
+  font-size: 4.2rem;
   font-weight: 900;
-  color: rgba(92, 61, 30, 0.06);
+  color: rgba(92, 61, 30, 0.08);
   letter-spacing: 0.05em;
-  line-height: 1;
+  line-height: 1.05;
   white-space: nowrap;
   user-select: none;
 }
 
 body.dark-mode .identity-bg-text span {
-  color: rgba(196, 149, 106, 0.07);
+  color: rgba(196, 149, 106, 0.09);
 }
 
-/* ── Foto PNG tanpa background ── */
+/* ── Foto PNG — lebih besar & prominent ── */
 .identity-photo-wrap {
   position: absolute;
   bottom: 0;
-  right: 24px;
-  width: 220px;
+  right: 0;
+  width: 280px;
   z-index: 1;
   pointer-events: none;
 }
@@ -387,12 +379,12 @@ body.dark-mode .identity-bg-text span {
   display: block;
   object-fit: contain;
   object-position: bottom center;
-  filter: drop-shadow(-4px 0 12px rgba(59, 42, 26, 0.15));
+  filter: drop-shadow(-6px 0 18px rgba(59, 42, 26, 0.18));
   transition: filter 0.3s ease;
 }
 
 .card-identity:hover .identity-photo {
-  filter: drop-shadow(-6px 0 20px rgba(59, 42, 26, 0.25));
+  filter: drop-shadow(-8px 0 24px rgba(59, 42, 26, 0.28));
 }
 
 /* Shadow gradasi di bawah foto */
@@ -401,105 +393,204 @@ body.dark-mode .identity-bg-text span {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 60px;
-  background: linear-gradient(0deg, rgba(245, 237, 220, 0.8), transparent);
+  height: 80px;
+  background: linear-gradient(0deg, rgba(245, 237, 220, 0.9), transparent);
   pointer-events: none;
 }
 
 body.dark-mode .identity-photo-shadow {
-  background: linear-gradient(0deg, rgba(30, 18, 8, 0.8), transparent);
+  background: linear-gradient(0deg, rgba(30, 18, 8, 0.9), transparent);
 }
 
-/* ── Info wrap kiri ── */
+/* ── Info wrap kiri — lebih spacious ── */
 .identity-info-wrap {
   position: relative;
   z-index: 2;
-  padding: 28px 28px 28px 32px;
-  max-width: 60%;
+  padding: 32px 32px 32px 36px;
+  max-width: 62%;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
-/* Badge program di atas */
+/* Badge program — lebih polished */
 .identity-badge-top {
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .identity-program {
   font-family: "DM Mono", monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.18em;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: #c49a3c;
-  background: rgba(196, 154, 60, 0.1);
-  border: 1px solid rgba(196, 154, 60, 0.25);
-  padding: 3px 10px;
+  background: linear-gradient(135deg, rgba(196, 154, 60, 0.12), rgba(196, 154, 60, 0.06));
+  border: 1px solid rgba(196, 154, 60, 0.3);
+  padding: 5px 14px;
   border-radius: 20px;
-}
-
-/* Nama lebih besar */
-.card-identity .student-name {
-  font-size: 1.6rem !important;
-  line-height: 1.15 !important;
-  margin-bottom: 0 !important;
-}
-
-/* Tagline */
-.identity-tagline {
-  font-family: "Crimson Pro", serif;
-  font-size: 0.88rem;
-  color: #8b5e3c;
-  line-height: 1.6;
-  font-style: italic;
-  margin: 4px 0;
-}
-
-body.dark-mode .identity-tagline {
-  color: #c4956a;
-}
-
-/* Social handle */
-.identity-social {
-  margin-top: 6px;
-}
-
-.identity-handle {
-  font-family: "DM Mono", monospace;
-  font-size: 0.7rem;
-  color: #8b5e3c;
-  letter-spacing: 0.06em;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 
-.identity-handle i {
+.identity-program i {
+  font-size: 0.6rem;
   color: #c49a3c;
+}
+
+/* Nama — HERO element, paling besar */
+.card-identity .student-name {
+  font-size: 2.2rem !important;
+  line-height: 1.1 !important;
+  margin-bottom: 0 !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.01em;
+  color: #3B2A1A;
+}
+
+body.dark-mode .card-identity .student-name {
+  color: #EDD9B4;
+}
+
+/* NIM */
+.card-identity .student-nim {
+  font-family: "DM Mono", monospace;
+  font-size: 0.75rem;
+  color: #7A7060;
+  letter-spacing: 0.05em;
+  margin-bottom: 0;
+}
+
+/* ── Tagline — statement dengan aksen emas ── */
+.identity-tagline-wrap {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+  margin: 6px 0 4px;
+}
+
+.tagline-accent {
+  width: 3px;
+  min-height: 100%;
+  background: linear-gradient(180deg, #c49a3c, #a0522d);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.identity-tagline {
+  font-family: "Crimson Pro", serif;
+  font-size: 0.95rem;
+  color: #5C3D1E;
+  line-height: 1.55;
+  font-style: italic;
+  margin: 0;
+}
+
+body.dark-mode .identity-tagline {
+  color: #C4956A;
+}
+
+/* ── Tags — lebih berwarna & distinct ── */
+.identity-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.tag {
+  font-family: "DM Mono", monospace;
+  font-size: 0.72rem;
+  padding: 5px 12px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease;
+}
+
+.tag:hover {
+  transform: translateY(-1px);
+}
+
+.tag-primary {
+  background: rgba(74, 82, 64, 0.1);
+  color: #4A5240;
+  border-color: rgba(74, 82, 64, 0.2);
+}
+
+.tag-secondary {
+  background: rgba(139, 58, 42, 0.08);
+  color: #8B3A2A;
+  border-color: rgba(139, 58, 42, 0.15);
+}
+
+.tag-tertiary {
+  background: rgba(196, 154, 60, 0.1);
+  color: #8B5E3C;
+  border-color: rgba(196, 154, 60, 0.2);
+}
+
+.tag i {
   font-size: 0.65rem;
 }
 
-body.dark-mode .identity-handle {
+/* ── Social link — clickable & polished ── */
+.identity-social {
+  margin-top: 8px;
+}
+
+.identity-social-link {
+  font-family: "DM Mono", monospace;
+  font-size: 0.75rem;
+  color: #8b5e3c;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(139, 94, 60, 0.2);
+  transition: all 0.2s ease;
+}
+
+.identity-social-link:hover {
+  color: #c49a3c;
+  border-bottom-color: #c49a3c;
+}
+
+.identity-social-link i {
+  font-size: 0.9rem;
+  color: #c49a3c;
+}
+
+body.dark-mode .identity-social-link {
   color: #c4956a;
+  border-bottom-color: rgba(196, 149, 106, 0.3);
+}
+
+body.dark-mode .identity-social-link:hover {
+  color: #edd9b4;
+  border-bottom-color: #edd9b4;
 }
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .identity-photo-wrap {
-    width: 160px;
-    right: 12px;
+    width: 200px;
+    right: 8px;
   }
   .identity-bg-text span {
     font-size: 3rem;
   }
   .card-identity .student-name {
-    font-size: 1.3rem !important;
+    font-size: 1.8rem !important;
   }
 }
 
 @media (max-width: 640px) {
   .identity-photo-wrap {
-    width: 120px;
+    width: 140px;
   }
   .identity-info-wrap {
     max-width: 65%;
@@ -516,40 +607,40 @@ body.dark-mode .identity-handle {
 
 /* Desktop — info di kiri, foto di kanan */
 .identity-info-wrap {
-  max-width: 55% !important;
-  padding: 24px 24px 24px 28px !important;
+  max-width: 62% !important;
+  padding: 32px 32px 32px 36px !important;
 }
 
 .identity-photo-wrap {
-  width: 200px !important;
-  right: 16px !important;
+  width: 280px !important;
+  right: 0 !important;
 }
 
 /* Tablet */
 @media (max-width: 1100px) {
   .card-identity {
-    min-height: 280px !important;
+    min-height: 340px !important;
   }
 
   .identity-info-wrap {
-    max-width: 52% !important;
-    padding: 20px 16px 20px 22px !important;
+    max-width: 58% !important;
+    padding: 24px 20px 24px 28px !important;
   }
 
   .identity-photo-wrap {
-    width: 170px !important;
-    right: 10px !important;
+    width: 220px !important;
+    right: 0 !important;
   }
 
   .card-identity .student-name {
-    font-size: 1.3rem !important;
+    font-size: 1.7rem !important;
   }
 }
 
 /* Mobile */
 @media (max-width: 640px) {
   .card-identity {
-    min-height: 240px !important;
+    min-height: 280px !important;
     flex-direction: column !important;
     align-items: flex-start !important;
   }
@@ -557,21 +648,21 @@ body.dark-mode .identity-handle {
   /* Info wrap full width di atas */
   .identity-info-wrap {
     max-width: 65% !important;
-    padding: 16px 16px 12px 18px !important;
-    gap: 5px !important;
+    padding: 18px 16px 14px 18px !important;
+    gap: 6px !important;
   }
 
   .card-identity .student-name {
-    font-size: 1.1rem !important;
-    line-height: 1.2 !important;
+    font-size: 1.4rem !important;
+    line-height: 1.15 !important;
   }
 
   .identity-tagline {
-    font-size: 0.78rem !important;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 2 !important;
-    -webkit-box-orient: vertical !important;
-    overflow: hidden !important;
+    font-size: 0.82rem !important;
+  }
+
+  .tagline-accent {
+    width: 3px !important;
   }
 
   .identity-tags {
@@ -585,8 +676,8 @@ body.dark-mode .identity-handle {
 
   /* Foto lebih kecil di mobile */
   .identity-photo-wrap {
-    width: 130px !important;
-    right: 8px !important;
+    width: 140px !important;
+    right: 4px !important;
     bottom: 0 !important;
   }
 
@@ -597,11 +688,11 @@ body.dark-mode .identity-handle {
 
   /* Badge program */
   .identity-program {
-    font-size: 0.52rem !important;
-    padding: 2px 7px !important;
+    font-size: 0.58rem !important;
+    padding: 3px 8px !important;
   }
 
-  /* Social handle sembunyikan di mobile kecil */
+  /* Social link sembunyikan di mobile kecil */
   .identity-social {
     display: none !important;
   }
@@ -618,7 +709,7 @@ body.dark-mode .identity-handle {
   }
 
   .card-identity .student-name {
-    font-size: 0.95rem !important;
+    font-size: 1.15rem !important;
   }
 }
 
@@ -699,7 +790,7 @@ body.dark-mode .identity-handle {
 /* Nomor tab */
 .tab-num {
   font-family: "DM Mono", monospace;
-  font-size: 0.6rem;
+  font-size: 0.62rem;
   letter-spacing: 0.15em;
   color: rgba(196, 149, 106, 0.5);
   transition: color 0.3s ease;
@@ -728,7 +819,7 @@ body.dark-mode .identity-handle {
 /* Sub label */
 .tab-sub {
   font-family: "DM Mono", monospace;
-  font-size: 0.55rem;
+  font-size: 0.62rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(139, 94, 60, 0.5);

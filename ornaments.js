@@ -31,13 +31,13 @@
    INISIALISASI — Tunggu DOM siap
    ================================================================ */
 document.addEventListener("DOMContentLoaded", () => {
-  initParticleField();
-  initCompassParallax();
-  initMouseGlow();
-  initMisiBgIcons();
-  initSectionEnterFX();
-  initHoverTiltCard();
-  initCursorTrail();
+  initParticleField();      // ✓ dipertahankan — subtle, hanya di #profil
+  initCompassParallax();    // ✓ dipertahankan — hero ornament
+  // initMouseGlow();       // ✗ dinonaktifkan — terlalu banyak efek aktif
+  initMisiBgIcons();        // ✓ dipertahankan — spesifik section misi
+  initSectionEnterFX();     // ✓ dipertahankan — transisi halus
+  // initHoverTiltCard();    // ✗ dinonaktifkan — efek miring pada card saat hover
+  // initCursorTrail();     // ✗ dinonaktifkan — visual noise, mengalihkan konten
   console.log(
     "%c Ornaments.js ✓",
     "color:#C49A3C;font-style:italic;font-size:12px;",

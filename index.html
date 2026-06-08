@@ -17,6 +17,9 @@
     />
   </head>
   <body>
+    <!-- ====== SKIP TO CONTENT (A11Y) ====== -->
+    <a href="#main-content" class="skip-to-content">Lewati ke konten utama</a>
+
     <!-- ====== ORNAMEN LATAR ====== -->
     <div class="bg-texture"></div>
     <div class="ornament ornament-tl"></div>
@@ -107,7 +110,7 @@
     <div class="overlay" id="overlay"></div>
 
     <!-- ====== MAIN CONTENT ====== -->
-    <main class="main-content">
+    <main class="main-content" id="main-content">
       <!-- ===== SECTION 1: PROFIL MAHASISWA ===== -->
       <section class="section active" id="profil">
         <div class="particle-field" aria-hidden="true"></div>
@@ -277,36 +280,41 @@
                 alt="Muhammad Abduramadani"
                 class="identity-photo"
               />
-              <!-- Shadow bawah foto -->
               <div class="identity-photo-shadow"></div>
             </div>
 
             <!-- Info di kiri -->
             <div class="identity-info-wrap">
               <div class="identity-badge-top">
-                <span class="identity-program">PPG Prajabatan 2025</span>
+                <span class="identity-program">
+                  <i class="fas fa-award"></i> PPG Prajabatan 2025
+                </span>
               </div>
-              <h2 class="student-name">Muhammad Abduramadani</h2>
+              <h2 class="student-name">Muhammad<br />Abduramadani</h2>
               <p class="student-nim">NIM: 2500103916225027</p>
-              <p class="identity-tagline">
-                Dari Pembelajaran Menuju Pendidik,<br />
-                Perjalanan Menuju Guru Profesional
-              </p>
+              <div class="identity-tagline-wrap">
+                <div class="tagline-accent"></div>
+                <p class="identity-tagline">
+                  &ldquo;Dari Pembelajaran Menuju Pendidik,<br />
+                  Perjalanan Menuju Guru Profesional&rdquo;
+                </p>
+              </div>
               <div class="identity-tags">
-                <span class="tag"
+                <span class="tag tag-primary"
                   ><i class="fas fa-map-marker-alt"></i> Malang</span
                 >
-                <span class="tag"
+                <span class="tag tag-secondary"
                   ><i class="fas fa-university"></i> Informatika</span
                 >
-                <span class="tag"
-                  ><i class="fas fa-calendar"></i> Angkatan 2026</span
+                <span class="tag tag-tertiary"
+                  ><i class="fas fa-calendar-alt"></i> Angkatan 2026</span
                 >
               </div>
               <div class="identity-social">
-                <span class="identity-handle">
-                  <i class="fas fa-at"></i> username_instagram
-                </span>
+                <a href="#" class="identity-social-link" aria-label="Instagram">
+                  <i class="fab fa-instagram"></i>
+                  <span>username_instagram</span>
+                </a>
               </div>
             </div>
           </div>
