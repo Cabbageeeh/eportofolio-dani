@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initMarqueeText();
   initPortoSwitcher();
   initSiklusTab();
+  initExtraAccordion();
 
   console.log("%c ornaments-fix.js ✓", "color:#C49A3C;");
 });
@@ -187,6 +188,14 @@ function initSiklusTab() {
       );
       if (targetContent) targetContent.classList.add("active");
 
+      /* Update siklus color CSS variable on parent porto-content */
+      const color = tab.getAttribute("data-siklus-color");
+      const colorMap = { gold: "#C49A3C", copper: "#A0522D", green: "#4A5240" };
+      const parentPorto = tab.closest(".porto-content");
+      if (parentPorto && colorMap[color]) {
+        parentPorto.style.setProperty("--siklus-accent", colorMap[color]);
+      }
+
       /* Sound effect */
       if (window.playNavHover) playNavHover?.();
 
@@ -196,6 +205,32 @@ function initSiklusTab() {
   });
 
   console.log("%c Siklus Tab ✓", "color:#C49A3C;font-style:italic;");
+}
+
+function initExtraAccordion() {
+  const toggleBtns = document.querySelectorAll(".extra-aspects-toggle");
+  if (!toggleBtns.length) return;
+
+  toggleBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const wrap = btn.closest(".extra-aspects-wrap");
+      if (!wrap) return;
+
+      const isOpen = wrap.classList.toggle("open");
+      btn.setAttribute("aria-expanded", isOpen);
+
+      /* Update toggle text */
+      const textSpan = btn.querySelector("span");
+      const count = wrap.querySelectorAll(".extra-aspects-body .aspect-item").length;
+      if (textSpan) {
+        textSpan.innerHTML = isOpen
+          ? `<i class="fas fa-minus"></i> Sembunyikan Aspek Tambahan (${count})`
+          : `<i class="fas fa-plus"></i> Tampilkan Aspek Tambahan (${count})`;
+      }
+    });
+  });
+
+  console.log("%c Extra Accordion ✓", "color:#C49A3C;font-style:italic;");
 }
 
 function initLandingPage() {

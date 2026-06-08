@@ -922,6 +922,161 @@ body.dark-mode .timeline-step:has(.active) .step-label { color: #C49A3C; }
 }
 
 /* ================================================================
+   PENDIDIKAN — ENHANCED EDUCATION & ACHIEVEMENT STYLES
+   ================================================================ */
+
+/* Education: current/active entry highlight */
+.edu-item.edu-current {
+  background: rgba(196, 154, 60, 0.06);
+  border-radius: 8px;
+  padding: 14px 12px;
+  margin: -4px -12px;
+}
+
+.edu-item.edu-current .edu-year::after {
+  box-shadow: 0 0 0 3px rgba(196, 154, 60, 0.25), 0 0 8px rgba(196, 154, 60, 0.3);
+}
+
+.edu-badge.badge-active {
+  background: linear-gradient(135deg, rgba(196, 154, 60, 0.15), rgba(196, 154, 60, 0.08));
+  border-color: rgba(196, 154, 60, 0.4);
+  color: #C49A3C;
+  font-weight: 500;
+}
+
+/* Achievement icons — colored badges */
+.achieve-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.9rem;
+}
+
+.achieve-gold {
+  background: rgba(196, 154, 60, 0.12);
+  color: #C49A3C;
+}
+
+.achieve-silver {
+  background: rgba(122, 112, 96, 0.1);
+  color: #7A7060;
+}
+
+.achieve-bronze {
+  background: rgba(160, 82, 45, 0.1);
+  color: #A0522D;
+}
+
+/* Achievement items — more spacing */
+.achieve-item {
+  gap: 14px;
+  padding: 14px 0;
+}
+
+/* ================================================================
+   KEAHLIAN & KOMPETENSI — SKILLS SECTION
+   ================================================================ */
+
+.pend-card-skills {
+  background: linear-gradient(
+    135deg,
+    rgba(245, 237, 220, 0.6) 0%,
+    rgba(237, 217, 180, 0.4) 100%
+  ) !important;
+  border-color: rgba(196, 149, 106, 0.3) !important;
+}
+
+body.dark-mode .pend-card-skills {
+  background: linear-gradient(
+    135deg,
+    rgba(30, 18, 8, 0.5) 0%,
+    rgba(42, 26, 8, 0.3) 100%
+  ) !important;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.skill-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skill-group-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--copper, #A0522D);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(196, 149, 106, 0.2);
+}
+
+.skill-group-title i {
+  font-size: 0.7rem;
+  color: #C49A3C;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(196, 149, 106, 0.2);
+  color: var(--bark, #5C3D1E);
+  transition: all 0.2s ease;
+}
+
+.skill-tag:hover {
+  background: rgba(196, 154, 60, 0.1);
+  border-color: rgba(196, 154, 60, 0.35);
+  transform: translateY(-1px);
+}
+
+body.dark-mode .skill-tag {
+  background: rgba(30, 18, 8, 0.6);
+  border-color: rgba(196, 149, 106, 0.15);
+  color: #C4956A;
+}
+
+body.dark-mode .skill-tag:hover {
+  background: rgba(196, 154, 60, 0.1);
+  border-color: rgba(196, 154, 60, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================================================================
    SIKLUS TAB SYSTEM — Analisis Artefak
    ================================================================ */
 
@@ -1485,6 +1640,284 @@ body.dark-mode .teori-tag-desc {
     width: 100%;
     height: 1px;
     margin: 0;
+  }
+}
+
+/* ================================================================
+   SIKLUS COLOR CODING — Active tab accent
+   ================================================================ */
+
+/* Color variables */
+.siklus-tab[data-siklus-color="gold"] { --siklus-accent: #C49A3C; }
+.siklus-tab[data-siklus-color="copper"] { --siklus-accent: #A0522D; }
+.siklus-tab[data-siklus-color="green"] { --siklus-accent: #4A5240; }
+
+/* Active tab accent line */
+.siklus-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: var(--siklus-accent, #C49A3C);
+  opacity: 0.8;
+}
+
+/* Active tab number color */
+.siklus-tab.active .tab-num {
+  color: var(--siklus-accent, #C49A3C);
+}
+
+/* Active tab label color */
+.siklus-tab.active .tab-label {
+  color: var(--siklus-accent, #C49A3C);
+}
+
+body.dark-mode .siklus-tab.active .tab-label {
+  color: var(--siklus-accent, #C49A3C);
+}
+
+/* Siklus label line color */
+.siklus-content.active .siklus-label-line {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--siklus-accent, rgba(196, 149, 106, 0.3))
+  );
+}
+
+.siklus-content.active .siklus-label-line:last-child {
+  background: linear-gradient(
+    90deg,
+    var(--siklus-accent, rgba(196, 149, 106, 0.3)),
+    transparent
+  );
+}
+
+/* Siklus label text color */
+.siklus-content.active .siklus-label-text {
+  color: var(--siklus-accent, rgba(196, 149, 106, 0.7));
+}
+
+/* Artefak header accent bar color */
+.siklus-content.active .artefak-header::before {
+  background: linear-gradient(
+    90deg,
+    var(--siklus-accent, #C49A3C),
+    rgba(196, 149, 106, 0.3),
+    transparent
+  );
+}
+
+/* ================================================================
+   COLLAPSIBLE EXTRA ASPECTS — Accordion toggle
+   ================================================================ */
+
+.extra-aspects-wrap {
+  grid-column: 1 / -1;
+  border-top: 1px solid rgba(196, 149, 106, 0.12);
+}
+
+.extra-aspects-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 28px;
+  background: rgba(196, 149, 106, 0.04);
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--copper, #A0522D);
+  transition: background 0.2s ease;
+}
+
+.extra-aspects-toggle:hover {
+  background: rgba(196, 149, 106, 0.08);
+}
+
+.extra-aspects-toggle span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.extra-toggle-icon {
+  font-size: 0.7rem;
+  transition: transform 0.3s ease;
+}
+
+.extra-aspects-wrap.open .extra-toggle-icon {
+  transform: rotate(180deg);
+}
+
+.extra-aspects-body {
+  display: none;
+}
+
+.extra-aspects-wrap.open .extra-aspects-body {
+  display: block;
+}
+
+/* Reset grid for items inside collapsible */
+.extra-aspects-body .aspect-item {
+  grid-column: unset;
+}
+
+.extra-aspects-body .aspect-double {
+  grid-column: 1 / -1;
+}
+
+body.dark-mode .extra-aspects-toggle {
+  color: #C4956A;
+  background: rgba(196, 149, 106, 0.03);
+}
+
+body.dark-mode .extra-aspects-toggle:hover {
+  background: rgba(196, 149, 106, 0.06);
+}
+
+/* ================================================================
+   TEORI TAG — Improved readability
+   ================================================================ */
+
+.teori-tag-name {
+  font-size: 0.72rem !important;
+  letter-spacing: 0.08em !important;
+}
+
+.teori-tag-item {
+  border-left-width: 4px;
+}
+
+/* Color-coded borders for different theory types */
+.teori-tag-item:nth-child(1) { border-left-color: #C49A3C; }
+.teori-tag-item:nth-child(2) { border-left-color: #4A5240; }
+.teori-tag-item:nth-child(3) { border-left-color: #3B5A8C; }
+.teori-tag-item:nth-child(4) { border-left-color: #A0522D; }
+
+/* ================================================================
+   JOURNEY SUMMARY — Ringkasan Perjalanan
+   ================================================================ */
+
+.journey-summary {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 28px 32px;
+  background: linear-gradient(
+    135deg,
+    rgba(196, 154, 60, 0.06) 0%,
+    rgba(92, 61, 30, 0.04) 100%
+  );
+  border: 1px solid rgba(196, 149, 106, 0.2);
+  border-radius: 12px;
+  margin-top: 8px;
+}
+
+.journey-icon {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #C49A3C, #A0522D);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.journey-body {
+  flex: 1;
+}
+
+.journey-body h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--soil, #3B2A1A);
+  margin-bottom: 6px;
+}
+
+.journey-body p {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.95rem;
+  color: var(--stone, #5C3D1E);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.journey-stats {
+  display: flex;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.journey-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.stat-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #C49A3C;
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--stone, #7A7060);
+}
+
+body.dark-mode .journey-summary {
+  background: linear-gradient(
+    135deg,
+    rgba(196, 154, 60, 0.05) 0%,
+    rgba(92, 61, 30, 0.03) 100%
+  );
+  border-color: rgba(196, 149, 106, 0.12);
+}
+
+body.dark-mode .journey-body h4 {
+  color: #EDD9B4;
+}
+
+body.dark-mode .journey-body p {
+  color: #C4956A;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .journey-summary {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .journey-stats {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .journey-summary {
+    padding: 20px 16px;
+  }
+  .extra-aspects-toggle {
+    padding: 12px 16px;
+    font-size: 0.65rem;
   }
 }
 
