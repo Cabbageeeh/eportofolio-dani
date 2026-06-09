@@ -688,6 +688,9 @@ function initLandingPage() {
 
   document.body.appendChild(landing);
 
+  /* Kunci scroll body saat landing page aktif */
+  document.body.style.overflow = "hidden";
+
   /* ================================================================
      BUAT PARTIKEL DI LANDING
      ================================================================ */
@@ -751,6 +754,7 @@ function initLandingPage() {
         /* Hapus dari DOM setelah animasi */
         setTimeout(() => {
           landing.remove();
+          document.body.style.overflow = "";
         }, 850);
       }, 200);
     });
