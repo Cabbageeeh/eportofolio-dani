@@ -878,7 +878,7 @@ function initProfilModal() {
         border-radius: 12px;
         width: 100%;
         max-width: 780px;
-        max-height: 88vh;
+        max-height: 90vh;
         overflow: hidden;
         display: flex;
         flex-direction: column;
@@ -1014,6 +1014,7 @@ function initProfilModal() {
       #profil-modal-body {
         overflow-y: auto;
         flex: 1;
+        min-height: 0;
         padding: 28px 32px;
         scroll-behavior: smooth;
       }
@@ -1043,7 +1044,7 @@ function initProfilModal() {
       }
 
       .modal-gallery-item {
-        aspect-ratio: 4/3;
+        aspect-ratio: 3/4;
         border-radius: 6px;
         overflow: hidden;
         background: linear-gradient(135deg, #EDD9B4, #D4B483);
@@ -1055,7 +1056,7 @@ function initProfilModal() {
       .modal-gallery-item img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         transition: transform 0.4s ease;
         display: block;
       }
