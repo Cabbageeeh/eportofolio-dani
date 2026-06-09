@@ -368,13 +368,14 @@ body.dark-mode .identity-bg-text span {
 /* ── Foto PNG — lebih besar & prominent ── */
 .identity-photo-wrap {
   position: relative;
-  width: 280px;
+  width: 240px;
   flex-shrink: 0;
   order: 2;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   overflow: hidden;
+  padding-top: 40px;
 }
 
 .identity-photo {
@@ -606,7 +607,7 @@ body.dark-mode .identity-social-link:hover {
 }
 
 .identity-photo-wrap {
-  width: 280px !important;
+  width: 240px !important;
 }
 
 /* Tablet */
@@ -620,7 +621,8 @@ body.dark-mode .identity-social-link:hover {
   }
 
   .identity-photo-wrap {
-    width: 200px !important;
+    width: 180px !important;
+    padding-top: 24px;
   }
 
   .card-identity .student-name {
@@ -631,9 +633,10 @@ body.dark-mode .identity-social-link:hover {
 /* Mobile */
 @media (max-width: 640px) {
   .card-identity {
-    min-height: 280px !important;
+    min-height: auto !important;
     flex-direction: column !important;
     align-items: flex-start !important;
+    overflow: visible !important;
   }
 
   /* Info wrap full width di atas */
@@ -664,11 +667,18 @@ body.dark-mode .identity-social-link:hover {
     padding: 3px 8px !important;
   }
 
-  /* Foto lebih kecil di mobile */
+  /* Foto full di mobile — tidak terpotong */
   .identity-photo-wrap {
     width: 100% !important;
-    max-height: 220px;
+    max-width: 280px;
+    margin: 0 auto;
     align-items: center;
+    overflow: visible;
+  }
+
+  .identity-photo {
+    max-height: 300px;
+    object-fit: contain;
   }
 
   /* Teks background lebih kecil */
@@ -696,7 +706,12 @@ body.dark-mode .identity-social-link:hover {
 
   .identity-photo-wrap {
     width: 100% !important;
-    max-height: 180px;
+    max-width: 240px;
+    margin: 0 auto;
+  }
+
+  .identity-photo {
+    max-height: 260px;
   }
 
   .card-identity .student-name {
