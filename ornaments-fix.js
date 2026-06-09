@@ -3154,7 +3154,7 @@ function initDarkMode() {
       /* ── TOGGLE BUTTON STYLING ── */
 #dark-mode-toggle {
   position: fixed;
-  top: 24px;
+  bottom: 24px;
   right: 68px;
   width: 36px;
   height: 36px;
@@ -3177,11 +3177,11 @@ function initDarkMode() {
   color: rgba(196,149,96,1);
 }
 
-/* Tooltip ke bawah */
+/* Tooltip ke atas */
 #dark-mode-toggle::after {
   content: attr(data-tooltip);
   position: absolute;
-  top: 44px;
+  bottom: 44px;
   left: 50%;
   transform: translateX(-50%);
   background: linear-gradient(135deg, #3B2A1A, #1e1208);
@@ -3640,7 +3640,7 @@ function initSoundEffect() {
 
   muteBtn.style.cssText = `
     position: fixed;
-    top: 24px;
+    bottom: 24px;
     right: 24px;
     width: 36px;
     height: 36px;

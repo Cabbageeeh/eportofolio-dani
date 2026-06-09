@@ -190,8 +190,7 @@ body {
 /* Nav links */
 .header-links {
   flex: 1;
-  overflow-x: auto;
-  overflow-y: visible;
+  overflow: visible;
   scrollbar-width: none;
 }
 

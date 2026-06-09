@@ -9,6 +9,11 @@
 /* MASALAH: warna terlalu tipis & kalah spesifisitas di .section  */
 /* SOLUSI: pakai body::after sebagai layer independen             */
 
+/* Sembunyikan scroll-to-top (tertutup tombol dark mode & audio) */
+.scroll-top {
+  display: none !important;
+}
+
 /* Hapus dot grid cara lama dari ornaments.css */
 .section {
   background-image: none;
@@ -2358,31 +2363,35 @@ body.dark-mode .nilai-item p {
 /* ── NAV DROPDOWN (Header Layout) ── */
 .nav-has-dropdown {
   position: relative;
+  height: var(--header-h);
+  display: flex;
+  align-items: stretch;
 }
 
 .nav-dropdown {
   list-style: none;
   padding: 8px 0;
+  padding-top: 12px;
   margin: 0;
+  margin-top: -4px;
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 180px;
+  right: 0;
+  min-width: 100%;
   background: var(--soil);
   border: 1px solid rgba(196,149,106,0.2);
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   box-shadow: var(--shadow-md);
   opacity: 0;
-  visibility: hidden;
-  transform: translateY(-8px);
-  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  transition: opacity 0.15s ease 0.2s;
   z-index: 200;
 }
 
-.nav-has-dropdown.open .nav-dropdown {
+.nav-has-dropdown:hover > .nav-dropdown,
+.nav-has-dropdown.open > .nav-dropdown {
   opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+  transition-delay: 0s;
 }
 
 .nav-sub-item {
@@ -2428,7 +2437,8 @@ body.dark-mode .nilai-item p {
     color 0.2s ease;
 }
 
-.nav-has-dropdown.open .nav-arrow {
+.nav-has-dropdown.open .nav-arrow,
+.nav-has-dropdown:hover .nav-arrow {
   transform: rotate(180deg);
   color: rgba(196, 149, 106, 0.7);
 }
@@ -2497,10 +2507,10 @@ body.dark-mode .porto-btn.active {
 
 /* Dropdown analisis selalu open saat section analisis aktif */
 #analisis.active ~ * .nav-has-dropdown .nav-dropdown,
-.nav-has-dropdown.open .nav-dropdown {
+.nav-has-dropdown.open .nav-dropdown,
+.nav-has-dropdown:hover .nav-dropdown {
   opacity: 1 !important;
-  visibility: visible !important;
-  transform: translateY(0) !important;
+  transition-delay: 0s;
 }
 
 /* ================================================================
