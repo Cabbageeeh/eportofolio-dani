@@ -370,9 +370,15 @@ body {
   display: none;
   padding: 60px 56px 80px;
   min-height: 100vh;
+  animation: fadeInSection 0.35s ease forwards;
 }
 
 .section.active { display: block; }
+
+@keyframes fadeInSection {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
 
 /* ── SECTION HEADER ── */
 .section-header {
@@ -1705,7 +1711,7 @@ body {
   .card-wide { grid-column: 1 / 2; }
   .analisis-grid { grid-template-columns: 1fr; }
   .misi-grid { grid-template-columns: 1fr; }
-  .card-visi, .card-missions, .card-kompetensi, .card-komitmen { grid-column: 1 / 2; }
+  .card-visi, .card-missions, .card-kompetensi, .card-prinsip, .card-komitmen { grid-column: 1 / 2; }
 }
 
 @media (max-width: 900px) {
@@ -1728,7 +1734,7 @@ body {
   .section { padding: 72px 20px 60px; }
   .section-title { font-size: 1.8rem; }
   .pendidikan-grid, .analisis-grid, .misi-grid { grid-template-columns: 1fr; }
-  .card-wide, .card-kompetensi, .card-komitmen { grid-column: 1 / 2; }
+  .card-wide, .card-kompetensi, .card-prinsip, .card-komitmen { grid-column: 1 / 2; }
   .kompetensi-grid { grid-template-columns: 1fr; }
   .teach-grid { grid-template-columns: 1fr; }
   .foto-grid { grid-template-columns: repeat(2, 1fr); }
