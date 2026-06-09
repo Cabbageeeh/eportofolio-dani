@@ -3173,8 +3173,8 @@ function initDarkMode() {
       /* ── TOGGLE BUTTON STYLING ── */
 #dark-mode-toggle {
   position: fixed;
-  bottom: 24px;
-  left: 68px;
+  top: 24px;
+  right: 68px;
   width: 36px;
   height: 36px;
   border-radius: 4px;
@@ -3196,11 +3196,11 @@ function initDarkMode() {
   color: rgba(196,149,96,1);
 }
 
-/* Tooltip ke atas */
+/* Tooltip ke bawah */
 #dark-mode-toggle::after {
   content: attr(data-tooltip);
   position: absolute;
-  bottom: 44px;
+  top: 44px;
   left: 50%;
   transform: translateX(-50%);
   background: linear-gradient(135deg, #3B2A1A, #1e1208);
@@ -3651,7 +3651,7 @@ function initSoundEffect() {
   );
 
   /* ================================================================
-     TOMBOL MUTE — pojok kiri bawah
+     TOMBOL MUTE — pojok kanan atas
      ================================================================ */
   const muteBtn = document.createElement("button");
   muteBtn.id = "sound-toggle";
@@ -3659,8 +3659,8 @@ function initSoundEffect() {
 
   muteBtn.style.cssText = `
     position: fixed;
-    bottom: 24px;
-    left: 24px;
+    top: 24px;
+    right: 24px;
     width: 36px;
     height: 36px;
     background: linear-gradient(135deg, #3B2A1A, #1e1208);
