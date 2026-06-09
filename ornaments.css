@@ -74,16 +74,7 @@
   }
 }
 
-@keyframes blink-dot {
-  0%,
-  89%,
-  100% {
-    opacity: 1;
-  }
-  94% {
-    opacity: 0.2;
-  }
-}
+/* blink-dot animation removed — no longer used */
 
 @keyframes particle-rise {
   0% {
@@ -282,17 +273,7 @@
 }
 
 .nav-item.active::after {
-  content: "";
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 6px;
-  height: 6px;
-  background: #c49a3c;
-  border-radius: 50%;
-  box-shadow: 0 0 7px rgba(196, 154, 60, 0.9);
-  animation: blink-dot 3.5s ease infinite;
+  display: none;
 }
 
 /* ================================================================
