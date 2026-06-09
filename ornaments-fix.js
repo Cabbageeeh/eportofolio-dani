@@ -643,7 +643,7 @@ function initLandingPage() {
 
       <!-- Foto profil kecil -->
       <img
-        src="foto-profil.png"
+        src="eportfolio/foto-profil.png"
         alt="Foto Profil"
         id="landing-avatar"
         onerror="this.style.display='none'"
