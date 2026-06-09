@@ -1702,6 +1702,21 @@ body {
    ============================================ */
 @media (max-width: 640px) {
   .header-nav { transform: translateY(-100%); }
+
+  /* Overlay full-screen saat menu terbuka */
+  .header-nav.open::after {
+    content: '';
+    position: fixed;
+    top: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(30,18,8,0.7);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+    pointer-events: none;
+  }
+
   .header-nav.open { transform: translateY(0); flex-direction: column; height: auto; align-items: stretch; }
   .header-nav.open .header-links { overflow: visible; }
   .header-nav.open .nav-links { flex-direction: column; height: auto; padding: 12px 0; }

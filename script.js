@@ -42,6 +42,18 @@ function initNavigation() {
       const isAlreadyAnalisis = targetId === "analisis" &&
         document.getElementById("analisis")?.classList.contains("active");
 
+      /* Jika klik Analisis Artefak di mobile, toggle dropdown tanpa menutup menu */
+      const isMobile = window.innerWidth <= 640;
+      if (targetId === "analisis" && isMobile) {
+        const dropdown = document.querySelector(".nav-has-dropdown");
+        if (dropdown) {
+          dropdown.classList.toggle("open");
+        }
+        /* Jangan navigasi / tutup menu, cukup toggle dropdown */
+        e.preventDefault();
+        return;
+      }
+
       /* Tutup header nav di mobile, tapi jaga state dropdown */
       const hadDropdown = document.querySelector(".nav-has-dropdown.open");
       closeHeaderMobile();
@@ -162,6 +174,10 @@ function closeHeaderMobile() {
   hamburger.classList.remove("open");
   hamburger.setAttribute("aria-expanded", "false");
   document.body.style.overflow = "";
+
+  /* Tutup juga dropdown Analisis Artefak saat menu ditutup */
+  const dropdown = document.querySelector(".nav-has-dropdown.open");
+  if (dropdown) dropdown.classList.remove("open");
 }
 
 /* ============================================

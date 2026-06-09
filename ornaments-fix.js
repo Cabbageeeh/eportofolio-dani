@@ -87,6 +87,9 @@ function initPortoSwitcher() {
 
   if (trigger && parent) {
     trigger.addEventListener("click", (e) => {
+      /* Di mobile, handler dropdown ada di script.js */
+      if (window.innerWidth <= 640) return;
+
       /* Jika sudah di section analisis — toggle dropdown saja */
       const isAnalisis = document
         .getElementById("analisis")
@@ -136,11 +139,11 @@ function initPortoSwitcher() {
         }, 400);
       }
 
-      /* Tutup dropdown di mobile */
+      /* Tutup dropdown & menu di mobile */
       if (window.innerWidth <= 640) {
         parent?.classList.remove("open");
-        if (typeof closeSidebarMobile === "function") {
-          closeSidebarMobile();
+        if (typeof closeHeaderMobile === "function") {
+          closeHeaderMobile();
         }
       }
     });
