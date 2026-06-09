@@ -2385,35 +2385,47 @@ body.dark-mode .nilai-item p {
   color: #c4956a;
 }
 
-/* ── NAV DROPDOWN ── */
+/* ── NAV DROPDOWN (Header Layout) ── */
 .nav-has-dropdown {
   position: relative;
 }
 
 .nav-dropdown {
   list-style: none;
-  padding: 0;
+  padding: 8px 0;
   margin: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  background: rgba(0, 0, 0, 0.15);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  background: var(--soil);
+  border: 1px solid rgba(196,149,106,0.2);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  z-index: 200;
 }
 
 .nav-has-dropdown.open .nav-dropdown {
-  max-height: 200px;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .nav-sub-item {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 9px 28px 9px 48px;
+  padding: 10px 20px;
   color: rgba(196, 149, 106, 0.65);
   text-decoration: none;
   font-family: "Crimson Pro", serif;
   font-size: 0.88rem;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .nav-sub-item:hover,
@@ -2438,7 +2450,7 @@ body.dark-mode .nilai-item p {
 
 /* Arrow icon pada nav trigger */
 .nav-arrow {
-  margin-left: auto;
+  margin-left: 4px;
   font-size: 0.6rem;
   color: rgba(196, 149, 106, 0.4);
   transition:
@@ -2516,7 +2528,9 @@ body.dark-mode .porto-btn.active {
 /* Dropdown analisis selalu open saat section analisis aktif */
 #analisis.active ~ * .nav-has-dropdown .nav-dropdown,
 .nav-has-dropdown.open .nav-dropdown {
-  max-height: 200px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
 }
 
 /* ================================================================

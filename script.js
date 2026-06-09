@@ -42,9 +42,9 @@ function initNavigation() {
       const isAlreadyAnalisis = targetId === "analisis" &&
         document.getElementById("analisis")?.classList.contains("active");
 
-      /* Tutup sidebar di mobile, tapi jaga state dropdown */
+      /* Tutup header nav di mobile, tapi jaga state dropdown */
       const hadDropdown = document.querySelector(".nav-has-dropdown.open");
-      closeSidebarMobile();
+      closeHeaderMobile();
       if (hadDropdown && targetId === "analisis") {
         hadDropdown.classList.add("open");
       }
@@ -114,50 +114,50 @@ function initActiveNavOnLoad() {
    ============================================ */
 function initHamburger() {
   const hamburger = document.getElementById("hamburger");
-  const sidebar = document.getElementById("sidebar");
+  const headerNav = document.getElementById("header-nav");
   const overlay = document.getElementById("overlay");
 
-  if (!hamburger || !sidebar || !overlay) return;
+  if (!hamburger || !headerNav || !overlay) return;
 
   hamburger.addEventListener("click", () => {
-    const isOpen = sidebar.classList.contains("open");
+    const isOpen = headerNav.classList.contains("open");
     if (isOpen) {
-      closeSidebarMobile();
+      closeHeaderMobile();
     } else {
-      openSidebarMobile();
+      openHeaderMobile();
     }
   });
 
   overlay.addEventListener("click", () => {
-    closeSidebarMobile();
+    closeHeaderMobile();
   });
 
-  // Tutup sidebar dengan tombol ESC
+  // Tutup header nav dengan tombol ESC
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeSidebarMobile();
+    if (e.key === "Escape") closeHeaderMobile();
   });
 }
 
-function openSidebarMobile() {
+function openHeaderMobile() {
   const hamburger = document.getElementById("hamburger");
-  const sidebar = document.getElementById("sidebar");
+  const headerNav = document.getElementById("header-nav");
   const overlay = document.getElementById("overlay");
 
-  sidebar.classList.add("open");
+  headerNav.classList.add("open");
   overlay.classList.add("show");
   hamburger.classList.add("open");
   hamburger.setAttribute("aria-expanded", "true");
   document.body.style.overflow = "hidden";
 }
 
-function closeSidebarMobile() {
+function closeHeaderMobile() {
   const hamburger = document.getElementById("hamburger");
-  const sidebar = document.getElementById("sidebar");
+  const headerNav = document.getElementById("header-nav");
   const overlay = document.getElementById("overlay");
 
-  if (!hamburger || !sidebar || !overlay) return;
+  if (!hamburger || !headerNav || !overlay) return;
 
-  sidebar.classList.remove("open");
+  headerNav.classList.remove("open");
   overlay.classList.remove("show");
   hamburger.classList.remove("open");
   hamburger.setAttribute("aria-expanded", "false");

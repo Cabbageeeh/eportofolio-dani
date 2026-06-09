@@ -3007,9 +3007,9 @@ function initDarkMode() {
       }
 
       /* Sidebar dark */
-      body.dark-mode .sidebar {
+      body.dark-mode .header-nav {
         background-image: linear-gradient(
-          160deg, #0d0804 0%, #1a0f06 60%, #080402 100%
+          90deg, #0d0804 0%, #1a0f06 60%, #080402 100%
         );
       }
 
@@ -4215,7 +4215,7 @@ function initScrollProgress() {
       /* ── Persentase teks di pojok kanan ── */
       #scroll-progress-pct {
         position: fixed;
-        top: 10px;
+        top: calc(var(--header-h) + 8px);
         right: 20px;
         font-family: 'DM Mono', monospace;
         font-size: 0.6rem;
@@ -4811,21 +4811,22 @@ function initLoadingScreen(autoStart = true) {
 }
 
 function initMarqueeText() {
-  /* ── MARQUEE 1 — Di bawah sidebar ── */
-  const sidebar = document.querySelector(".sidebar");
-  if (!sidebar) return;
+  /* ── MARQUEE 1 — Di dalam header-nav ── */
+  const headerNav = document.querySelector(".header-nav");
+  if (!headerNav) return;
 
   const marqueeWrap = document.createElement("div");
-  marqueeWrap.id = "sidebar-marquee";
+  marqueeWrap.id = "header-marquee";
   marqueeWrap.style.cssText = `
-    width: 100%;
     overflow: hidden;
-    padding: 10px 0;
-    border-top: 1px solid rgba(196,149,106,0.2);
-    border-bottom: 1px solid rgba(196,149,106,0.2);
+    padding: 0 12px;
+    border-left: 1px solid rgba(196,149,106,0.2);
+    border-right: 1px solid rgba(196,149,106,0.2);
     background: rgba(0,0,0,0.15);
     position: relative;
     flex-shrink: 0;
+    display: none;
+    max-width: 180px;
   `;
 
   /* Teks yang berjalan */
@@ -4865,12 +4866,15 @@ function initMarqueeText() {
 
   marqueeWrap.appendChild(track);
 
-  /* Sisipkan sebelum sidebar-footer */
-  const footer = sidebar.querySelector(".sidebar-footer");
-  if (footer) {
-    sidebar.insertBefore(marqueeWrap, footer);
+  /* Sembunyikan marquee di header (tidak cocok untuk layout horizontal) */
+  /* Marquee hanya aktif di mobile saat header terbuka */
+
+  /* Sisipkan di header-right */
+  const headerRight = headerNav.querySelector(".header-right");
+  if (headerRight) {
+    headerNav.insertBefore(marqueeWrap, headerRight);
   } else {
-    sidebar.appendChild(marqueeWrap);
+    headerNav.appendChild(marqueeWrap);
   }
 
   /* ── MARQUEE 2 — Di bawah section header tiap section ── */
@@ -4969,14 +4973,14 @@ function initMarqueeText() {
       }
 
       /* Pause saat hover */
-      #sidebar-marquee:hover div,
+      #header-marquee:hover div,
       .section-marquee:hover div {
         animation-play-state: paused;
       }
 
       /* Fade kiri-kanan agar tidak terpotong kasar */
-      #sidebar-marquee::before,
-      #sidebar-marquee::after,
+      #header-marquee::before,
+      #header-marquee::after,
       .section-marquee::before,
       .section-marquee::after {
         content: '';
@@ -4988,13 +4992,13 @@ function initMarqueeText() {
         pointer-events: none;
       }
 
-      #sidebar-marquee::before,
+      #header-marquee::before,
       .section-marquee::before {
         left: 0;
         background: linear-gradient(90deg, rgba(59,42,26,0.9), transparent);
       }
 
-      #sidebar-marquee::after {
+      #header-marquee::after {
         right: 0;
         background: linear-gradient(90deg, transparent, rgba(59,42,26,0.9));
       }
