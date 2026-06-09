@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ── CUSTOM CURSOR ── */
-  initCustomCursor();
+  // initCustomCursor();
   initLandingPage();
   initLoadingScreen(false);
   initSmoothTransition();

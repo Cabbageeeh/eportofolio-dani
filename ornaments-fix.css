@@ -315,6 +315,7 @@ body::after {
   overflow: hidden !important;
   min-height: 380px;
   display: flex !important;
+  flex-direction: row !important;
   align-items: stretch !important;
   padding: 0 !important;
   background: linear-gradient(
@@ -366,12 +367,14 @@ body.dark-mode .identity-bg-text span {
 
 /* ── Foto PNG — lebih besar & prominent ── */
 .identity-photo-wrap {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  position: relative;
   width: 280px;
-  z-index: 1;
-  pointer-events: none;
+  flex-shrink: 0;
+  order: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .identity-photo {
@@ -381,6 +384,7 @@ body.dark-mode .identity-bg-text span {
   object-position: bottom center;
   filter: drop-shadow(-6px 0 18px rgba(59, 42, 26, 0.18));
   transition: filter 0.3s ease;
+  pointer-events: none;
 }
 
 .card-identity:hover .identity-photo {
@@ -406,8 +410,10 @@ body.dark-mode .identity-photo-shadow {
 .identity-info-wrap {
   position: relative;
   z-index: 2;
-  padding: 32px 32px 32px 36px;
-  max-width: 62%;
+  padding: 32px 24px 32px 36px;
+  flex: 1;
+  min-width: 0;
+  order: 1;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -576,10 +582,6 @@ body.dark-mode .identity-social-link:hover {
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
-  .identity-photo-wrap {
-    width: 200px;
-    right: 8px;
-  }
   .identity-bg-text span {
     font-size: 3rem;
   }
@@ -589,13 +591,6 @@ body.dark-mode .identity-social-link:hover {
 }
 
 @media (max-width: 640px) {
-  .identity-photo-wrap {
-    width: 140px;
-  }
-  .identity-info-wrap {
-    max-width: 65%;
-    padding: 20px 16px;
-  }
   .identity-bg-text span {
     font-size: 2.2rem;
   }
@@ -607,13 +602,11 @@ body.dark-mode .identity-social-link:hover {
 
 /* Desktop — info di kiri, foto di kanan */
 .identity-info-wrap {
-  max-width: 62% !important;
-  padding: 32px 32px 32px 36px !important;
+  padding: 32px 24px 32px 36px !important;
 }
 
 .identity-photo-wrap {
   width: 280px !important;
-  right: 0 !important;
 }
 
 /* Tablet */
@@ -623,13 +616,11 @@ body.dark-mode .identity-social-link:hover {
   }
 
   .identity-info-wrap {
-    max-width: 58% !important;
-    padding: 24px 20px 24px 28px !important;
+    padding: 24px 16px 24px 24px !important;
   }
 
   .identity-photo-wrap {
-    width: 220px !important;
-    right: 0 !important;
+    width: 200px !important;
   }
 
   .card-identity .student-name {
@@ -647,7 +638,6 @@ body.dark-mode .identity-social-link:hover {
 
   /* Info wrap full width di atas */
   .identity-info-wrap {
-    max-width: 65% !important;
     padding: 18px 16px 14px 18px !important;
     gap: 6px !important;
   }
@@ -676,9 +666,9 @@ body.dark-mode .identity-social-link:hover {
 
   /* Foto lebih kecil di mobile */
   .identity-photo-wrap {
-    width: 140px !important;
-    right: 4px !important;
-    bottom: 0 !important;
+    width: 100% !important;
+    max-height: 220px;
+    align-items: center;
   }
 
   /* Teks background lebih kecil */
@@ -701,11 +691,12 @@ body.dark-mode .identity-social-link:hover {
 /* Mobile sangat kecil */
 @media (max-width: 380px) {
   .identity-info-wrap {
-    max-width: 60% !important;
+    padding: 14px 12px 12px 14px !important;
   }
 
   .identity-photo-wrap {
-    width: 110px !important;
+    width: 100% !important;
+    max-height: 180px;
   }
 
   .card-identity .student-name {
@@ -1641,6 +1632,226 @@ body.dark-mode .teori-tag-desc {
     height: 1px;
     margin: 0;
   }
+}
+
+/* ================================================================
+   LAMPIRAN — DOCUMENT CARDS, SCORES, TESTIMONI, PHOTO GRID
+   ================================================================ */
+
+/* Doc meta (file size/type) */
+.doc-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  color: var(--stone, #7A7060);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  background: rgba(196, 149, 106, 0.06);
+  border-radius: 4px;
+}
+
+.doc-meta i {
+  font-size: 0.55rem;
+  color: #A0522D;
+}
+
+body.dark-mode .doc-meta {
+  background: rgba(196, 149, 106, 0.05);
+  color: #C4956A;
+}
+
+/* Score indicators */
+.nilai-score {
+  font-weight: 600 !important;
+}
+
+.score-excellent {
+  color: #4A5240 !important;
+}
+
+.score-good {
+  color: #A0522D !important;
+}
+
+.score-average {
+  color: #B8860B !important;
+}
+
+body.dark-mode .score-excellent { color: #7A9A6A !important; }
+body.dark-mode .score-good { color: #C4956A !important; }
+
+/* Score bar color based on percentage */
+.nilai-bar {
+  transition: width 1.2s ease;
+}
+
+/* Rubric info below total score */
+.total-rubric {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(196, 154, 60, 0.2);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.rubric-item {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  color: var(--wheat, #C4A87C);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rubric-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-excellent { background: #4A5240; }
+.dot-good { background: #C49A3C; }
+.dot-average { background: #B8860B; }
+
+/* ================================================================
+   TESTIMONI GURU PAMONG
+   ================================================================ */
+
+.testimoni-card {
+  background: linear-gradient(
+    135deg,
+    rgba(245, 237, 220, 0.6) 0%,
+    rgba(237, 217, 180, 0.4) 100%
+  );
+  border: 1px solid rgba(196, 149, 106, 0.25);
+  border-radius: 12px;
+  padding: 36px;
+  position: relative;
+}
+
+body.dark-mode .testimoni-card {
+  background: linear-gradient(
+    135deg,
+    rgba(30, 18, 8, 0.5) 0%,
+    rgba(42, 26, 8, 0.3) 100%
+  );
+  border-color: rgba(196, 149, 106, 0.12);
+}
+
+.testimoni-quote {
+  position: relative;
+  padding-left: 48px;
+}
+
+.testimoni-quote-icon {
+  position: absolute;
+  top: -4px;
+  left: 0;
+  font-size: 2rem;
+  color: rgba(196, 154, 60, 0.2);
+}
+
+.testimoni-quote p {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.1rem;
+  color: var(--bark, #5C3D1E);
+  line-height: 1.8;
+  font-style: italic;
+  margin: 0;
+}
+
+body.dark-mode .testimoni-quote p {
+  color: #C4956A;
+}
+
+.testimoni-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(196, 149, 106, 0.15);
+}
+
+.testimoni-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5C3D1E, #3B2A1A);
+  color: #EDD9B4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.testimoni-author strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--soil, #3B2A1A);
+}
+
+.testimoni-author span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: var(--stone, #7A7060);
+}
+
+body.dark-mode .testimoni-author strong { color: #EDD9B4; }
+body.dark-mode .testimoni-author span { color: #C4956A; }
+
+/* ================================================================
+   PHOTO GRID — Improved placeholders
+   ================================================================ */
+
+.foto-placeholder {
+  position: relative;
+  overflow: hidden;
+}
+
+.foto-placeholder i {
+  font-size: 2rem !important;
+  color: rgba(196, 149, 106, 0.3) !important;
+  margin-bottom: 8px !important;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.foto-item:hover .foto-placeholder i {
+  color: rgba(196, 149, 106, 0.5) !important;
+  transform: scale(1.1);
+}
+
+.foto-placeholder span {
+  font-family: 'DM Mono', monospace !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(92, 61, 30, 0.4) !important;
+}
+
+.foto-item p {
+  font-size: 0.8rem !important;
+  color: var(--stone, #5C3D1E) !important;
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+body.dark-mode .foto-placeholder span {
+  color: rgba(196, 149, 106, 0.3) !important;
+}
+
+body.dark-mode .foto-item p {
+  color: #C4956A !important;
 }
 
 /* ================================================================
